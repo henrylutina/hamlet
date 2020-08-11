@@ -174,5 +174,23 @@ export default {
         padding-right: 50px;
     }
     }
+
+     @media(min-width: 769px) and (max-width:1200px) {
+         .grid{
+             grid-gap: 2rem;
+         }
+         .one4{
+        text-align: center;
+    }
+        .one4 button{
+            width: 100%;
+    }
+    .btn1{
+        margin-bottom: 30px;
+    }
+    .btn2{
+        margin-left: 0px;
+    }
+     }
     
 </style>

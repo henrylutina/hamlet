@@ -56,7 +56,8 @@
 
     @media(min-width: 568px) and (max-width:768px) {
         .one1{
-        padding-left: 40px;
+        padding-left: 10%;
+        padding-right: 10%;
     }
     }
 
