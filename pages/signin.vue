@@ -8,7 +8,7 @@
             <h2>Welcome Back!</h2>
             <input type="text" placeholder="Email"><br>
             <input type="text" placeholder="Password"><br>
-            <button class="btn1">Login</button>
+            <nuxt-link to="/dashboard"><button class="btn1">Login</button></nuxt-link>
             <hr><br>
             <p>Not a customer yet? <nuxt-link to="/signup"><button class="btn2">Sign up</button></nuxt-link></p>
           </div>
