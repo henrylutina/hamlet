@@ -1,0 +1,181 @@
+<template>
+    <div>
+        <app-navbar/>
+        <div class="row one5">
+            <app-sidebar/>
+            <div class="one2 ">
+                <div class="one3">
+                <h2>Contact Information</h2>
+                <hr>
+                <div class="grid">
+                    <p>First Name</p>
+                    <input type="text" >
+                </div>
+                <div class="grid">
+                    <p>Last Name</p>
+                    <input type="text" >
+                </div>
+                <div class="grid">
+                    <p>Email Address</p>
+                    <input type="text" >
+                </div>
+                <div class="grid">
+                    <p>Confirm Email</p>
+                    <input type="text" >
+                </div>
+                <hr>
+                <div class="one4">
+                    <button class="btn1">Cancel</button><button class="btn2">Next</button>
+                </div>
+                
+
+            </div>
+        </div>
+        </div>
+        
+        
+    </div>
+    
+
+</template>
+
+<script>
+import sidebar from '~/components/sidebar.vue';
+import navbar from '~/components/navbar.vue';
+export default {
+    components:{
+        'app-sidebar':sidebar,
+        'app-navbar':navbar,
+    }
+    
+}
+</script>
+
+<style scoped>
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        
+    }
+    .one2{
+        box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.15);
+        width: 50%;
+        border-radius: 5px;
+        background: #FFFFFF;
+    }
+    .grid{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        margin-bottom: 40px;
+    }
+    .grid p{
+        color: #081D29;
+    }
+    .grid input{
+        width:100%;
+        border: 0.5px solid #081D29 !important;
+        height: 30px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    .one3{
+        padding-left: 70px;
+        padding-right: 70px;
+        padding-top: 20px;
+        padding-bottom: 50px;
+
+    }
+    hr{
+        margin-bottom: 30px;
+    }
+    .one3 h2{
+        margin-bottom: 10px;
+        color: #0065FC;
+    }
+    .one4{
+        text-align: right;
+    }
+    .btn1{
+        color: #0065FC;
+        padding: 8px 65px;
+        background: #FFFFFF;
+        border: 1px solid #0065FC;
+        border-radius: 5px;
+    }
+    .btn2{
+        color: #FFFFFF;
+        background: #0065FC;
+        border-radius: 5px;
+        padding: 8px 65px;
+        border: none;
+        margin-left: 20px;
+    }
+    .one5{
+        background: #F9F9F9;
+    }
+    
+
+    @media (max-width: 567px) {
+        .one2{
+        width: 100%;
+       
+    }
+        .grid{
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-bottom: 40px;
+    }
+        .one3{
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 20px;
+        padding-bottom: 50px;
+
+    }
+        .one4{
+            text-align: center;
+    }
+        .one4 button{
+            width: 100%;
+    }
+        .btn2{
+        
+        margin-left: 0px;
+    }
+        .btn1{
+        margin-bottom: 30px;
+    }
+        
+    }
+
+    @media(min-width: 568px) and (max-width:768px) {
+        .one2{
+        width: 75%;
+    }
+        .one3{
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    }
+
+
+    @media(min-width: 769px) and (max-width:1200px) {
+         .grid{
+             grid-gap: 2rem;
+         }
+         .one4{
+        text-align: center;
+    }
+        .one4 button{
+            width: 100%;
+    }
+    .btn1{
+        margin-bottom: 30px;
+    }
+    .btn2{
+        margin-left: 0px;
+    }
+     }
+    
+</style>
