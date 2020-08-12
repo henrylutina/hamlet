@@ -90,6 +90,8 @@ export default {
         border-radius: 5px;
         background: #FFFFFF;
         margin-top: 1px;
+        
+
     }
     .grid{
         display: grid;
