@@ -18,7 +18,7 @@
                    <!-- Add user / list of users -->
                    <div class="d-flex">
                        <div>
-                           <div class="circle-name"><i class="fa fa-plus"></i></div> 
+                           <nuxt-link to="/contactinfo"><div class="circle-name"><i class="fa fa-plus"></i></div></nuxt-link> 
                        </div>
                        <div>
                            <div class="circle-name-1 ml-2">
