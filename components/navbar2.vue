@@ -9,10 +9,10 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#"><button class="btn1">Sign In</button></a>
+        <nuxt-link to="signin" class="nav-link" ><button class="btn1">Sign In</button></nuxt-link>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"><button class="btn2">Get Started</button></a>
+        <nuxt-link to="/signup" class="nav-link" href="#"><button class="btn2">Get Started</button></nuxt-link>
       </li>
       
     </ul>
@@ -25,6 +25,7 @@
 <style scoped>
     *{
         font-family: 'Overpass', sans-serif;
+        
     }
     .one{
         margin-left: 100px;
@@ -37,33 +38,39 @@
         background: white;
         color:#0065FC ;
         border-radius: 5px;
+        padding: 5px 20px;
         border: 1px solid #0065FC;
     }
     .btn1:hover{
         background: #0065FC;
         color: white;
         border-radius: 5px;
+        padding: 5px 20px;
         border: 1px solid #0065FC;
     }
     .btn2{
         background: #0065FC;
         color: white;
         border-radius: 5px;
+        padding: 5px 20px;
         border: 1px solid #0065FC;
     }
     .btn2:hover{
         background: white;
         color:#0065FC ;
         border-radius: 5px;
+        padding: 5px 20px;
         border: 1px solid #0065FC;
     }
 
 
 
-    @media(max-width:567px){
+    @media(max-width:768px) {
          .one{
         margin-left: 20px;
         margin-right: 20px;
     }
     }
+
+    
 </style>
