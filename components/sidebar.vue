@@ -4,10 +4,9 @@
             <img src="~/assets/Group 58.png" alt="">
             
             <h5>HIRING CHECKLIST</h5>
-            <p>Contact Info</p>
-            <p>Employment type</p>
-            <p>Job Details</p>
-            <p>Offer Details</p>
+            <nuxt-link to="/contactinfo" style="text-decoration:none"><p>Contact Info</p></nuxt-link>
+            <nuxt-link to="/employmenttype" style="text-decoration:none"><p>Employment Type</p></nuxt-link>
+            <nuxt-link to="/jobdetails" style="text-decoration:none"><p>Job Details</p></nuxt-link>
         </div>
     </div>
 </template>

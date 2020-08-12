@@ -51,7 +51,7 @@
                 </div>
                 <hr>
                 <div class="one4">
-                    <button class="btn1">Cancel</button><button class="btn2">Next</button>
+                    <button class="btn1">Cancel</button> <nuxt-link to="/jobdetails"><button class="btn2">Next</button></nuxt-link>
                 </div>
                 
 
@@ -89,6 +89,7 @@ export default {
         width: 50%;
         border-radius: 5px;
         background: #FFFFFF;
+        margin-top: 1px;
     }
     .grid{
         display: grid;
