@@ -52,7 +52,7 @@ export default {
       margin-bottom: 20px;
     }
     .two2{
-      padding: 106.8px 25%;
+      padding: 17% 25%;
       background: #F9F9F9;
       text-align: center;
     }

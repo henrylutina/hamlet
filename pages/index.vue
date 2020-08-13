@@ -33,11 +33,11 @@ export default {
 <style scoped>
     .two{
       background:linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url('/img/Rectangle 4.png') no-repeat center center/cover;
+       rgba(8, 29, 41, 0.7)), url('/img/you.jpg') no-repeat center center/cover;
        
     }
     .grid{
-      padding:97.5px 100px ;
+      padding:7.4% 100px ;
       display: grid;
       grid-template-columns: 1fr 1fr;
     }

@@ -40,6 +40,7 @@
         border-radius: 5px;
         padding: 5px 20px;
         border: 1px solid #0065FC;
+        outline: none !important;
     }
     .btn1:hover{
         background: #0065FC;
@@ -47,6 +48,7 @@
         border-radius: 5px;
         padding: 5px 20px;
         border: 1px solid #0065FC;
+        
     }
     .btn2{
         background: #0065FC;
@@ -54,6 +56,7 @@
         border-radius: 5px;
         padding: 5px 20px;
         border: 1px solid #0065FC;
+        outline: none !important;
     }
     .btn2:hover{
         background: white;

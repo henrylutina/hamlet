@@ -47,7 +47,7 @@
                 </div>
                 <hr>
                 <div class="one4">
-                    <nuxt-link to="/employmenttype"><button class="btn1">Back</button></nuxt-link><button class="btn2">Submit</button>
+                    <nuxt-link to="/employmenttype"><button class="btn1">Back</button></nuxt-link><nuxt-link to="/dashboard"><button class="btn2">Submit</button></nuxt-link>
                 </div>
                 
 
