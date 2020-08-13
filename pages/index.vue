@@ -37,7 +37,7 @@ export default {
        
     }
     .grid{
-      padding:7.4% 100px ;
+      padding:7% 100px ;
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
@@ -57,6 +57,7 @@ export default {
       color: white;
       padding: 10px 20px;
       border: none;
+      outline: none !important;
     }
     .btn1{
       background: white;
@@ -65,6 +66,7 @@ export default {
       padding: 10px 20px;
       border: none;
       margin-right: 30px;
+      outline: none !important;
     }
     
 
