@@ -4,13 +4,27 @@
             <img src="~/assets/Group 58.png" alt="">
             
             <h5>HIRING CHECKLIST</h5>
-            <nuxt-link to="/contactinfo" style="text-decoration:none"><p>Contact Info</p></nuxt-link>
-            <nuxt-link to="/employmenttype" style="text-decoration:none"><p>Employment Type</p></nuxt-link>
-            <nuxt-link to="/jobdetails" style="text-decoration:none"><p>Job Details</p></nuxt-link>
+            <p :class="currentPage.includes('/contactinfo') ? activeClass : ''"><nuxt-link to="/contactinfo" style="text-decoration:none">Contact Info</nuxt-link></p>
+            <p :class="currentPage.includes('/employementtype') ? activeClass : ''"><nuxt-link to="/employmenttype" style="text-decoration:none">Employment Type</nuxt-link></p>
+            <p :class="currentPage.includes('/jobdetails') ? activeClass : ''"><nuxt-link to="/jobdetails" style="text-decoration:none">Job Details</nuxt-link></p>
         </div>
     </div>
 </template>
 
+<script>
+export default {
+    data(){
+    return{
+      activeClass : 'active'
+    }
+},
+ computed : {
+    currentPage(){
+      return this.$route.path
+    }
+  }
+}
+</script>>
 <style scoped>
     *{
         box-sizing: border-box;
@@ -18,6 +32,10 @@
         padding: 0;
         font-family: 'Overpass', sans-serif;
         
+    }
+    .nuxt-link-active{
+        border-left: 3px solid #64a2ff !important ;
+        padding-left: .5rem;
     }
     .one{
         top: 0;

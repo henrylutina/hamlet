@@ -1,5 +1,6 @@
 <template>
-    <div class="one">
+<div class="boxShadow shadow">
+   <div class="one">
         <nav class="navbar navbar-expand-lg navbar-light">
   <a class="navbar-brand" href="#" style="color: #0065FC">Hamlet</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,6 +21,8 @@
   </div>
 </nav>
     </div>
+</div>
+   
 </template>
 
 <style scoped>
@@ -27,9 +30,14 @@
         font-family: 'Overpass', sans-serif;
         
     }
+    .boxShadow{
+       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+        background-color: rgba(255,255,255,1) !important;
+    }
     .one{
         margin-left: 100px;
         margin-right: 100px;
+       
     }
     a{
         color: #0065FC !important;
