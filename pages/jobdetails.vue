@@ -85,12 +85,14 @@ export default {
         width: 50%;
         border-radius: 5px;
         background: #FFFFFF;
-        margin-top: 1px;
+        margin-top: 5rem;
+        height: 100vh;
+        margin-left: 25%;
     }
     .grid{
         display: grid;
         grid-template-columns: 1fr 2fr;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
     .grid p{
         color: #081D29;
@@ -136,6 +138,8 @@ export default {
     }
     .one5{
         background: #F9F9F9;
+        margin-top: 3.5rem;
+        height: 130vh;
     }
     select{
         width:100%;
@@ -148,6 +152,8 @@ export default {
     @media(max-width:567px){
         .one2{
         width: 100%;
+        margin-left: 0%;
+        height: 130vh;
     }
         .grid{
         grid-template-columns: 1fr ;

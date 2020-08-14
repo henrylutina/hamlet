@@ -43,10 +43,11 @@ export default {
         width: 25%;
         height: 100vh;
         background: #F9F9F9;
+        position: fixed;
     }
     .one1{
         padding-left: 100px;
-        margin-top: 20px;
+        margin-top: 10rem;
         padding-right: 10px;
     }
     .one1 img{

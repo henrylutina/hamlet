@@ -332,11 +332,12 @@ export default {
     /* background-position: right; */
     /* background-size: center center/cover; */
     /* background-repeat: no-repeat; */
-    height: 91vh;
+    height: 100vh;
 }
 .bg-big{
     /* background-color:#F9F9F9; */
     background-color: rgb(192, 192, 192, 0.1);
+    margin-top: 25px;
 }
 .margin-form{
     margin-left: 8rem;
@@ -394,6 +395,7 @@ textarea{
     margin-left: 2rem;
    outline: none !important;
 }
+
 .active {
     display: block !important;
 }

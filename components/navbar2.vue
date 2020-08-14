@@ -1,8 +1,8 @@
 <template>
-<div class="boxShadow shadow">
+<div class="boxShadow shadow fixed-top">
    <div class="one">
-        <nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand" href="#" style="color: #0065FC">Hamlet</a>
+        <nav class="navbar navbar-expand-lg navbar-light ">
+  <nuxt-link to="/"><a class="navbar-brand" href="#" style="color: #0065FC">Hamlet</a></nuxt-link>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

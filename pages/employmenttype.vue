@@ -11,13 +11,13 @@
                     <p>Employment type</p>
                     <div>
                         <div class="custom-control custom-radio">
-  <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-  <label class="custom-control-label" for="customRadio1">Employee</label>
-</div>
-<div class="custom-control custom-radio">
-  <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-  <label class="custom-control-label" for="customRadio2">Contingent</label>
-</div>
+                            <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                            <label class="custom-control-label" for="customRadio1">Employee</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                            <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                            <label class="custom-control-label" for="customRadio2">Contingent</label>
+                        </div>
                     </div>
                 </div>
                 <div class="grid">
@@ -89,14 +89,16 @@ export default {
         width: 50%;
         border-radius: 5px;
         background: #FFFFFF;
-        margin-top: 1px;
+         margin-top: 5rem;
+         margin-left: 25%;
+         height: 100vh;
         
 
     }
     .grid{
         display: grid;
         grid-template-columns: 1fr 1fr;
-        margin-bottom: 40px;
+        margin-bottom: 50px;
     }
     .grid p{
         color: #081D29;
@@ -108,7 +110,7 @@ export default {
     .one3{
         padding-left: 70px;
         padding-right: 70px;
-        padding-top: 20px;
+        padding-top: 50px;
         padding-bottom: 50px;
 
     }
@@ -139,16 +141,20 @@ export default {
     }
     .one5{
         background: #F9F9F9;
+        margin-top: 3.5rem;
+        height: 130vh;
     }
 
 
     @media (max-width:567px){
         .one2{
         width: 100%;
+        margin-left: 0%;
     }
         .one3{
         padding-left: 30px;
         padding-right: 30px;
+        margin-top: 30px;
     }
         .grid{
         grid-gap: 2rem;

@@ -40,6 +40,7 @@ export default {
     .grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
+      margin-top: 3.1rem;
     }
     .two1 h2{
       color: #0065FC;
