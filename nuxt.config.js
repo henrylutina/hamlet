@@ -24,7 +24,7 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' },
-      { rel: 'stylesheet', type: 'font', href: 'href="https://fonts.googleapis.com/css2?family=Overpass&display=swap" rel="stylesheet"'}
+      { rel: 'stylesheet', type: 'font', href: 'href="https://fonts.googleapis.com/css2?family=Overpass&display=swap" rel="stylesheet"'},
     ],
     script : [
       {
@@ -70,6 +70,20 @@ export default {
   modules: [
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
+    [
+      'nuxt-fontawesome', {
+        imports: [
+         {
+           set: '@fortawesome/free-solid-svg-icons',
+           icons: ['fas']
+         },
+         {
+           set:'@fortawesome/free-brands-svg-icons',
+           icons: ['fab']
+         }
+       ]
+      }
+]
   ],
   /*
   ** Build configuration
