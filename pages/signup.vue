@@ -438,6 +438,7 @@ p {
 .stepwizard-step {
   text-align: center;
 }
+
 .btn-circle {
   width: 50px;
   height: 50px;
