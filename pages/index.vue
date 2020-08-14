@@ -33,11 +33,11 @@ export default {
 <style scoped>
     .two{
       background:linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url('/img/Rectangle 4.png') no-repeat center center/cover;
+       rgba(8, 29, 41, 0.7)), url('/img/you.jpg') no-repeat center center/cover;
        
     }
     .grid{
-      padding:97.5px 100px ;
+      padding:7% 100px ;
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
@@ -57,6 +57,7 @@ export default {
       color: white;
       padding: 10px 20px;
       border: none;
+      outline: none !important;
     }
     .btn1{
       background: white;
@@ -65,6 +66,7 @@ export default {
       padding: 10px 20px;
       border: none;
       margin-right: 30px;
+      outline: none !important;
     }
     
 

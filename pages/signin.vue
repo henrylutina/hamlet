@@ -33,8 +33,8 @@ export default {
 
 <style scoped>
     .two{
-      background:linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url('/img/Rectangle5.png') no-repeat center center/cover;
+      background:linear-gradient(to right, rgba(8, 29, 41, 0.3),
+       rgba(8, 29, 41, 0.7)), url('/img/you1.jpg') no-repeat center center/cover;
        
     }
     .grid{
@@ -52,7 +52,7 @@ export default {
       margin-bottom: 20px;
     }
     .two2{
-      padding: 106.8px 25%;
+      padding: 17% 25%;
       background: #F9F9F9;
       text-align: center;
     }

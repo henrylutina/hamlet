@@ -105,9 +105,9 @@
                     </div>
                     </form>
                     <div class="mt-5">
-                        <button class="btn1 btn"  @click="prevBtn" :disabled="prevDisabled">Previous</button>
-                        <button class="btn2 btn" @click="nextBtn" :disabled="isDisabled">Next</button>
-                        <button class="btn3 btn btn-success" @click="submitBtn" :disabled="isSubmit">Submit</button>
+                        <button class="btn1 btn"  @click="prevBtn" :disabled="prevDisabled" style="outline: none !important">Previous</button>
+                        <button class="btn2 btn" @click="nextBtn" :disabled="isDisabled" style="outline: none !important">Next</button>
+                        <nuxt-link to="/dashboard"><button class="btn3 btn btn-success" @click="submitBtn" :disabled="isSubmit" style="outline: none !important">Submit</button></nuxt-link>
                     </div>
                     </div>
                 </div>
@@ -328,7 +328,7 @@ export default {
 <style scoped>
 .wrapper{
     background: linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url("/img/Rectangle5.png") no-repeat center center/cover;
+       rgba(8, 29, 41, 0.7)), url("/img/you2.jpg") no-repeat center center/cover;
     /* background-position: right; */
     /* background-size: center center/cover; */
     /* background-repeat: no-repeat; */
@@ -376,7 +376,7 @@ textarea{
     color: #0065FC;
     background-color: #FFFFFF;
     border: 1px solid #0065FC;
-    outline: none;
+    outline: none !important;
 }
 .btn2{
     padding: 1rem 2rem;
@@ -384,7 +384,7 @@ textarea{
     background-color: #0065FC;
     border: 1px solid #FFFFFF;
     margin-left: 2rem;
-    outline: none;
+    outline: none !important;
 }
 .btn3{
     padding: 1rem 2rem;
@@ -392,7 +392,7 @@ textarea{
     /* background-color: #1DD200; */
     border: 1px solid #FFFFFF;
     margin-left: 2rem;
-    outline: none;
+   outline: none !important;
 }
 .active {
     display: block !important;
