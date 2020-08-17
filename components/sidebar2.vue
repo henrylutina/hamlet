@@ -3,10 +3,9 @@
         <div class="one1">
             <img src="~/assets/Group 58.png" alt="">
             
-            <h5>HIRING CHECKLIST</h5>
-            <p :class="currentPage.includes('/contactinfo') ? activeClass : ''"><nuxt-link to="/contactinfo" style="text-decoration:none">Employee Details</nuxt-link></p>
-            <p :class="currentPage.includes('/employementtype') ? activeClass : ''"><nuxt-link to="/employmenttype" style="text-decoration:none">Contact Information</nuxt-link></p>
-            <p :class="currentPage.includes('/jobdetails') ? activeClass : ''"><nuxt-link to="/jobdetails" style="text-decoration:none">Job Details</nuxt-link></p>
+            <h5>Name: </h5>
+            <p :class="currentPage.includes('/singleemployee/paymentinfo') ? activeClass : ''"><nuxt-link to="/singleemployee/paymentinfo" style="text-decoration:none">Personal Info</nuxt-link></p>
+            <p :class="currentPage.includes('/singleemployee/employmentdetails') ? activeClass : ''"><nuxt-link to="/singleemployee/employmentdetails" style="text-decoration:none">Employment Details and Compensation</nuxt-link></p>
         </div>
     </div>
 </template>

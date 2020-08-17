@@ -1,6 +1,6 @@
 <template>
 <div>
-<div class="boxShadow shadow">
+<div class="boxShadow shadow fixed-top">
   <!-- desktop view -->
    <div class="one desktopView">
         <nav class="navbar navbar-expand-lg navbar-light">

@@ -3,36 +3,49 @@
         <app-navbar/>
         <div class="row one5">
             <app-sidebar/>
+            
             <div  class="one2 ">
+                <div class="one6">
+                <div class="one7">
+                    <h2>Company Name</h2>
+                    <p>Total Headcount |  Date Established</p>
+                </div>
+                
+            </div>
                  <div >
                 <div class="one3">
-                <h2>Contact Information</h2>
+                <h3>General Information</h3>
                 <hr>
                 <div class="grid">
-                    <p>Address</p>
-                    <input type="text" >
+                    <p> Legal Name</p>
+                    <p></p>
                 </div>
                 <div class="grid">
-                    <p>Phone Number</p>
-                    <input type="text" >
+                    <p> Company Website</p>
+                    <p></p>
+                </div>
+                <div class="grid">
+                    <p>Primary Admin</p>
+                    <p></p>
                 </div>
                 <div class="grid">
                     <p>Email</p>
-                    <input type="text" >
+                    <p></p>
                 </div>
                 <div class="grid">
-                    <p>Emergency Contacts</p>
-                    <input type="text" >
+                    <p>Phone Number</p>
+                   <p></p>
+                </div>
+                <div class="grid">
+                    <p>Address</p>
+                    <p></p>
                 </div>
                
-                <hr>
-                <div class="one4">
-                    <button class="btn1">Cancel</button><nuxt-link to="/jobdetails"><button class="btn2">Next</button></nuxt-link>
-                </div>
                 
+                <hr>             
 
             </div>
-            </div>
+                </div>
            
         </div>
         </div>
@@ -44,8 +57,8 @@
 </template>
 
 <script>
-import sidebar from '~/components/sidebar.vue';
-import navbar from '~/components/navbar.vue';
+import sidebar from '~/components/sidebar3.vue';
+import navbar from '~/components/navbar2.vue';
 export default {
     components:{
         'app-sidebar':sidebar,
@@ -95,8 +108,8 @@ export default {
     hr{
         margin-bottom: 30px;
     }
-    .one3 h2{
-        margin-bottom: 30px;
+    .one3 h3{
+        margin-bottom: 10px;
         color: #0065FC;
     }
     .one4{
@@ -122,6 +135,22 @@ export default {
         background: #F9F9F9;
         margin-top: 3.5rem;
         height: 130vh;
+    }
+    .one6{
+        padding-left: 4rem;
+        padding-right: 4rem;
+        padding-top: 2rem;
+        
+    }
+    .one8{
+        text-align: right;
+    }
+    .one8 button{
+        padding:5px 10px;
+    }
+    .one7 h2{
+        margin-bottom: 10px;
+        color: #0065FC;
     }
     
 
@@ -156,16 +185,28 @@ export default {
         .btn1{
         margin-bottom: 30px;
     }
+    .one6{
+        padding-left: 30px;
+        padding-right: 30px;
+    }
         
     }
 
     @media(min-width: 568px) and (max-width:768px) {
-        .one2{
-        width: 75%;
-    }
+     
         .one3{
         padding-left: 30px;
         padding-right: 30px;
+    }
+    .one6{
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .one2{
+        width: 75%;
+        
+        margin-top: 2rem;
+        
     }
     }
 

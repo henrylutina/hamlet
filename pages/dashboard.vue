@@ -1,5 +1,8 @@
 <template>
-    <div class="big-nav">
+    <div>
+        
+        <div class="big-nav">
+            <app-navbar/>
         <div class="container">
            <div class="row  bg-color">
                <div class="col-sm-3">
@@ -38,12 +41,22 @@
                                 <p class="mt-2 text-center"></p>
                            </div> -->
                        </div>
+                       
                    </div>
                </div>
            </div>
         </div>
     </div>
+    </div>
 </template>
+
+<script>
+import navbar from '~/components/navbar2.vue';
+export default {
+    components:{
+        'app-navbar':navbar,}
+}
+</script>
 
 <style scoped>
 *{

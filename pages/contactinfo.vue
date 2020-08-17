@@ -3,26 +3,44 @@
         <app-navbar/>
         <div class="row one5">
             <app-sidebar/>
-            <div class="one2 ">
+            <div  class="one2 ">
+                 <div >
                 <div class="one3">
-                <h2>Contact Information</h2>
+                <h2>Employee Details</h2>
                 <hr>
                 <div class="grid">
                     <p>First Name</p>
-                    <input type="text" >
+                    <input type="text" class="one6" >
                 </div>
                 <div class="grid">
-                    <p>Last Name</p>
-                    <input type="text" >
+                    <p>Other Names</p>
+                    <input type="text" class="one6" >
                 </div>
                 <div class="grid">
-                    <p>Email Address</p>
-                    <input type="text" >
+                    <p>Date of Birth</p>
+                    <input type="date" name="" id="" class="one6">
                 </div>
                 <div class="grid">
-                    <p>Confirm Email</p>
-                    <input type="text" >
+                    <p>Age</p>
+                    <input type="text" class="one6" >
                 </div>
+                <div class="grid">
+                    <p>Gender</p>
+                    <select class="custom-select">
+                        <option selected>Select Gender</option>
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                    </select>
+                </div>
+                <div class="grid">
+                    <p>Qualifications</p>
+                    <input type="text" class="one6" >
+                </div>
+                <div class="grid">
+                    <p>Profile Picture</p>
+                    <input type="file" name="" class="file-border img-fluid"  id="" placeholder="">
+                </div>
+                
                 <hr>
                 <div class="one4">
                     <button class="btn1">Cancel</button><nuxt-link to="/employmenttype"><button class="btn2">Next</button></nuxt-link>
@@ -30,6 +48,8 @@
                 
 
             </div>
+            </div>
+           
         </div>
         </div>
         
@@ -59,21 +79,22 @@ export default {
         
     }
     .one2{
-        box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.15);
         width: 50%;
         border-radius: 5px;
         background: #FFFFFF;
-        margin-top: 1px;
+        margin-top: 5rem;
+        height:100vh;
+        margin-left: 25%;
     }
     .grid{
         display: grid;
         grid-template-columns: 1fr 2fr;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
     .grid p{
         color: #081D29;
     }
-    .grid input{
+    .grid .one6{
         width:100%;
         border: 0.5px solid #081D29 !important;
         height: 30px;
@@ -83,19 +104,20 @@ export default {
     .one3{
         padding-left: 70px;
         padding-right: 70px;
-        padding-top: 20px;
-        padding-bottom: 50px;
+        padding-top: 50px;
+        padding-bottom: 20px;
 
     }
     hr{
         margin-bottom: 30px;
     }
     .one3 h2{
-        margin-bottom: 10px;
+        margin-bottom: 30px;
         color: #0065FC;
     }
     .one4{
         text-align: right;
+        margin-bottom: 30px;
     }
     .btn1{
         color: #0065FC;
@@ -114,12 +136,27 @@ export default {
     }
     .one5{
         background: #F9F9F9;
+        margin-top: 3.5rem;
+        height: 130vh;
     }
-    
+    select{
+        width:100%;
+        border: 0.5px solid #081D29 !important;
+        height: 32px;
+        padding: 5px;
+    }
+    .file-border{
+    padding: 1rem 1rem 1rem 1rem !important; 
+    border: 0.5px solid #081D29 !important; 
+    outline: none !important; 
+    border-radius: 5px;
+
+}
 
     @media (max-width: 567px) {
         .one2{
         width: 100%;
+        margin-left: 0px;
        
     }
         .grid{
@@ -130,7 +167,7 @@ export default {
         .one3{
         padding-left: 30px;
         padding-right: 30px;
-        padding-top: 20px;
+        padding-top: 50px;
         padding-bottom: 50px;
 
     }

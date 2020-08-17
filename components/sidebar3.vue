@@ -2,11 +2,9 @@
     <div class="one">
         <div class="one1">
             <img src="~/assets/Group 58.png" alt="">
-            
-            <h5>HIRING CHECKLIST</h5>
-            <p :class="currentPage.includes('/contactinfo') ? activeClass : ''"><nuxt-link to="/contactinfo" style="text-decoration:none">Employee Details</nuxt-link></p>
-            <p :class="currentPage.includes('/employementtype') ? activeClass : ''"><nuxt-link to="/employmenttype" style="text-decoration:none">Contact Information</nuxt-link></p>
-            <p :class="currentPage.includes('/jobdetails') ? activeClass : ''"><nuxt-link to="/jobdetails" style="text-decoration:none">Job Details</nuxt-link></p>
+            <p :class="currentPage.includes('/company/companyoverview') ? activeClass : ''"><nuxt-link to="/company/companyoverview" style="text-decoration:none">Company Overview</nuxt-link></p>
+            <p :class="currentPage.includes('/company/taxinfo') ? activeClass : ''"><nuxt-link to="/company/taxinfo" style="text-decoration:none">Tax Info</nuxt-link></p>
+            <p :class="currentPage.includes('/company/locations') ? activeClass : ''"><nuxt-link to="/company/locations" style="text-decoration:none">Locations</nuxt-link></p>
         </div>
     </div>
 </template>

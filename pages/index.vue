@@ -33,12 +33,15 @@ export default {
 <style scoped>
     .two{
       background:linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url('/img/you.jpg') no-repeat center center/cover;
+       rgba(8, 29, 41, 0.7)), url('/img/you.jpg') no-repeat center center/cover ;
+       height: 100vh;
+       
     }
     .grid{
-      padding:7% 100px ;
+      padding:10rem 100px ;
       display: grid;
       grid-template-columns: 1fr 1fr;
+      text-align: left;
     }
     .two1 h2{
       color: #FFFFFF;
@@ -70,8 +73,14 @@ export default {
     
 
     @media(max-width:567px){
+      .two{
+      background:linear-gradient(to right, rgba(8, 29, 41, 0.7),
+       rgba(8, 29, 41, 0.7)), url('/img/you.jpg') no-repeat center center/cover ;
+       height: auto;
+       
+    }
       .grid{
-      padding:80px 20px ;
+      padding:8rem 20px ;
       grid-template-columns: 1fr ;
     }
       .two1 h2{
@@ -88,10 +97,17 @@ export default {
 
 
     @media (min-width:568px) and (max-width:768px){
+
+      .two{
+      background:linear-gradient(to right, rgba(8, 29, 41, 0.7),
+       rgba(8, 29, 41, 0.7)), url('/img/you.jpg') no-repeat center center/cover ;
+       height: auto;
+       
+    }
       .grid{
-      padding:100px 20px ;
+      padding:10rem 20px ;
       grid-template-columns: 1fr 1fr;
-      text-align: center;
+      text-align: justify;
     }
       .two1 h2{
       color: #FFFFFF;
@@ -104,4 +120,32 @@ export default {
       margin-bottom: 26px;
     }
     }
+
+    @media (min-width:769px) and (max-width:1200px){
+        .two{
+      background:linear-gradient(to right, rgba(8, 29, 41, 0.7),
+       rgba(8, 29, 41, 0.7)), url('/img/you.jpg') no-repeat center center/cover ;
+       height: auto;
+       
+    }
+      .grid{
+      padding:10rem 20px ;
+      grid-template-columns: 1fr 1fr;
+      text-align: justify;
+      margin-left: 80px;
+    }
+    .two1 h2{
+      color: #FFFFFF;
+      font-size: 3rem;
+      margin-bottom: 30px;
+    }
+    .two1 p{
+      color: #FFFFFF;
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+    }
+
+
+    
 </style>

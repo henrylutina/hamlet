@@ -112,11 +112,12 @@ export default {
     /* background-position: right; */
     /* background-size: center center/cover; */
     /* background-repeat: no-repeat; */
-    height: 91vh;
+    height: 100vh;
 }
 .bg-big{
     /* background-color:#F9F9F9; */
     background-color: rgb(192, 192, 192, 0.1);
+    margin-top: 25px;
 }
 .margin-form{
     margin-left: 8rem;
@@ -167,6 +168,7 @@ textarea{
     margin-left: 2rem;
    outline: none !important;
 }
+
 .active {
     display: block !important;
 }
@@ -261,7 +263,7 @@ h1{
     }
     .wrapper{
     background: linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url("/img/Rectangle5.png") no-repeat center center/cover;
+       rgba(8, 29, 41, 0.7)), url('/img/you1.jpg') no-repeat center center/cover;
     /* background-position: right; */
     /* background-size: center center/cover; */
     /* background-repeat: no-repeat; */
