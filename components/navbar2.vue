@@ -26,12 +26,13 @@
 </div>
     <!-- desktop view end -->
 
-    <!-- mobile-view -->
+    <!-- mobile-view -->  
+    <div class="boxShadow">
     <div class="container mobileView">
-        <div class="mobileView">
+      <div class="mobileView">
           <div id="mySidenav" :style="styleObject" class="sidenav">
             <div class="float-right pb-5">
-               <span to="" class="closebtn" @click="closeNav">
+               <span to="" class="closebtn" style="color : #FFFFFF" @click="closeNav">
                <font-awesome-icon :icon="['fa', 'times']"/>
                </span>
             </div>
@@ -47,10 +48,9 @@
            </ul>
          
           </div>
-        </div>
         <div class="wrapper2">
           <div class="logo2">
-            NavSlider
+            Hamlet
           </div>
           <div>
               <span style="font-size:30px;cursor:pointer" class="openNav" @click="openNav">
@@ -58,11 +58,11 @@
                 </span>
           </div>
         </div>
-
+    </div>
     </div>
     <!-- mobile-view end -->
 </div>
-   
+</div>
 </template>
 <script>
 export default {
@@ -75,7 +75,7 @@ export default {
   },
   methods : {
     openNav(){
-      this.styleObject.width = '380px'
+      this.styleObject.width = '100%'
     },
     closeNav(){
       this.styleObject.width = '0px'
@@ -137,6 +137,7 @@ export default {
   }
   .logo2{
     font-size: 1.5rem;
+    color: #0065FC;
 }
 #maintwo {
  transition: margin-left .5s;
@@ -150,7 +151,7 @@ export default {
  z-index: 1;
  top: 0;
  left: 0;
- background-color: #0288d1;
+ background-color: rgb(0,101,252, 0.7);
  /* background-image: linear-gradient(to right, #0288d1, #0288d1 ); */
 /* opacity: 0.7; */
  overflow-x: hidden;
