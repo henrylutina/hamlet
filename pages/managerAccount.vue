@@ -10,10 +10,10 @@
                             <div class="first-form">
                                 <h1>Manager's Information</h1>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="first Name">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="First Name">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="last Name">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="Last Name">
                                 </div>
                                 <div class="mt-4">
                                      <input type="text" name="" class="form-control" id="" required placeholder="Address">
@@ -23,7 +23,7 @@
                                      <input type="file" name="" class="file-border" id="" required placeholder="">
                                 </div>
                             </div>
-                            <button type="submit" class="btn1"><nuxt-link to="/companyDetails"> Submit</nuxt-link></button>
+                            <button type="submit" class="btn1"><nuxt-link to="/companyDetails" style="color:white"> Submit</nuxt-link></button>
                     </form>
 
                     </div>
@@ -78,10 +78,10 @@
                              <div class="first-form">
                                 <h1>Manager's Information</h1>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="first Name">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="First Name">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="last Name">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="Last Name">
                                 </div>
                                 <div class="mt-4">
                                      <input type="text" name="" class="form-control" id="" required placeholder="Address">
@@ -111,11 +111,11 @@ export default {
 <style scoped>
 .wrapper{
     background: linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url("/img/you2.jpg") no-repeat center center/cover;
+       rgba(8, 29, 41, 0.7)), url("/img/nesa.jpg") no-repeat center center/cover;
     /* background-position: right; */
     /* background-size: center center/cover; */
     /* background-repeat: no-repeat; */
-    height: 91vh;
+    height: 100vh;
 }
 .bg-big{
     /* background-color:#F9F9F9; */
@@ -161,6 +161,7 @@ textarea{
     background-color: #0065FC;
     border: 1px solid #0065FC;
     outline: none !important;
+    width: 70%;
 }
 .active {
     display: block !important;
@@ -200,7 +201,7 @@ h1{
     }
     .wrapper{
     background: linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url("/img/Rectangle5.png") no-repeat center center/cover;
+       rgba(8, 29, 41, 0.7)), url("/img/nesa.jpg") no-repeat center center/cover;
     height: 100vh;
     padding-top: 1rem;
      padding-bottom: 0;
@@ -230,6 +231,7 @@ h1{
     background-color: #0065FC;
     border: 1px solid #0065FC;
     outline: none !important;
+    width: 100%;
     }
     .first-form{
         margin-top: 3rem;
@@ -251,7 +253,7 @@ h1{
     }
     .wrapper{
     background: linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url("/img/Rectangle5.png") no-repeat center center/cover;
+       rgba(8, 29, 41, 0.7)), url("/img/nesa.jpg") no-repeat center center/cover;
     height: 100vh;
     padding-top: 1rem;
      padding-bottom: 0;
@@ -281,6 +283,7 @@ h1{
     background-color: #0065FC;
     border: 1px solid #0065FC;
     outline: none !important;
+    width: 100%;
     }
     .first-form{
         margin-top: 3rem;
@@ -306,6 +309,7 @@ h1{
     background-color: #0065FC;
     border: 1px solid #0065FC;
     outline: none !important;
+    width: 100%;
     }
     .account{
     padding: 1rem 2rem 2rem .5rem;
@@ -334,6 +338,7 @@ h1{
     background-color: #0065FC;
     border: 1px solid #0065FC;
     outline: none !important;
+    width: 90%;
     }
     .margin-form{
         margin-left: 2rem;
@@ -344,12 +349,13 @@ h1{
 }
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
     .btn1{
-    padding: 1rem 10.5rem;
+    padding: 1rem 1rem;
     margin-top: 2rem;
     color:  #FFFFFF;
     background-color: #0065FC;
     border: 1px solid #0065FC;
     outline: none !important;
+    width: 70%;
     }
 }
 @media only screen and (min-width: 2000px) and (max-width: 2560px) {
@@ -360,6 +366,7 @@ h1{
     background-color: #0065FC;
     border: 1px solid #0065FC;
     outline: none !important;
+    width: 70%;
     }
 }
 </style>

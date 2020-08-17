@@ -34,13 +34,14 @@ export default {
 <style scoped>
     .two{
       background:linear-gradient(to right, rgba(8, 29, 41, 0.3),
-       rgba(8, 29, 41, 0.7)), url('/img/you1.jpg') no-repeat center center/cover;
+       rgba(8, 29, 41, 0.7)), url('/img/nesa.jpg') no-repeat center center/cover;
        
     }
     .grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       margin-top: 3.1rem;
+      height: 100vh;
     }
     .two1 h2{
       color: #0065FC;
@@ -87,6 +88,7 @@ export default {
     @media(max-width:567px){
       .grid{
       grid-template-columns: 1fr;
+      height: 100vh;
     }
       .two{
       display: none;
@@ -94,7 +96,7 @@ export default {
       .two2{
       padding: 105px 20px;
       background:linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url('/img/you1.jpg') no-repeat center center/cover;
+       rgba(8, 29, 41, 0.7)), url('/img/nesa.jpg') no-repeat center center/cover;
       text-align: center;
     }
       .two1 h2{
