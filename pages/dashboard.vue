@@ -18,13 +18,25 @@
                    <!-- Add user / list of users -->
                    <div class="d-flex">
                        <div>
-                           <nuxt-link to="/contactinfo"><div class="circle-name"><i class="fa fa-plus"></i></div></nuxt-link> 
+                           <nuxt-link to="/contactinfo"><div class="circle-name-1"><i class="fa fa-plus"></i></div></nuxt-link> 
                        </div>
-                       <div>
-                           <div class="circle-name-1 ml-2">
-                                <nuxt-link to="/allEmployees">......</nuxt-link>
+                   </div>
+
+                   <div class="boxes">
+                        <p class="mt-4">Apps</p>
+                       <div class="row">
+                           <div class="col-sm-4">
+                               <nuxt-link to=""><div class="box-icon"><i class="fa fa-users"></i></div></nuxt-link> 
+                               <p class="mt-2 text-center">Company Profile</p>
                            </div>
-                         
+                           <div class="col-sm-4">
+                               <nuxt-link to=""><div class="box-icon"><i class="fa fa-times"></i></div></nuxt-link> 
+                                <p class="mt-2 text-center">Directory</p>
+                           </div>
+                           <!-- <div class="col-sm-4">
+                               <nuxt-link to=""><div class="box-icon"><i class="fa fa-times"></i></div></nuxt-link> 
+                                <p class="mt-2 text-center"></p>
+                           </div> -->
                        </div>
                    </div>
                </div>
@@ -39,7 +51,7 @@
 }
 .big-nav{
     background-color: rgb(192, 192, 192, 0.2) !important;
-    height: 100vh;
+    height: auto;
 }
 .bg-color{
     /* margin: 0 5rem 0 0 !important; */
@@ -51,6 +63,14 @@
     color: #000000;
     background-color: rgb(255,255,255);
     text-align: center;
+}
+.box-icon{
+    padding: 3rem 0 3rem 0;
+    /* border: 1px solid #64a2ff; */
+    color: #64a2ff;
+    background-color: rgb(255,255,255);
+    text-align: center;
+    font-size: 3rem;
 }
 .border-admin{
     /* border: 1px solid #000000; */
@@ -90,5 +110,8 @@ a{
 }
 a:hover{
    text-decoration: none !important;
+}
+.boxes{
+    margin-top: 5rem;
 }
 </style>

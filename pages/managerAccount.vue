@@ -7,23 +7,25 @@
                      <div class="margin-form">
                 <div class="form-edit">
                     <form action="">
-                            <div class="active first-form" id="hide-form">
-                                <h1>Set Up an Account</h1>
+                            <div class="first-form">
+                                <h1>Manager's Information</h1>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="username">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="first Name">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="email" name="" class="form-control" id="" required placeholder="email">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="last Name">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="password" name="" class="form-control" id="" required placeholder="password">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="Address">
+                                </div>
+                                 <div class="mt-4">
+                                     <label for="">Upload Profile Picture</label> <br>
+                                     <input type="file" name="" class="file-border" id="" required placeholder="">
                                 </div>
                             </div>
-                            <button type="submit" class="btn1"><nuxt-link to="/managerAccount">Create Account</nuxt-link></button>
+                            <button type="submit" class="btn1"><nuxt-link to="/companyDetails"> Submit</nuxt-link></button>
                     </form>
-                    <div class="account">
-                        Already have an account?<span style="color : #0065FC"><nuxt-link to="/signin"> Log in</nuxt-link></span> 
-                    </div>
+
                     </div>
                 </div>
                 <div class="wrapper">
@@ -73,23 +75,24 @@
                 <div class="container wrapper mobileShow"> 
                     <div class="mobile-form">
                         <form>
-                            <div class="first-form">
-                                <h1 class="mobile-text">Set Up an Account</h1>
+                             <div class="first-form">
+                                <h1>Manager's Information</h1>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="username">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="first Name">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="email" name="" class="form-control" id="" required placeholder="email">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="last Name">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="password" name="" class="form-control" id="" required placeholder="password">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="Address">
+                                </div>
+                                 <div class="mt-4">
+                                     <label for="">Upload Profile Picture</label> <br>
+                                     <input type="file" name="" class="file-border" id="" required placeholder="">
                                 </div>
                             </div>
-                             <button type="submit" class="btn1">Create Account</button>
+                             <button type="submit" class="btn1">Submit</button>
                         </form>
-                        <div class="account">
-                        Already have an account?<span style="color : #0065FC"><nuxt-link to="/signin"> Log in</nuxt-link></span> 
-                    </div>
                     </div>
                 </div>
                 <!-- Mobile View End -->
@@ -129,7 +132,7 @@ export default {
     padding: 1rem;
 }
 .first-form{
-    margin-top: 10rem;
+    margin-top: 7rem;
 }
 .second-form{
     margin-top: 1rem;
@@ -152,26 +155,15 @@ textarea{
     background-color: rgba(255,255,255,1) !important;
 }
 .btn1{
-    padding: 1rem 10.5rem;
+    padding: 1rem 12.4rem;
     margin-top: 2rem;
     color:  #FFFFFF;
     background-color: #0065FC;
     border: 1px solid #0065FC;
     outline: none !important;
 }
-.btn3{
-    padding: 1rem 2rem;
-    color: #FFFFFF;
-    /* background-color: #1DD200; */
-    border: 1px solid #FFFFFF;
-    margin-left: 2rem;
-   outline: none !important;
-}
 .active {
     display: block !important;
-}
-#hide-form{
-    display: none;
 }
 h1{
     color: #0065FC;
@@ -232,7 +224,7 @@ h1{
         color: #FFFFFF !important;
     }
     .btn1{
-    padding: 1rem 5.5rem;
+    padding: 1rem 7.5rem;
     margin-top: 2rem;
     color:  #FFFFFF;
     background-color: #0065FC;
@@ -242,12 +234,10 @@ h1{
     .first-form{
         margin-top: 3rem;
     }
-    .account{
-    padding: 1rem 2rem 2rem .5rem;
-    font-size: 1rem;
-    color: #FFFFFF;
+    h1{
+        color: #FFFFFF;
+        font-size: 1.5rem;
     }
-    
 }
 @media only screen and (min-width: 360px) and (max-width: 578px) {
     .mobileShow{
@@ -262,9 +252,6 @@ h1{
     .wrapper{
     background: linear-gradient(to right, rgba(8, 29, 41, 0.7),
        rgba(8, 29, 41, 0.7)), url("/img/Rectangle5.png") no-repeat center center/cover;
-    /* background-position: right; */
-    /* background-size: center center/cover; */
-    /* background-repeat: no-repeat; */
     height: 100vh;
     padding-top: 1rem;
      padding-bottom: 0;
@@ -288,7 +275,7 @@ h1{
         color: #FFFFFF !important;
     } 
     .btn1{
-    padding: 1rem 6.8rem;
+    padding: 1rem 8.7rem !important;
     margin-top: 2rem;
     color:  #FFFFFF;
     background-color: #0065FC;
@@ -298,11 +285,9 @@ h1{
     .first-form{
         margin-top: 3rem;
     }
-    .account{
-    padding: 1rem 2rem 2rem .5rem;
-    text-align: center;
-    font-size: 1rem;
-    color: #FFFFFF;
+    h1{
+        color: #FFFFFF;
+        font-size: 1.5rem;
     }
 }
 @media only screen and (min-width: 710px) and (max-width: 768px) {
@@ -315,7 +300,7 @@ h1{
     text-align: center;
     }
      .btn1{
-    padding: 1rem 7rem;
+    padding: 1rem 10rem;
     margin-top: 2rem;
     color:  #FFFFFF;
     background-color: #0065FC;
@@ -343,7 +328,7 @@ h1{
 }
 @media only screen and (min-width: 996px) and (max-width: 1024px) {
     .btn1{
-    padding: 1rem 9rem;
+    padding: 1rem 11rem;
     margin-top: 2rem;
     color:  #FFFFFF;
     background-color: #0065FC;
@@ -359,7 +344,7 @@ h1{
 }
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
     .btn1{
-    padding: 1rem 8.8rem;
+    padding: 1rem 10.5rem;
     margin-top: 2rem;
     color:  #FFFFFF;
     background-color: #0065FC;
@@ -369,7 +354,7 @@ h1{
 }
 @media only screen and (min-width: 2000px) and (max-width: 2560px) {
     .btn1{
-    padding: 1rem 21rem;
+    padding: 1rem 23rem;
     margin-top: 2rem;
     color:  #FFFFFF;
     background-color: #0065FC;

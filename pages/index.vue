@@ -34,7 +34,6 @@ export default {
     .two{
       background:linear-gradient(to right, rgba(8, 29, 41, 0.7),
        rgba(8, 29, 41, 0.7)), url('/img/you.jpg') no-repeat center center/cover;
-       
     }
     .grid{
       padding:7% 100px ;
