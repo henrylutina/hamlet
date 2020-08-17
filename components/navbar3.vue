@@ -34,11 +34,9 @@
         
            <div class="one1">
             <img src="~/assets/Group 58.png" alt="">
-            
-            <h5>HIRING CHECKLIST</h5>
-            <p><nuxt-link to="/contactinfo" style="text-decoration:none; color : #FFFFFF">Employee Details</nuxt-link></p>
-            <p><nuxt-link to="/employmenttype" style="text-decoration:none;  color : #FFFFFF">Contact Information</nuxt-link></p>
-            <p><nuxt-link to="/jobdetails" style="text-decoration:none;  color : #FFFFFF">Job Details</nuxt-link></p>
+            <p><nuxt-link to="/company/companyoverview" style="text-decoration:none; color : #FFFFFF">Company Overview</nuxt-link></p>
+            <p><nuxt-link to="/company/taxinfo" style="text-decoration:none;  color : #FFFFFF">Tax Info</nuxt-link></p>
+            <p><nuxt-link to="/company/locations" style="text-decoration:none;  color : #FFFFFF">Locations</nuxt-link></p>
         </div>
          
           </div>

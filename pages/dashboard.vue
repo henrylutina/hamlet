@@ -29,11 +29,11 @@
                         <p class="mt-4">Apps</p>
                        <div class="row">
                            <div class="col-sm-4">
-                               <nuxt-link to=""><div class="box-icon"><i class="fa fa-users"></i></div></nuxt-link> 
+                               <nuxt-link to="/company/companyoverview"><div class="box-icon"><i class="fa fa-users"></i></div></nuxt-link> 
                                <p class="mt-2 text-center">Company Profile</p>
                            </div>
                            <div class="col-sm-4">
-                               <nuxt-link to=""><div class="box-icon"><i class="fa fa-times"></i></div></nuxt-link> 
+                               <nuxt-link to="/allEmployees"><div class="box-icon"><i class="fa fa-times"></i></div></nuxt-link> 
                                 <p class="mt-2 text-center">Directory</p>
                            </div>
                            <!-- <div class="col-sm-4">
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import navbar from '~/components/navbar2.vue';
+import navbar from '~/components/navbar.vue';
 export default {
     components:{
         'app-navbar':navbar,}
