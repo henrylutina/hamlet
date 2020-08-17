@@ -71,7 +71,7 @@
 
 <script>
 import sidebar from '~/components/sidebar2.vue';
-import navbar from '~/components/navbar2.vue';
+import navbar from '~/components/navbar4.vue';
 export default {
     components:{
         'app-sidebar':sidebar,
