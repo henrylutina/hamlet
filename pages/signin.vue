@@ -94,7 +94,7 @@ export default {
       .two2{
       padding: 105px 20px;
       background:linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url('/img/Rectangle5.png') no-repeat center center/cover;
+       rgba(8, 29, 41, 0.7)), url('/img/you1.jpg') no-repeat center center/cover;
       text-align: center;
     }
       .two1 h2{

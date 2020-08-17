@@ -3,36 +3,62 @@
         <app-navbar/>
         <div class="row one5">
             <app-sidebar/>
+            
             <div  class="one2 ">
+                <div class="one6">
+                <div class="one7">
+                    <h2>Name</h2>
+                    <p>Job Title (employmenttype)  Started on (Date hired)</p>
+                </div>
+                <div class="one8">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Actions
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Edit profile</a>
+                            <a class="dropdown-item" href="#">Terminate</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
                  <div >
                 <div class="one3">
-                <h2>Contact Information</h2>
+                <h4>Personal Info</h4>
                 <hr>
                 <div class="grid">
-                    <p>Address</p>
-                    <input type="text" >
+                    <p> Name</p>
+                    <p></p>
                 </div>
                 <div class="grid">
-                    <p>Phone Number</p>
-                    <input type="text" >
+                    <p> Gender</p>
+                    <p></p>
+                </div>
+                <div class="grid">
+                    <p>Date of Birth</p>
+                    <p></p>
+                </div>
+                <div class="grid">
+                    <p>Phone</p>
+                    <p></p>
                 </div>
                 <div class="grid">
                     <p>Email</p>
-                    <input type="text" >
+                   <p></p>
                 </div>
                 <div class="grid">
-                    <p>Emergency Contacts</p>
-                    <input type="text" >
+                    <p>Address</p>
+                    <p></p>
                 </div>
-               
-                <hr>
-                <div class="one4">
-                    <button class="btn1">Cancel</button><nuxt-link to="/jobdetails"><button class="btn2">Next</button></nuxt-link>
+                <div class="grid">
+                    <p>Emergency Contact</p>
+                    <p></p>
                 </div>
                 
+                <hr>             
 
             </div>
-            </div>
+                </div>
            
         </div>
         </div>
@@ -44,7 +70,7 @@
 </template>
 
 <script>
-import sidebar from '~/components/sidebar.vue';
+import sidebar from '~/components/sidebar2.vue';
 import navbar from '~/components/navbar.vue';
 export default {
     components:{
@@ -123,6 +149,20 @@ export default {
         margin-top: 3.5rem;
         height: 130vh;
     }
+    .one6{
+        padding-left: 4rem;
+        padding-right: 4rem;
+        padding-top: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 3rem;
+    }
+    .one8{
+        text-align: right;
+    }
+    .one8 button{
+        padding:5px 10px;
+    }
     
 
     @media (max-width: 567px) {
@@ -156,14 +196,23 @@ export default {
         .btn1{
         margin-bottom: 30px;
     }
+    .one6{
+        padding-left: 30px;
+        padding-right: 30px;
+    }
         
     }
+    
 
     @media(min-width: 568px) and (max-width:768px) {
         .one2{
         width: 75%;
     }
         .one3{
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .one6{
         padding-left: 30px;
         padding-right: 30px;
     }

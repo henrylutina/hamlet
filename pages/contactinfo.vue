@@ -10,15 +10,35 @@
                 <hr>
                 <div class="grid">
                     <p>First Name</p>
-                    <input type="text" >
+                    <input type="text" class="one6" >
                 </div>
                 <div class="grid">
-                    <p>Last Name</p>
-                    <input type="text" >
+                    <p>Other Names</p>
+                    <input type="text" class="one6" >
                 </div>
                 <div class="grid">
-                    <p>Email Address</p>
-                    <input type="text" >
+                    <p>Date of Birth</p>
+                    <input type="date" name="" id="" class="one6">
+                </div>
+                <div class="grid">
+                    <p>Age</p>
+                    <input type="text" class="one6" >
+                </div>
+                <div class="grid">
+                    <p>Gender</p>
+                    <select class="custom-select">
+                        <option selected>Select Gender</option>
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                    </select>
+                </div>
+                <div class="grid">
+                    <p>Qualifications</p>
+                    <input type="text" class="one6" >
+                </div>
+                <div class="grid">
+                    <p>Profile Picture</p>
+                    <input type="file" name="" class="file-border img-fluid"  id="" placeholder="">
                 </div>
                 
                 <hr>
@@ -69,12 +89,12 @@ export default {
     .grid{
         display: grid;
         grid-template-columns: 1fr 2fr;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
     .grid p{
         color: #081D29;
     }
-    .grid input{
+    .grid .one6{
         width:100%;
         border: 0.5px solid #081D29 !important;
         height: 30px;
@@ -119,7 +139,19 @@ export default {
         margin-top: 3.5rem;
         height: 130vh;
     }
-    
+    select{
+        width:100%;
+        border: 0.5px solid #081D29 !important;
+        height: 32px;
+        padding: 5px;
+    }
+    .file-border{
+    padding: 1rem 1rem 1rem 1rem !important; 
+    border: 0.5px solid #081D29 !important; 
+    outline: none !important; 
+    border-radius: 5px;
+
+}
 
     @media (max-width: 567px) {
         .one2{
