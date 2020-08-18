@@ -70,7 +70,7 @@
                     </div>
                     </div>
                 </div>
-                <div class="wrapper">
+                <div class="wrapper mt-3">
                     <div class="box-down">
                         <div class="d-flex">
                             <div>
@@ -273,6 +273,7 @@ export default {
 }
 .margin-form{
     margin-left: 8rem;
+    margin-top: 3rem;
 }
 .grid{
     display: grid;
