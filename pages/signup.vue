@@ -147,7 +147,7 @@ export default {
 .bg-big{
     /* background-color:#F9F9F9; */
     background-color: rgb(192, 192, 192, 0.1);
-    margin-top: 25px;
+    margin-top: 4.3rem;
 }
 .margin-form{
     margin-left: 8rem;
@@ -155,6 +155,7 @@ export default {
 .grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    background: #F9F9F9;
 }
 .form-edit{
     padding: 1rem;
@@ -410,6 +411,7 @@ h1{
     background-color: #0065FC;
     border: 1px solid #0065FC;
     outline: none !important;
+    width: 70%;
     }
 }
 @media only screen and (min-width: 2000px) and (max-width: 2560px) {

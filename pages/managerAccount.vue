@@ -152,6 +152,7 @@ export default {
 .bg-big{
     /* background-color:#F9F9F9; */
     background-color: rgb(192, 192, 192, 0.1);
+    margin-top:4.3rem ;
 }
 .margin-form{
     margin-left: 8rem;
@@ -159,6 +160,7 @@ export default {
 .grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    background: #F9F9F9;
 }
 .form-edit{
     padding: 1rem;

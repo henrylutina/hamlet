@@ -34,11 +34,12 @@ export default {
     .two{
       background:linear-gradient(to right, rgba(8, 29, 41, 0.7),
        rgba(8, 29, 41, 0.7)), url('/img/nesa.jpg') no-repeat center center/cover ;
-       height: 100vh;
+       height: 120vh;
+       margin-top: 4rem;
        
     }
     .grid{
-      padding:10rem 100px ;
+      padding:15rem 100px ;
       display: grid;
       grid-template-columns: 1fr 1fr;
       text-align: left;

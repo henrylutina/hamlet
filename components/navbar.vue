@@ -40,8 +40,8 @@
            <div class="one1">
             <img src="~/assets/Group 58.png" alt="">
             
-            <h5>HIRING CHECKLIST</h5>
-            <p><nuxt-link to="/contactinfo" style="text-decoration:none; color : #FFFFFF">Employee Details</nuxt-link></p>
+            <h5 style="color:white; margin-top:2rem">HIRING CHECKLIST</h5>
+            <p><nuxt-link to="/contactinfo" style="text-decoration:none; color : #FFFFFF;">Employee Details</nuxt-link></p>
             <p><nuxt-link to="/employmenttype" style="text-decoration:none;  color : #FFFFFF">Contact Information</nuxt-link></p>
             <p><nuxt-link to="/jobdetails" style="text-decoration:none;  color : #FFFFFF">Job Details</nuxt-link></p>
         </div>
@@ -205,8 +205,8 @@ position: absolute;
 @media only screen and (min-width: 300px) and (max-width: 350px) {
   .closebtn {
  position: absolute;
- top: 0;
- right: 70px;
+ top: 1rem;
+ right: 2rem;
  font-size: 2rem !important; 
  margin-left: 55px;
 }
@@ -225,6 +225,10 @@ position: absolute;
   .mobileView{
     display: block;
   }
+  .closebtn {
+ top: 1rem;
+ right: 2rem;
+}
 }
 @media only screen and (min-width: 710px) and (max-width: 768px){
     .one{

@@ -33,7 +33,7 @@
           <div id="mySidenav" :style="styleObject" class="sidenav">
             <div class="float-right pb-5">
                <span to="" class="closebtn" style="color : #FFFFFF" @click="closeNav">
-               <font-awesome-icon :icon="['fa', 'times']"/>
+               <font-awesome-icon style="height:100px" :icon="['fa', 'times']"/>
                </span>
             </div>
         
@@ -89,10 +89,7 @@ export default {
         font-family: 'Overpass', sans-serif;
         
     }
-    .boxShadow{
-       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
-        background-color: rgba(255,255,255,1) !important;
-    }
+    
     .one{
         margin-left: 100px;
         margin-right: 100px;
@@ -200,8 +197,8 @@ position: absolute;
 @media only screen and (min-width: 300px) and (max-width: 350px) {
   .closebtn {
  position: absolute;
- top: 0;
- right: 70px;
+ top: -0.7rem;
+ right: 2rem;
  font-size: 2rem !important; 
  margin-left: 50px;
 }
@@ -209,8 +206,10 @@ position: absolute;
     display: none;
   }
   .mobileView{
-    display: block;
+    display:block;
+    
   }
+  
 }
 
 @media only screen and (min-width: 360px) and (max-width: 578px) {
@@ -220,6 +219,10 @@ position: absolute;
   .mobileView{
     display: block;
   }
+  .closebtn {
+ top: -0.7rem;
+ right: 2rem;
+}
 }
 @media only screen and (min-width: 710px) and (max-width: 768px){
     .one{
@@ -232,6 +235,10 @@ position: absolute;
     .mobileView{
       display: block;
     }
+    .closebtn {
+ top: -0.7rem;
+ right: 3.5rem;
+}
 }
 /* @media only screen and (min-width: 1024px) and (max-width: 2445px){
    .mobileView{

@@ -33,9 +33,9 @@
             </div>
         
            <div class="one1">
-            <img src="~/assets/Group 58.png" alt="">
-            <p><nuxt-link to="/singleemployee/paymentinfo" style="text-decoration:none; color : #FFFFFF">Personal Info</nuxt-link></p>
-            <p><nuxt-link to="/singleemployee/employmentdetails" style="text-decoration:none;  color : #FFFFFF">Employment Info and Compensation</nuxt-link></p>
+            <img src="~/assets/Group 58.png" alt="" style="margin-bottom:2rem">
+            <p><nuxt-link to="/singleemployee/personalinfo" style="text-decoration:none; color : #FFFFFF"><h5 style="margin-bottom:1rem">Personal Info</h5> </nuxt-link></p>
+            <p><nuxt-link to="/singleemployee/employmentdetails" style="text-decoration:none;  color : #FFFFFF"><h5 style="margin-bottom:1rem">Employment Info and Compensation</h5></nuxt-link></p>
         
         </div>
          
@@ -198,8 +198,8 @@ position: absolute;
 @media only screen and (min-width: 300px) and (max-width: 350px) {
   .closebtn {
  position: absolute;
- top: 0;
- right: 70px;
+ top: 1rem;
+ right: 2rem;
  font-size: 2rem !important; 
  margin-left: 55px;
 }
@@ -218,6 +218,13 @@ position: absolute;
   .mobileView{
     display: block;
   }
+  .closebtn {
+ position: absolute;
+ top: 1rem;
+ right: 2rem;
+ font-size: 2rem !important; 
+ margin-left: 55px;
+}
 }
 @media only screen and (min-width: 710px) and (max-width: 768px){
     .one{
