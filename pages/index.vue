@@ -33,7 +33,7 @@ export default {
 <style scoped>
     .two{
       background:linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url('/img/you.jpg') no-repeat center center/cover ;
+       rgba(8, 29, 41, 0.7)), url('/img/nesa.jpg') no-repeat center center/cover ;
        height: 100vh;
        
     }
@@ -75,7 +75,7 @@ export default {
     @media(max-width:567px){
       .two{
       background:linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url('/img/you.jpg') no-repeat center center/cover ;
+       rgba(8, 29, 41, 0.7)), url('/img/nesa.jpg') no-repeat center center/cover ;
        height: auto;
        
     }
@@ -100,7 +100,7 @@ export default {
 
       .two{
       background:linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url('/img/you.jpg') no-repeat center center/cover ;
+       rgba(8, 29, 41, 0.7)), url('/img/nesa.jpg') no-repeat center center/cover ;
        height: auto;
        
     }
@@ -124,7 +124,7 @@ export default {
     @media (min-width:769px) and (max-width:1200px){
         .two{
       background:linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url('/img/you.jpg') no-repeat center center/cover ;
+       rgba(8, 29, 41, 0.7)), url('/img/nesa.jpg') no-repeat center center/cover ;
        height: auto;
        
     }

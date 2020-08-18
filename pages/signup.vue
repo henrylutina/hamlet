@@ -8,18 +8,18 @@
                 <div class="form-edit">
                     <form @submit.prevent="createAccount">
                             <div class="active first-form" id="hide-form">
-                                <h1>Set Up an Account</h1>
+                                <h1>Set Up An Account</h1>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="username" v-model="signUp.username">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="Username" v-model="signUp.username">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="email" name="" class="form-control" id="" required placeholder="email"  v-model="signUp.email">
+                                     <input type="email" name="" class="form-control" id="" required placeholder="Email" v-model="signUp.email">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="password" name="" class="form-control" id="" required placeholder="password"  v-model="signUp.password">
+                                     <input type="password" name="" class="form-control" id="" required placeholder="Password" v-model="signUp.password">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="password" name="" class="form-control" id="" required placeholder="password confirmation"  v-model="signUp.password_confirmation">
+                                     <input type="password" name="" class="form-control" id="" required placeholder="Password Confirmation" v-model="signUp.password_confirmation">
                                 </div>
                             </div>
                             <button type="submit" class="btn1">Create Account</button>
@@ -79,19 +79,19 @@
                             <div class="first-form">
                                 <h1 class="mobile-text">Set Up an Account</h1>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="username"  v-model="signUp.username">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="Username" v-model="signUp.username">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="email" name="" class="form-control" id="" required placeholder="email"  v-model="signUp.email">
+                                     <input type="email" name="" class="form-control" id="" required placeholder="Email" v-model="signUp.email">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="password" name="" class="form-control" id="" required placeholder="password"  v-model="signUp.password">
+                                     <input type="password" name="" class="form-control" id="" required placeholder="Password" v-model="signUp.password">
                                 </div>
-                                 <div class="mt-4">
-                                     <input type="password" name="" class="form-control" id="" required placeholder="password confirmation"  v-model="signUp.password_confirmation">
+                                <div class="mt-4">
+                                     <input type="password" name="" class="form-control" id="" required placeholder="Password Confirmation" v-model="signUp.password_confirmation">
                                 </div>
                             </div>
-                             <button type="submit" class="btn1">Create Account</button>
+                             <button type="submit" class="btn1" style="color:white; ">Create Account</button>
                         </form>
                         <div class="account">
                         Already have an account?<span style="color : #0065FC"><nuxt-link to="/signin"> Log in</nuxt-link></span> 
@@ -123,8 +123,13 @@ export default {
         createAccount(){
             axios.post('https://hamlet-hrm.herokuapp.com/api/auth/signup',this.signUp).then(res=> 
             {
+                this.$router.push('/managerAccount')
                 console.log(res.data)
             }) 
+             .catch((error) => {
+          this.loader = false;
+          console.log(error);
+        });
         }      
     } 
 }
@@ -133,7 +138,7 @@ export default {
 <style scoped>
 .wrapper{
     background: linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url("/img/you2.jpg") no-repeat center center/cover;
+       rgba(8, 29, 41, 0.7)), url("/img/nesa.jpg") no-repeat center center/cover;
     /* background-position: right; */
     /* background-size: center center/cover; */
     /* background-repeat: no-repeat; */
@@ -184,6 +189,7 @@ textarea{
     background-color: #0065FC;
     border: 1px solid #0065FC;
     outline: none !important;
+    width: 70%;
 }
 .btn3{
     padding: 1rem 2rem;
@@ -235,7 +241,7 @@ h1{
     }
     .wrapper{
     background: linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url("/img/Rectangle5.png") no-repeat center center/cover;
+       rgba(8, 29, 41, 0.7)), url("/img/nesa.jpg") no-repeat center center/cover;
     height: 100vh;
     padding-top: 1rem;
      padding-bottom: 0;
@@ -244,6 +250,9 @@ h1{
         color: #FFFFFF;
     }
     textarea{
+        width: 100%;
+    }
+    .btn1{
         width: 100%;
     }
     .btn2{
@@ -288,7 +297,7 @@ h1{
     }
     .wrapper{
     background: linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url('/img/you1.jpg') no-repeat center center/cover;
+       rgba(8, 29, 41, 0.7)), url('/img/nesa.jpg') no-repeat center center/cover;
     /* background-position: right; */
     /* background-size: center center/cover; */
     /* background-repeat: no-repeat; */
@@ -300,6 +309,9 @@ h1{
         color: #FFFFFF;
     }
     textarea{
+        width: 100%;
+    }
+    .btn1{
         width: 100%;
     }
     .btn2{
@@ -367,6 +379,9 @@ h1{
         color: #000000;
         text-align: center;
     }
+    .btn1{
+        width:100%
+    }
 }
 @media only screen and (min-width: 996px) and (max-width: 1024px) {
     .btn1{
@@ -383,10 +398,13 @@ h1{
      input{
         width: 90%;
     }
+    .btn1{
+        width: 90%;
+    }
 }
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
     .btn1{
-    padding: 1rem 8.8rem;
+    padding: 1rem 1rem;
     margin-top: 2rem;
     color:  #FFFFFF;
     background-color: #0065FC;

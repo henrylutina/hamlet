@@ -2,9 +2,9 @@
     <div>
         <Navbar />
         <!-- Desktop view -->
-        <div class="bg-big">
-                 <div class="grid desktopShow mt-5">
-                     <div class="margin-form">
+        <div class="bg-big" >
+                 <div class="grid desktopShow">
+                     <div class="margin-form" >
                 <div class="form-edit">
                     <div class="stepwizard mt-5">
                             <div class="stepwizard-row" ref="edu">
@@ -260,11 +260,12 @@ export default {
 <style scoped>
 .wrapper{
     background: linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url("/img/you2.jpg") no-repeat center center/cover;
+       rgba(8, 29, 41, 0.7)), url("/img/nesa.jpg") no-repeat center center/cover;
     /* background-position: right; */
     /* background-size: center center/cover; */
     /* background-repeat: no-repeat; */
-    height: 91vh;
+    height: 100vh;
+    margin-top: 3rem;
 }
 .bg-big{
     /* background-color:#F9F9F9; */
@@ -357,6 +358,7 @@ h1{
 .stepwizard {
   width: 100%;
   position: relative;
+  margin-top: 2rem;
 }
 .stepwizard-row {
   display: flex;
@@ -421,7 +423,7 @@ p {
     }
     .wrapper{
     background: linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url("/img/Rectangle5.png") no-repeat center center/cover;
+       rgba(8, 29, 41, 0.7)), url("/img/nesa.jpg") no-repeat center center/cover;
     /* background-position: right; */
     /* background-size: center center/cover; */
     /* background-repeat: no-repeat; */
@@ -488,7 +490,7 @@ h1{
     }
     .wrapper{
     background: linear-gradient(to right, rgba(8, 29, 41, 0.7),
-       rgba(8, 29, 41, 0.7)), url("/img/Rectangle5.png") no-repeat center center/cover;
+       rgba(8, 29, 41, 0.7)), url("/img/nesa.jpg") no-repeat center center/cover;
     /* background-position: right; */
     /* background-size: center center/cover; */
     /* background-repeat: no-repeat; */

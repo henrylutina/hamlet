@@ -24,7 +24,7 @@
             </div>
                  <div >
                 <div class="one3">
-                <h4>Personal Info</h4>
+                <h3>Personal Info</h3>
                 <hr>
                 <div class="grid">
                     <p> Name</p>
@@ -71,7 +71,7 @@
 
 <script>
 import sidebar from '~/components/sidebar2.vue';
-import navbar from '~/components/navbar.vue';
+import navbar from '~/components/navbar4.vue';
 export default {
     components:{
         'app-sidebar':sidebar,
@@ -121,7 +121,7 @@ export default {
     hr{
         margin-bottom: 30px;
     }
-    .one3 h2{
+    .one3 h3{
         margin-bottom: 30px;
         color: #0065FC;
     }
@@ -162,6 +162,10 @@ export default {
     }
     .one8 button{
         padding:5px 10px;
+    }
+    .one7 h2{
+        color: #0065FC;
+         margin-bottom: 10px;
     }
     
 
