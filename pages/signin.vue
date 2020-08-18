@@ -40,7 +40,7 @@ export default {
     .grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
-      margin-top: 3.1rem;
+      margin-top: 4.3rem;
       height: 100vh;
     }
     .two1 h2{

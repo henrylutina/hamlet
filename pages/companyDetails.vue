@@ -265,11 +265,11 @@ export default {
     /* background-size: center center/cover; */
     /* background-repeat: no-repeat; */
     height: 100vh;
-    margin-top: 3rem;
 }
 .bg-big{
     /* background-color:#F9F9F9; */
     background-color: rgb(192, 192, 192, 0.1);
+    margin-top: 4.3rem;
 }
 .margin-form{
     margin-left: 8rem;

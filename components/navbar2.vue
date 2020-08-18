@@ -89,10 +89,7 @@ export default {
         font-family: 'Overpass', sans-serif;
         
     }
-    .boxShadow{
-       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
-        background-color: rgba(255,255,255,1) !important;
-    }
+    
     .one{
         margin-left: 100px;
         margin-right: 100px;
