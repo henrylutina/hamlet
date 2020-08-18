@@ -29,11 +29,11 @@
                         <p class="mt-4">Apps</p>
                        <div class="row">
                            <div class="col-sm-4">
-                               <nuxt-link to=""><div class="box-icon"><i class="fa fa-users"></i></div></nuxt-link> 
+                               <nuxt-link to=""><div class="box-icon"><i class="fa fa-user-circle-o"></i></div></nuxt-link> 
                                <p class="mt-2 text-center">Company Profile</p>
                            </div>
                            <div class="col-sm-4">
-                               <nuxt-link to=""><div class="box-icon"><i class="fa fa-times"></i></div></nuxt-link> 
+                               <nuxt-link to=""><div class="box-icon"><i class="fa fa-folder"></i></div></nuxt-link> 
                                 <p class="mt-2 text-center">Directory</p>
                            </div>
                            <!-- <div class="col-sm-4">
@@ -51,10 +51,23 @@
 </template>
 
 <script>
+import axios from 'axios'
 import navbar from '~/components/navbar2.vue';
 export default {
     components:{
-        'app-navbar':navbar,}
+        'app-navbar':navbar,
+        },
+        data(){
+            return{
+
+            }
+        },
+        created(){
+              axios.get('https://hamlet-hrm.herokuapp.com/api/auth/admin', {headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9oYW1sZXQtaHJtLmhlcm9rdWFwcC5jb21cL2FwaVwvYXV0aFwvc2lnbnVwIiwiaWF0IjoxNTk3Njc0NjE3LCJleHAiOjE1OTc2NzgyMTcsIm5iZiI6MTU5NzY3NDYxNywianRpIjoib3NnalhsY0pwZjVaUzJsbiIsInN1YiI6MywicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.3SXVRdGUt1e4fo-ibr5JSA7a5usX3MiECaB513YgKwE'}} ).then(res=> 
+            {
+                console.log(res.data)
+            }) 
+        }
 }
 </script>
 

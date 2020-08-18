@@ -3,7 +3,7 @@
         <Navbar />
         <!-- Desktop view -->
         <div class="bg-big">
-                 <div class="grid desktopShow">
+                 <div class="grid desktopShow mt-5">
                      <div class="margin-form">
                 <div class="form-edit">
                     <div class="stepwizard mt-5">
@@ -70,7 +70,7 @@
                     </div>
                     </div>
                 </div>
-                <div class="wrapper">
+                <div class="wrapper mt-3">
                     <div class="box-down">
                         <div class="d-flex">
                             <div>
@@ -272,6 +272,7 @@ export default {
 }
 .margin-form{
     margin-left: 8rem;
+    margin-top: 3rem;
 }
 .grid{
     display: grid;

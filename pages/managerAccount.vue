@@ -3,9 +3,9 @@
         <Navbar />
         <!-- Desktop view -->
         <div class="bg-big">
-                 <div class="grid desktopShow">
+                 <div class="grid desktopShow mt-5">
                      <div class="margin-form">
-                <div class="form-edit">
+                <div class="form-edit mt-5">
                     <form action="">
                             <div class="first-form">
                                 <h1>Manager's Information</h1>
@@ -28,7 +28,7 @@
 
                     </div>
                 </div>
-                <div class="wrapper">
+                <div class="wrapper mt-3">
                     <div class="box-down">
                         <div class="d-flex">
                             <div>
