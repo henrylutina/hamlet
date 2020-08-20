@@ -8,6 +8,7 @@
                 <div class="form-edit mt-5">
                     <form @submit.prevent="addManger">
                             <div class="first-form">
+                                <!-- {{user}} -->
                                 <h1>Manager's Information</h1>
                                 <div class="mt-4">
                                      <input type="text" name="" class="form-control" id="" required placeholder="First Name" v-model="managerInfo.first_name">
@@ -18,10 +19,10 @@
                                 <div class="mt-4">
                                      <input type="text" name="" class="form-control" id="" required placeholder="Address" v-model="managerInfo.address">
                                 </div>
-                                 <div class="mt-4">
+                                 <!-- <div class="mt-4">
                                      <label for="">Upload Profile Picture</label> <br>
                                      <input type="file" name="" class="file-border" id="" required placeholder="" accept=".png,.jpeg,.svg,.jpg" @change="upload()">
-                                </div>
+                                </div> -->
                             </div>
                             <button type="submit" class="btn1">Submit</button>
                     </form>
@@ -112,9 +113,14 @@ export default {
                 first_name : '',
                 last_name : '',
                 address : '',
-                profile_pic : {}
-            }
+               
+                // profile_pic : {}
+            },
+             user : {}
         }
+    },
+    created(){
+        this.user= this.$auth.$storage.getLocalStorage('jwt')
     },
     methods : {
         upload(){
@@ -123,22 +129,37 @@ export default {
             console.log(this.managerInfo.profile_pic);
         },
         addManger(){
-            const formData = new FormData()
+             const formData = new FormData()
             formData.append('first_name', this.managerInfo.first_name)
             formData.append('last_name', this.managerInfo.last_name)
             formData.append('address', this.managerInfo.address)
-            formData.append('profile_pic', this.managerInfo.profile_pic)
-            axios.post('https://hamlet-hrm.herokuapp.com/api/profile', formData, {headers : {'Authorization' : 'Bearer'}}).then((res)=> {
+            // formData.append('profile_pic', this.managerInfo.profile_pic)
+             axios.post('https://hamlet-hrm.herokuapp.com/api/profile', formData, {headers : {'Authorization' : `Bearer ${this.user}`}}).then((res)=> {
                 this.$router.push('/companyDetails')
                 console.log(res.data)
             })
             .catch((error) =>{
                 console.log(error)
             })
-        }
+        },
+        
+        // addManger(){
+        //     const formData = new FormData()
+        //     formData.append('first_name', this.managerInfo.first_name)
+        //     formData.append('last_name', this.managerInfo.last_name)
+        //     formData.append('address', this.managerInfo.address)
+        //     // formData.append('profile_pic', this.managerInfo.profile_pic)
+        //     axios.post('https://hamlet-hrm.herokuapp.com/api/profile', formData, {headers : {'Authorization' : 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9oYW1sZXQtaHJtLmhlcm9rdWFwcC5jb21cL2FwaVwvYXV0aFwvc2lnbnVwIiwiaWF0IjoxNTk3OTIxMDY3LCJleHAiOjE1OTc5MjQ2NjcsIm5iZiI6MTU5NzkyMTA2NywianRpIjoiTmhhZHBYUG1vN2hnb1VXbiIsInN1YiI6MjAsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.2agrt9clBgnYfv29zgBnmjgR1VjIKUVapVgBrRTbtig'}}).then((res)=> {
+        //         this.$router.push('/companyDetails')
+        //         console.log(res.data)
+        //     })
+        //     .catch((error) =>{
+        //         console.log(error)
+        //     })
+        // }
     }
 }
-</script>>
+</script>
 
 <style scoped>
 .wrapper{

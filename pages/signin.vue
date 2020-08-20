@@ -1,11 +1,13 @@
 <template>
   <div>
+
     <app-navbar />
     <div>
       <div class="grid">
         <div class="two1">
           <div class="two2">
             <h2>Welcome Back!</h2>
+            <!-- {{user}} -->{{ loggedInUser}}
             <form @submit.prevent="loginUser">
               <input
                 type="text"
@@ -38,28 +40,43 @@
 
 <script>
 import Navbar from "~/components/navbar2.vue";
+import { mapGetters } from 'vuex'
 export default {
   components: {
     "app-navbar": Navbar
   },
   data() {
     return {
-      email: "",
-      password: "",
+      user:{},
+      email: "tim1@gmail.com",
+      password: "12345678",
       error: null
     };
   },
+  computed : {
+     ...mapGetters(['isAuthenticated', 'loggedInUser'])
+  },
+  // created()
+  // {
+  //   this.user=this.$auth.$state
+  //       console.log(this.user)
+  // },
   methods: {
     async loginUser() {
       try {
-        await this.$auth.loginWith("local", {
+        let response = await this.$auth.loginWith("local", {
           data: {
             email: this.email,
             password: this.password
           }
+
         });
-        this.$router.push("/dashboard");
-        console.log(this.data);
+        let user = response.data.user
+         this.$auth.$storage.setLocalStorage('user', user);
+        // localStorage.setItem("jwt", token);
+        console.log(response)
+          this.$router.push("/dashboard");
+        
       } catch (e) {
         console.log(e);
         this.error = e.res;
