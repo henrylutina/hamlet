@@ -9,94 +9,49 @@
                 <hr>
                 <div class="grid">
                     <p>Job Title</p>
-                    <input type="text" class="one6" >
+                    <input type="text" class="one6"  v-model="jobDetails.job_title">
                 </div>
                 <div class="grid">
                     <p>Department</p>
-                    <select class="custom-select">
-                        <option selected>Select Department</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
+                    <input type="text" class="one6"  v-model="jobDetails.department">
                 </div>
                 <div class="grid">
                     <p>Employment Type</p>
                     <div>
-                        <label class="container">Employee
-                            <input type="radio" checked="checked" name="radio" @click="showradio1">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container" @click="showradio2">Contingent Worker
-                            <input type="radio" name="radio">
-                            <span class="checkmark"></span>
-                        </label>
+                        <input type="text" class="one6"  v-model="jobDetails.employment_type">
                     </div>
                     
                 </div>
                 <div class="grid">
                     <p>Classification</p>
-                    <div class="one7">
-                        <div v-if="radio1">
-                             <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadio1">Full Time</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadio2">Part Time</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadio3">Intern</label>
-                        </div>
-                        </div>
-                        <div v-if="radio2">
-                             <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadio4">Temp</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio5" name="customRadio" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadio5">Independent Contractor</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio6" name="customRadio" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadio6">Volunteer</label>
-                        </div>
-                        </div>
-                       
+                    <div>
+                        <input type="text" class="one6"  v-model="jobDetails.employment_classification">
                     </div>
                 </div>
                 <div class="grid">
                     <p>Date Hired</p>
-                    <input type="date" name="" id="" class="one6">
-                </div>
-                <div class="grid">
-                    <p>Compensation Type</p>
-                    <select class="custom-select">
-                        <option selected>Select Compensation Type</option>
-                        <option value="1">Salary</option>
-                        <option value="2">Hourly</option>
-                    </select>
-                </div>
-                <div class="grid">
-                    <p>Compensation Rate</p>
-                    <input type="text" class="one6">
+                    <input type="date" name="" id="" class="one6" v-model="jobDetails.date_hired">
                 </div>
                 <div class="grid">
                     <p>Work Location</p>
-                    <select class="custom-select">
-                        <option selected>Select Work Location</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
+                    <input type="text" class="one6" v-model="jobDetails.work_location">
+                </div>
+                <div class="grid">
+                    <p>Salary</p>
+                    <input type="text" class="one6" v-model="jobDetails.salary">
+                </div>
+                <div class="grid">
+                    <p>Description</p>
+                    <input type="text" class="one6" v-model="jobDetails.description">
+                </div>
+                <div class="grid">
+                    <p>Job Category</p>
+                    <input type="text" class="one6" v-model="jobDetails.work_location">
                 </div>
                 
                 <hr>
                 <div class="one4">
-                    <nuxt-link to="/employmenttype"><button class="btn1">Back</button></nuxt-link><nuxt-link to="/dashboard"><button class="btn2">Submit</button></nuxt-link>
+                    <nuxt-link to="/employmenttype"><button class="btn1">Back</button></nuxt-link><button class="btn2" @click="addJobDetails">Submit</button>
                 </div>
                 
 
@@ -122,6 +77,18 @@ export default {
         return{
             radio1: true,
             radio2: false,
+            jobDetails:{
+                employment_type:"",
+                job_title: "",
+                salary: "",
+                date_hired: "",
+                description: " ",
+                department: " ",
+                job_category: " ",
+                work_location: " ",
+                employment_classification: " "
+
+            }
         }
     },
     methods:{
@@ -132,6 +99,9 @@ export default {
         showradio2(){
             this.radio1 = false;
             this.radio2 = true;
+        },
+        addJobDetails(){
+            console.log(this.jobDetails)
         }
     }
     

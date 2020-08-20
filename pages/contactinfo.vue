@@ -10,40 +10,48 @@
                 <hr>
                 <div class="grid">
                     <p>First Name</p>
-                    <input type="text" class="one6" >
+                    <input type="text" class="one6" v-model="employeeDetails.first_name" required>
                 </div>
                 <div class="grid">
                     <p>Other Names</p>
-                    <input type="text" class="one6" >
-                </div>
-                <div class="grid">
-                    <p>Date of Birth</p>
-                    <input type="date" name="" id="" class="one6">
-                </div>
-                <div class="grid">
-                    <p>Age</p>
-                    <input type="text" class="one6" >
+                    <input type="text" class="one6" v-model="employeeDetails.other_names"  required>
                 </div>
                 <div class="grid">
                     <p>Gender</p>
-                    <select class="custom-select">
+                    <select class="custom-select"  v-model="employeeDetails.gender" required>
                         <option selected>Select Gender</option>
                         <option value="1">Male</option>
                         <option value="2">Female</option>
                     </select>
                 </div>
                 <div class="grid">
-                    <p>Qualifications</p>
-                    <input type="text" class="one6" >
+                    <p>Date of Birth</p>
+                    <input type="date" name="" id="" class="one6"  v-model="employeeDetails.dob" required>
                 </div>
                 <div class="grid">
+                    <p>Address</p>
+                    <input type="text" class="one6" v-model="employeeDetails.address" required>
+                </div>
+                <div class="grid">
+                    <p>City</p>
+                    <input type="text" class="one6"  v-model="employeeDetails.city" required>
+                </div>
+                <div class="grid">
+                    <p>Age</p>
+                    <input type="text" class="one6" v-model="employeeDetails.age" required >
+                </div>
+                <div class="grid">
+                    <p>Qualifications</p>
+                    <input type="text" class="one6"  v-model="employeeDetails.qualification" required>
+                </div>
+                <!-- <div class="grid">
                     <p>Profile Picture</p>
                     <input type="file" name="" class="file-border img-fluid"  id="" placeholder="">
-                </div>
+                </div> -->
                 
                 <hr>
                 <div class="one4">
-                    <button class="btn1">Cancel</button><nuxt-link to="/employmenttype"><button class="btn2">Next</button></nuxt-link>
+                    <button class="btn1" >Cancel</button><button class="btn2" @click="addEmployeeInfo">Next</button>
                 </div>
                 
 
@@ -66,6 +74,26 @@ export default {
     components:{
         'app-sidebar':sidebar,
         'app-navbar':navbar,
+    }
+    ,
+    data(){
+        return{
+            employeeDetails:{
+                first_name: " ",
+                other_names: " ",
+                gender: " ",
+                dob: " ",
+                address: " ",
+                city: " ",
+                age: " ",
+                qualification: " "
+            }
+        }
+    },
+    methods:{
+        addEmployeeInfo(){
+            console.log(this.employeeDetails)
+        }
     }
     
 }
