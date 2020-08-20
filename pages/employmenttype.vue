@@ -8,6 +8,7 @@
                 <div class="one3">
                 <h2>Contact Information</h2>
                 <hr>
+                <form @submit.prevent="addContactInfo">
                 <div class="grid">
                     <p>Phone Number</p>
                     <input type="text" v-model="contactInfo.phone" required>
@@ -17,15 +18,19 @@
                     <input type="text" v-model="contactInfo.email" required>
                 </div>
                 <div class="grid">
+                    <p>Employee id</p>
+                    <input type="text" v-model="contactInfo.employee_id" required>
+                </div>
+                <div class="grid">
                     <p>Emergency Contacts</p>
                     <input type="text" v-model="contactInfo.emergency_contact" required>
                 </div>
                
                 <hr>
                 <div class="one4">
-                    <button class="btn1">Cancel</button><button class="btn2" @click="addContactInfo">Next</button>
+                    <button class="btn1">Cancel</button><button type="submit" class="btn2">Next</button>
                 </div>
-                
+                </form>
 
             </div>
             </div>
@@ -52,13 +57,18 @@ export default {
             contactInfo:{
                 phone: " ",
                 email: " ",
-                emergency_contact: " "
+                emergency_contact: " ",
+                employee_id: " ",
             }
         }
     },
     methods:{
         addContactInfo(){
-            console.log(this.contactInfo)
+            this.$axios.post("https://hamlet-hrm.herokuapp.com/api/contactinfo", this.contactInfo).then((res)=>{
+                console.log(res.data);
+                this.$router.push("/jobdetails")
+
+            });
         }
     }
     

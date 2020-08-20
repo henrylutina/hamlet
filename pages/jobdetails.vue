@@ -7,6 +7,7 @@
                 <div class="one3">
                 <h2>Job Details</h2>
                 <hr>
+                <form @submit.prevent="addJobDetails">
                 <div class="grid">
                     <p>Job Title</p>
                     <input type="text" class="one6"  v-model="jobDetails.job_title">
@@ -46,14 +47,18 @@
                 </div>
                 <div class="grid">
                     <p>Job Category</p>
-                    <input type="text" class="one6" v-model="jobDetails.work_location">
+                    <input type="text" class="one6" v-model="jobDetails.job_category">
+                </div>
+                <div class="grid">
+                    <p>Employee Id</p>
+                    <input type="text" class="one6" v-model="jobDetails.employee_id">
                 </div>
                 
                 <hr>
                 <div class="one4">
-                    <nuxt-link to="/employmenttype"><button class="btn1">Back</button></nuxt-link><button class="btn2" @click="addJobDetails">Submit</button>
+                    <nuxt-link to="/employmenttype"><button class="btn1">Back</button></nuxt-link><button type="submit" class="btn2">Submit</button>
                 </div>
-                
+                </form>
 
             </div>
         </div>
@@ -86,7 +91,8 @@ export default {
                 department: " ",
                 job_category: " ",
                 work_location: " ",
-                employment_classification: " "
+                employment_classification: " ",
+                employee_id: ""
 
             }
         }
@@ -101,7 +107,11 @@ export default {
             this.radio2 = true;
         },
         addJobDetails(){
-            console.log(this.jobDetails)
+            this.$axios.post("https://hamlet-hrm.herokuapp.com/api/jobdetails", this.jobDetails).then((res)=>{
+                console.log(res.data);
+                this.$router.push("/dashboard")
+
+            });
         }
     }
     
