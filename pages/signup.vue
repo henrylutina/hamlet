@@ -128,9 +128,19 @@ export default {
             this.$auth.$storage.setLocalStorage('jwt', token);
         // localStorage.setItem("jwt", token);
             console.log(response)
-          this.$router.push("/managerAccount");
-        
-      } catch (e) {
+        //   this.$router.push("/managerAccount");
+         await this.$auth.loginWith('local', {
+          data: {
+                email : this.signUp.email,
+                password : this.signUp.password
+          },
+        }) 
+         let user = response.data.user
+         this.$auth.$storage.setLocalStorage('user', user);
+         this.$router.push("/managerAccount");
+      }
+     
+      catch (e) {
         console.log(e);
         this.error = e.res;
       }
