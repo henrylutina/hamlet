@@ -74,7 +74,7 @@
                         </div>
                         
                         <div class="col-sm-10 pl-3">
-                            <table class="table table-responsive table-bordered table-hover border-0">
+                            <table class="table table-responsive table-bordered table-hover border-0" >
                             <thead>
                                 <tr>
                                 <th scope="col">#</th>
@@ -83,20 +83,18 @@
                                 <th scope="col">Job Title</th>
                                 <th scope="col">Department</th>
                                 <th scope="col">Location</th>
-                                <th scope="col">Manager</th>
                                 <th scope="col">Start Date</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
+                                <tr v-for="(employee, index) in employees" :key="index">
+                                <th scope="row">{{index + 1}}</th>
+                                <td>{{employee.first_name + " " + employee.other_names}}</td>
+                                <td>{{employee.job_details.employment_classification}}</td>
+                                <td>{{employee.job_details.job_title}}</td>
+                                <td>{{employee.job_details.department}}</td>
+                                <td>{{employee.job_details.work_location}}</td>
+                                <td>{{employee.job_details.date_hired}}</td>
                                 </tr>
                             </tbody>
                             </table>
@@ -107,6 +105,29 @@
             </div>
         </div>
 </template>
+
+<script>
+export default {
+    data(){
+        return{
+            employees:{
+
+            }
+        }
+    },
+    methods:{
+        getEmployees(){
+            this.$axios.get("https://hamlet-hrm.herokuapp.com/api/auth/admin").then((res)=>{
+                console.log(res.data.employees); this.employees = res.data.employees;
+            
+            });
+        }
+    },
+    created(){
+        this.getEmployees();
+    }
+}
+</script>
 
 <style scoped>
     *{

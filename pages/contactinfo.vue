@@ -8,7 +8,9 @@
                 <div class="one3">
                 <h2>Employee Details</h2>
                 <hr>
+                <form @submit.prevent="addEmployeeInfo">
                 <div class="grid">
+
                     <p>First Name</p>
                     <input type="text" class="one6" v-model="employeeDetails.first_name" required>
                 </div>
@@ -18,11 +20,7 @@
                 </div>
                 <div class="grid">
                     <p>Gender</p>
-                    <select class="custom-select"  v-model="employeeDetails.gender" required>
-                        <option selected>Select Gender</option>
-                        <option value="1">Male</option>
-                        <option value="2">Female</option>
-                    </select>
+                    <input type="text" class="one6" v-model="employeeDetails.gender"  required>
                 </div>
                 <div class="grid">
                     <p>Date of Birth</p>
@@ -51,10 +49,10 @@
                 
                 <hr>
                 <div class="one4">
-                    <button class="btn1" >Cancel</button><button class="btn2" @click="addEmployeeInfo">Next</button>
+                    <button class="btn1" >Cancel</button> <button type="submit" class="btn2">Next</button>
                 </div>
                 
-
+                </form>
             </div>
             </div>
            
@@ -92,7 +90,11 @@ export default {
     },
     methods:{
         addEmployeeInfo(){
-            console.log(this.employeeDetails)
+            this.$axios.post("https://hamlet-hrm.herokuapp.com/api/employee", this.employeeDetails).then((res)=>{
+                console.log(res.data);
+                this.$router.push("/employmenttype")
+
+            });
         }
     }
     
