@@ -120,7 +120,7 @@ export default {
         endpoints: {
           login: { url: "/auth/login", method: "post", propertyName: "token" },
           //  user: false,
-          user: false,
+          user: { url: "/auth/admin", method: "get", propertyName: "user" },
           logout: { url: "/auth/logout", method: "post" }
         },
         // tokenRequired: true,

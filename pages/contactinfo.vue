@@ -92,7 +92,7 @@ export default {
     },
     methods:{
         addEmployeeInfo(){
-            console.log(this.employeeDetails)
+            axios.post("https://hamlet-hrm.herokuapp.com/api/employee", this.employeeDetails)
         }
     }
     
