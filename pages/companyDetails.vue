@@ -27,38 +27,41 @@
                             <div class="second-form active" id="hide-form">
                                 <!-- <h1>Company's Information</h1> -->
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="company name">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="company name" v-model="companyInfo.company_name">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="company address">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="company address"  v-model="companyInfo.company_address">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="city">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="city"  v-model="companyInfo.city">
                                 </div>
                                  <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="zip-code">
+                                     <input type="number" name="" class="form-control" id="" required placeholder="zip-code"  v-model="companyInfo.zip_code">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="state">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="state"  v-model="companyInfo.state">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="company email">
+                                     <input type="email" name="" class="form-control" id="" required placeholder="company email"  v-model="companyInfo.company_email">
                                 </div>
                             </div>
                             <div class="first-form" id="hide-form">
                                  <div class="mt-4">
-                                     <input type="" name="" class="form-control" id="" required placeholder="company phone number">
+                                     <input type="number" name="" class="form-control" id="" required placeholder="company phone number"  v-model="companyInfo.company_phone">
+                                </div>
+                                 <div class="mt-4">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="company website"  v-model="companyInfo.company_website">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="number" name="" class="form-control" id="" required placeholder="number of employees">
+                                     <input type="number" name="" class="form-control" id="" required placeholder="number of employees"  v-model="companyInfo.no_of_employees">
                                 </div>
                                  <div class="mt-4">
                                      <label for="">Upload Company Logo</label> <br>
-                                     <input type="file" name="" class="file-border img-fluid"  required id="" placeholder="">
+                                     <input type="file" name="" class="file-border img-fluid"  required id="" placeholder="" @change="upload()">
                                 </div>
                                  <div class="mt-4">
                                      <label for="">Tell us about your company</label>
-                                    <textarea name="" class="form-control" id=""></textarea>
+                                    <textarea name="" class="form-control" id="" v-model="companyInfo.services"></textarea>
                                 </div>
                             </div>
                     </div>
@@ -66,7 +69,7 @@
                     <div class="mt-5">
                         <button class="btn1 btn"  @click="prevBtn" :disabled="prevDisabled" style="outline: none !important"> <font-awesome-icon :icon="['fa', 'arrow-left']"/></button>
                         <button class="btn2 btn" @click="nextBtn" :disabled="isDisabled" style="outline: none !important"><font-awesome-icon :icon="['fa', 'arrow-right']"/></button>
-                        <nuxt-link to="/dashboard"><button class="btn3 btn btn-success" @click="submitBtn" v-if="showS"  style="outline: none !important">Submit</button></nuxt-link>
+                        <button type="submit" class="btn3 btn btn-success" @click="submitBtn" v-if="showS"  style="outline: none !important">Submit</button>
                     </div>
                     </div>
                 </div>
@@ -144,6 +147,9 @@
                                  <div class="mt-4">
                                      <input type="" name="" class="form-control" id="" required placeholder="company phone number">
                                 </div>
+                                 <div class="mt-4">
+                                     <input type="" name="" class="form-control" id="" required placeholder="company website">
+                                </div>
                                 <div class="mt-4">
                                      <input type="number" name="" class="form-control" id="" required placeholder="number of employees">
                                 </div>
@@ -161,7 +167,7 @@
                     <div class="mt-3">
                         <button class="btn1 btn"  @click="prev" :disabled="prevDisabled1" style="outline: none !important"><font-awesome-icon :icon="['fa', 'arrow-left']"/></button>
                         <button class="btn2 btn" @click="next" :disabled="isDisabled1" style="outline: none !important"><font-awesome-icon :icon="['fa', 'arrow-right']"/></button>
-                          <nuxt-link to="/dashboard"><button class="btn3 btn btn-success" @click="submitB" v-if="showS" style="outline: none !important">Submit</button></nuxt-link>
+                        <button class="btn3 btn btn-success" @click="submitB" v-if="showS" style="outline: none !important">Submit</button>
                     </div>
                     </div>
                 </div>
@@ -174,6 +180,7 @@
 
 
 <script>
+import axios from 'axios'
 import Navbar from "@/components/navbar2.vue"
 export default {
     components : {
@@ -188,10 +195,33 @@ export default {
             showS : false,
             isDisabled1 : false,
             prevDisabled1 : true,
-            isSubmit1 : true
+            isSubmit1 : true,
+            companyInfo : {
+                company_name : '',
+                company_address : '',
+                company_phone : '',
+                company_email : '',
+                no_of_employees : '',
+                city : '',
+                state : '',
+                zip_code : '',
+                company_website: '',
+                services : '',
+                profile_pic: {}
+            },
+            user : {}
+
         }
     },
+    created(){
+        this.user= this.$auth.$storage.getLocalStorage('jwt')
+    },
     methods : {
+        upload(){
+            var input = event.target;
+            this.companyInfo.profile_pic = input.files[0];
+            console.log(this.companyInfo.profile_pic)
+        },
          nextBtn(){
             this.prevDisabled = false
             this.$refs.formShow.children[this.counter].classList.remove("active");
@@ -226,7 +256,27 @@ export default {
            }
         },
         submitBtn(){
-            console.log('clicked')
+            const formData = new FormData
+            formData.append('company_name',this.companyInfo.company_name)
+            formData.append('company_address',this.companyInfo.company_address)
+            formData.append('company_email',this.companyInfo.company_email)
+            formData.append('company_website',this.companyInfo.company_website)
+            formData.append('no_of_employees',this.companyInfo.no_of_employees)
+            formData.append('city',this.companyInfo.city)
+            formData.append('state',this.companyInfo.state)
+            formData.append('zip_code',this.companyInfo.zip_code)
+            formData.append('services',this.companyInfo.services)
+            formData.append('profile_pic',this.companyInfo.profile_pic)
+            formData.append('company_phone',this.companyInfo.company_phone)
+            axios.post('https://hamlet-hrm.herokuapp.com/api/company', formData, { headers : {'Authorization' : `Bearer ${this.user}`}})
+            .then((res) =>{
+                 this.$router.push('/dashboard')
+                console.log(res.data)
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+            console.log(this.companyInfo)
         },
      next(){
             this.prevDisabled1 = false

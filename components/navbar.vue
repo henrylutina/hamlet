@@ -17,6 +17,9 @@
       <li class="nav-item active">
         <nuxt-link to="/dashboard" class="nav-link" style="color: #0065FC" >Company Name</nuxt-link>
       </li>
+      <li class="nav-item active">
+        <button @click="logOut">Log Out</button>
+      </li>
       
     </ul>
     
@@ -65,6 +68,7 @@
    
 </template>
 <script>
+import axios from 'axios'
 export default {
   data(){
     return{
@@ -80,7 +84,13 @@ export default {
     closeNav(){
       this.styleObject.width = '0px'
       // console.log('clicked')
-    }
+    },
+    async logOut(){
+     await this.$auth.logout();
+     localStorage.removeItem("jwt");
+    
+    this.$router.push('/signin')
+        },
   }
 }
 </script>>

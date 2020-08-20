@@ -17,6 +17,7 @@
                                 </div>
                                 <div class="mt-4">
                                      <input type="password" name="" class="form-control" id="" required placeholder="Password" v-model="signUp.password">
+                                     <small id="emailHelp" class="form-text text-muted">Password must be atleast 8 characters long</small>
                                 </div>
                                 <div class="mt-4">
                                      <input type="password" name="" class="form-control" id="" required placeholder="Password Confirmation" v-model="signUp.password_confirmation">
@@ -103,7 +104,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 import Navbar from "@/components/navbar2.vue"
 export default {
   components : {
@@ -120,17 +121,31 @@ export default {
         }
     },
     methods : {
-        createAccount(){
-            axios.post('https://hamlet-hrm.herokuapp.com/api/auth/signup',this.signUp).then(res=> 
-            {
-                this.$router.push('/managerAccount')
-                console.log(res.data)
-            }) 
-             .catch((error) => {
-          this.loader = false;
-          console.log(error);
-        });
-        }      
+        async createAccount(){
+             try {
+            let response = await this.$axios.post('https://hamlet-hrm.herokuapp.com/api/auth/signup',this.signUp)
+            let token = response.data.token
+            this.$auth.$storage.setLocalStorage('jwt', token);
+        // localStorage.setItem("jwt", token);
+            console.log(response)
+          this.$router.push("/managerAccount");
+        
+      } catch (e) {
+        console.log(e);
+        this.error = e.res;
+      }
+        },
+        // createAccount(){
+        //     axios.post('https://hamlet-hrm.herokuapp.com/api/auth/signup',this.signUp).then(res=> 
+        //     {
+        //         this.$router.push('/managerAccount')
+        //         console.log(res.data)
+        //     }) 
+        //      .catch((error) => {
+        //   this.loader = false;
+        //   console.log(error);
+        // });
+        // }      
     } 
 }
 </script>>

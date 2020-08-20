@@ -12,7 +12,8 @@
                   <h4 class="text-center mt-2">Start Innovation Hub</h4>
                </div>
                <div class="col-sm-7">
-                   <h2>Hello, Admin</h2>
+                   <!-- <h2 v-if="isAuthenticated">Hello {{loggedInUser.username}}</h2> -->
+                   <h2>Hello Welcome</h2>
                    <h6 class="mt-4">Welcome, Thanks for choosing us</h6>
                    <p class="mt-4">Task!</p>
                    <div class="border-admin">
@@ -53,20 +54,26 @@
 <script>
 import axios from 'axios'
 import navbar from '~/components/navbar.vue';
+import { mapGetters } from 'vuex'
 export default {
     components:{
         'app-navbar':navbar,
         },
         data(){
             return{
-
+                user:{}
             }
         },
-        created(){
-              axios.get('https://hamlet-hrm.herokuapp.com/api/auth/admin', {headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9oYW1sZXQtaHJtLmhlcm9rdWFwcC5jb21cL2FwaVwvYXV0aFwvc2lnbnVwIiwiaWF0IjoxNTk3Njc0NjE3LCJleHAiOjE1OTc2NzgyMTcsIm5iZiI6MTU5NzY3NDYxNywianRpIjoib3NnalhsY0pwZjVaUzJsbiIsInN1YiI6MywicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.3SXVRdGUt1e4fo-ibr5JSA7a5usX3MiECaB513YgKwE'}} ).then(res=> 
-            {
-                console.log(res.data)
-            }) 
+          computed : {
+        ...mapGetters(['isAuthenticated', 'loggedInUser'])
+        },
+        // created(){
+        //     this.user=this.$auth.$storage.getLocalStorage('user').username
+              
+        // },
+        methods:
+        {
+             
         }
 }
 </script>
