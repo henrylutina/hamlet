@@ -6,20 +6,23 @@
                  <div class="grid desktopShow">
                      <div class="margin-form">
                 <div class="form-edit">
-                    <form action="">
+                    <form @submit.prevent="createAccount">
                             <div class="active first-form" id="hide-form">
                                 <h1>Set Up An Account</h1>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="Username">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="Username" v-model="signUp.username">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="email" name="" class="form-control" id="" required placeholder="Email">
+                                     <input type="email" name="" class="form-control" id="" required placeholder="Email" v-model="signUp.email">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="password" name="" class="form-control" id="" required placeholder="Password">
+                                     <input type="password" name="" class="form-control" id="" required placeholder="Password" v-model="signUp.password">
+                                </div>
+                                <div class="mt-4">
+                                     <input type="password" name="" class="form-control" id="" required placeholder="Password Confirmation" v-model="signUp.password_confirmation">
                                 </div>
                             </div>
-                            <button type="submit" class="btn1"><nuxt-link to="/managerAccount" style="color:white; ">Create Account</nuxt-link></button>
+                            <button type="submit" class="btn1">Create Account</button>
                     </form>
                     <div class="account">
                         Already have an account?<span style="color : #0065FC"><nuxt-link to="/signin"> Log in</nuxt-link></span> 
@@ -72,17 +75,20 @@
                 <!-- Mobile View -->
                 <div class="container wrapper mobileShow"> 
                     <div class="mobile-form">
-                        <form>
+                        <form  @submit.prevent="createAccount"> 
                             <div class="first-form">
                                 <h1 class="mobile-text">Set Up an Account</h1>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="Username">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="Username" v-model="signUp.username">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="email" name="" class="form-control" id="" required placeholder="Email">
+                                     <input type="email" name="" class="form-control" id="" required placeholder="Email" v-model="signUp.email">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="password" name="" class="form-control" id="" required placeholder="Password">
+                                     <input type="password" name="" class="form-control" id="" required placeholder="Password" v-model="signUp.password">
+                                </div>
+                                <div class="mt-4">
+                                     <input type="password" name="" class="form-control" id="" required placeholder="Password Confirmation" v-model="signUp.password_confirmation">
                                 </div>
                             </div>
                              <button type="submit" class="btn1" style="color:white; ">Create Account</button>
@@ -97,11 +103,35 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Navbar from "@/components/navbar2.vue"
 export default {
   components : {
         Navbar
-    },  
+    }, 
+    data(){
+        return{
+            signUp : {
+                username : '',
+                email : '',
+                password: '',
+                password_confirmation: ''
+            }
+        }
+    },
+    methods : {
+        createAccount(){
+            axios.post('https://hamlet-hrm.herokuapp.com/api/auth/signup',this.signUp).then(res=> 
+            {
+                this.$router.push('/managerAccount')
+                console.log(res.data)
+            }) 
+             .catch((error) => {
+          this.loader = false;
+          console.log(error);
+        });
+        }      
+    } 
 }
 </script>>
 

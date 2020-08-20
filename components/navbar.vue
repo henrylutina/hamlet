@@ -8,7 +8,12 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+   
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+       <!-- <li v-if="$auth.loggedIn">
+      {{auth.user.email}}
+      <span class="ml-3">Log out</span>
+    </li> -->
       <li class="nav-item active">
         <nuxt-link to="/dashboard" class="nav-link" style="color: #0065FC" >Company Name</nuxt-link>
       </li>

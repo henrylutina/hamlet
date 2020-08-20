@@ -53,6 +53,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    '~/plugins/axios.js'
   ],
   /*
   ** Auto import components
@@ -68,6 +69,8 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
+  '@nuxtjs/auth',
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
     [
@@ -85,10 +88,37 @@ export default {
       }
 ]
   ],
+  axios : {
+    baseURL : 'https://hamlet-hrm.herokuapp.com/api',
+    // requestInterceptor: (config, { store }) => {
+    //    config.headers.common['Authorization'] = `Bearer ${store.getters['auth/token']}`;
+    // }
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+  },
+  auth: {
+    redirect: {
+      login : '/signin',
+      home : '/dashboard',
+      // logout : '/index'
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/auth/login', method: 'post', propertyName: 'token' },
+          logout: { url: '/api/auth/logout', method: 'post' },
+          user: false
+        },
+        // tokenRequired: true,
+        tokenType: 'Bearer',
+        // autoFetchUser : false
+        // globalToken: true,
+        autoFetchUser: false
+      }
+    }
   }
 }

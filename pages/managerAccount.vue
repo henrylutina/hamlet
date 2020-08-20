@@ -3,32 +3,32 @@
         <Navbar />
         <!-- Desktop view -->
         <div class="bg-big">
-                 <div class="grid desktopShow">
+                 <div class="grid desktopShow mt-5">
                      <div class="margin-form">
-                <div class="form-edit">
-                    <form action="">
+                <div class="form-edit mt-5">
+                    <form @submit.prevent="addManger">
                             <div class="first-form">
                                 <h1>Manager's Information</h1>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="First Name">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="First Name" v-model="managerInfo.first_name">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="Last Name">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="Last Name" v-model="managerInfo.last_name">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="Address">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="Address" v-model="managerInfo.address">
                                 </div>
                                  <div class="mt-4">
                                      <label for="">Upload Profile Picture</label> <br>
-                                     <input type="file" name="" class="file-border" id="" required placeholder="">
+                                     <input type="file" name="" class="file-border" id="" required placeholder="" accept=".png,.jpeg,.svg,.jpg" @change="upload()">
                                 </div>
                             </div>
-                            <button type="submit" class="btn1"><nuxt-link to="/companyDetails" style="color:white"> Submit</nuxt-link></button>
+                            <button type="submit" class="btn1">Submit</button>
                     </form>
 
                     </div>
                 </div>
-                <div class="wrapper">
+                <div class="wrapper mt-3">
                     <div class="box-down">
                         <div class="d-flex">
                             <div>
@@ -74,21 +74,21 @@
                 <!-- Mobile View -->
                 <div class="container wrapper mobileShow"> 
                     <div class="mobile-form">
-                        <form>
+                        <form @submit.prevent="addManger">
                              <div class="first-form">
                                 <h1>Manager's Information</h1>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="First Name">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="First Name" v-model="managerInfo.first_name">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="Last Name">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="Last Name" v-model="managerInfo.last_name">
                                 </div>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="Address">
+                                     <input type="text" name="" class="form-control" id="" required placeholder="Address" v-model="managerInfo.address">
                                 </div>
                                  <div class="mt-4">
                                      <label for="">Upload Profile Picture</label> <br>
-                                     <input type="file" name="" class="file-border" id="" required placeholder="">
+                                     <input type="file" name="" class="file-border" id="" required placeholder="" accept=".png,.jpeg,.svg,.jpg" @change="upload()">
                                 </div>
                             </div>
                              <button type="submit" class="btn1">Submit</button>
@@ -100,11 +100,43 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Navbar from "@/components/navbar2.vue"
 export default {
   components : {
         Navbar
     },  
+    data(){
+        return{
+            managerInfo : {
+                first_name : '',
+                last_name : '',
+                address : '',
+                profile_pic : {}
+            }
+        }
+    },
+    methods : {
+        upload(){
+            var input = event.target;
+            this.managerInfo.profile_pic = input.files[0];
+            console.log(this.managerInfo.profile_pic);
+        },
+        addManger(){
+            const formData = new FormData()
+            formData.append('first_name', this.managerInfo.first_name)
+            formData.append('last_name', this.managerInfo.last_name)
+            formData.append('address', this.managerInfo.address)
+            formData.append('profile_pic', this.managerInfo.profile_pic)
+            axios.post('https://hamlet-hrm.herokuapp.com/api/profile', formData, {headers : {'Authorization' : 'Bearer'}}).then((res)=> {
+                this.$router.push('/companyDetails')
+                console.log(res.data)
+            })
+            .catch((error) =>{
+                console.log(error)
+            })
+        }
+    }
 }
 </script>>
 
