@@ -7,7 +7,7 @@
         <div class="two1">
           <div class="two2">
             <h2>Welcome Back!</h2>
-            <!-- {{user}} -->{{ loggedInUser}}
+            <!-- {{user}}{{ loggedInUser}} -->
             <form @submit.prevent="loginUser">
               <input
                 type="text"

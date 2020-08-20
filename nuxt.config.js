@@ -125,7 +125,7 @@ export default {
         },
         // tokenRequired: true,
         tokenType: "bearer",
-        autoFetchUser : false,
+        // autoFetchUser : false,
         // globalToken: true,
       }
     }

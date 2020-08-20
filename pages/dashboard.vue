@@ -12,8 +12,8 @@
                   <h4 class="text-center mt-2">Start Innovation Hub</h4>
                </div>
                <div class="col-sm-7">
-                   <!-- <h2 v-if="isAuthenticated">Hello {{loggedInUser.username}}</h2> -->
-                   <h2>Hello Welcome</h2>
+                   <h2>Hello {{user}}</h2>
+                   <!-- <h2 v-else>Hello Welcome</h2> -->
                    <h6 class="mt-4">Welcome, Thanks for choosing us</h6>
                    <p class="mt-4">Task!</p>
                    <div class="border-admin">
@@ -67,10 +67,10 @@ export default {
           computed : {
         ...mapGetters(['isAuthenticated', 'loggedInUser'])
         },
-        // created(){
-        //     this.user=this.$auth.$storage.getLocalStorage('user').username
+        mounted(){
+            this.user=this.$auth.$storage.getLocalStorage('user').username
               
-        // },
+        },
         methods:
         {
              
