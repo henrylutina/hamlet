@@ -9,25 +9,21 @@
                 <h2>Contact Information</h2>
                 <hr>
                 <div class="grid">
-                    <p>Address</p>
-                    <input type="text" >
-                </div>
-                <div class="grid">
                     <p>Phone Number</p>
-                    <input type="text" >
+                    <input type="text" v-model="contactInfo.phone" required>
                 </div>
                 <div class="grid">
                     <p>Email</p>
-                    <input type="text" >
+                    <input type="text" v-model="contactInfo.email" required>
                 </div>
                 <div class="grid">
                     <p>Emergency Contacts</p>
-                    <input type="text" >
+                    <input type="text" v-model="contactInfo.emergency_contact" required>
                 </div>
                
                 <hr>
                 <div class="one4">
-                    <button class="btn1">Cancel</button><nuxt-link to="/jobdetails"><button class="btn2">Next</button></nuxt-link>
+                    <button class="btn1">Cancel</button><button class="btn2" @click="addContactInfo">Next</button>
                 </div>
                 
 
@@ -50,6 +46,20 @@ export default {
     components:{
         'app-sidebar':sidebar,
         'app-navbar':navbar,
+    },
+    data(){
+        return{
+            contactInfo:{
+                phone: " ",
+                email: " ",
+                emergency_contact: " "
+            }
+        }
+    },
+    methods:{
+        addContactInfo(){
+            console.log(this.contactInfo)
+        }
     }
     
 }
