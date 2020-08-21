@@ -14,20 +14,59 @@
                 </div>
                 <div class="grid">
                     <p>Department</p>
-                    <input type="text" class="one6"  v-model="jobDetails.department">
+                    <div class="input-group">
+                        <select class="custom-select one6" id="inputGroupSelect04" aria-label="Example select with button addon" v-model="jobDetails.department" required>
+                            <option value="Male" >Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="grid">
                     <p>Employment Type</p>
-                    <div>
-                        <input type="text" class="one6"  v-model="jobDetails.employment_type">
-                    </div>
+                    <div class="one7">
+                        <div class="custom-control custom-radio" @click="showradio1">
+                            <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" value="Full Time" v-model="jobDetails.employment_type">
+                            <label class="custom-control-label" for="customRadio1">Employee</label>
+                        </div>
+                        <div class="custom-control custom-radio" @click="showradio2">
+                            <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" value="Contingent Worker" v-model="jobDetails.employment_type">
+                            <label class="custom-control-label" for="customRadio2">Contingent Worker</label>
+                        </div>
+                    </div>              
                     
                 </div>
                 <div class="grid">
                     <p>Classification</p>
-                    <div>
-                        <input type="text" class="one6"  v-model="jobDetails.employment_classification">
+                     <div class="input-group" v-if="radio1">
+                         <label class="container">Full Time
+                            <input type="radio" checked="checked" name="radio" value="Full Time" v-model="jobDetails.employment_classification">
+                            <span class="checkmark"></span>
+                            </label>
+                            <label class="container">Part Time
+                            <input type="radio" name="radio" value="Part Time" v-model="jobDetails.employment_classification">
+                            <span class="checkmark"></span>
+                            </label>
+                            <label class="container">Intern
+                            <input type="radio" name="radio" value="Intern" v-model="jobDetails.employment_classification">
+                            <span class="checkmark"></span>
+                            </label>
+                        </div>
+                     <div class="input-group" v-if="radio2">
+                         <label class="container">Temporary Staff
+                            <input type="radio" checked="checked" name="radio" value="Temporary Staff" v-model="jobDetails.employment_classification">
+                            <span class="checkmark"></span>
+                            </label>
+                            <label class="container">Hired Contractor
+                            <input type="radio" name="radio" value="Hired Contractor" v-model="jobDetails.employment_classification">
+                            <span class="checkmark"></span>
+                            </label>
+                            <label class="container">Volunteer
+                            <input type="radio" name="radio" value="Volunteer" v-model="jobDetails.employment_classification">
+                            <span class="checkmark"></span>
+                            </label>
+                            
                     </div>
+                    
                 </div>
                 <div class="grid">
                     <p>Date Hired</p>
@@ -39,7 +78,7 @@
                 </div>
                 <div class="grid">
                     <p>Salary</p>
-                    <input type="text" class="one6" v-model="jobDetails.salary">
+                    <input  class="one6" type="number" v-model="jobDetails.salary">
                 </div>
                 <div class="grid">
                     <p>Description</p>
@@ -56,7 +95,7 @@
                 
                 <hr>
                 <div class="one4">
-                    <nuxt-link to="/employmenttype"><button class="btn1">Back</button></nuxt-link><button type="submit" class="btn2">Submit</button>
+                    <nuxt-link to="/contact-info"><button class="btn1">Back</button></nuxt-link><button type="submit" class="btn2">Submit</button>
                 </div>
                 </form>
 
@@ -255,7 +294,7 @@ export default {
         background: white;
     }
     .one7{
-        margin-left: 27px;
+        margin-left: 1.5rem;
     }
     
     

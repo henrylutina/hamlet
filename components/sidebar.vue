@@ -4,9 +4,9 @@
             <img src="~/assets/Group 58.png" alt="">
             
             <h5>HIRING CHECKLIST</h5>
-            <p :class="currentPage.includes('/contactinfo') ? activeClass : ''"><nuxt-link to="/contactinfo" style="text-decoration:none">Employee Details</nuxt-link></p>
-            <p :class="currentPage.includes('/employementtype') ? activeClass : ''"><nuxt-link to="/employmenttype" style="text-decoration:none">Contact Information</nuxt-link></p>
-            <p :class="currentPage.includes('/jobdetails') ? activeClass : ''"><nuxt-link to="/jobdetails" style="text-decoration:none">Job Details</nuxt-link></p>
+            <p :class="currentPage.includes('/employee-details') ? activeClass : ''"><nuxt-link to="/employee-details" style="text-decoration:none">Employee Details</nuxt-link></p>
+            <p :class="currentPage.includes('/contact-info') ? activeClass : ''"><nuxt-link to="/contact-info" style="text-decoration:none">Contact Information</nuxt-link></p>
+            <p :class="currentPage.includes('/job-details') ? activeClass : ''"><nuxt-link to="/job-details" style="text-decoration:none">Job Details</nuxt-link></p>
         </div>
     </div>
 </template>

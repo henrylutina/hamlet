@@ -113,8 +113,7 @@ export default {
                 first_name : '',
                 last_name : '',
                 address : '',
-               
-                // profile_pic : {}
+                profile_pic : {}
             },
              user : {}
         }
@@ -133,9 +132,9 @@ export default {
             formData.append('first_name', this.managerInfo.first_name)
             formData.append('last_name', this.managerInfo.last_name)
             formData.append('address', this.managerInfo.address)
-            // formData.append('profile_pic', this.managerInfo.profile_pic)
+            formData.append('profile_pic', this.managerInfo.profile_pic)
              axios.post('https://hamlet-hrm.herokuapp.com/api/profile', formData, {headers : {'Authorization' : `Bearer ${this.user}`}}).then((res)=> {
-                this.$router.push('/companyDetails')
+                this.$router.push('/company-details')
                 console.log(res.data)
             })
             .catch((error) =>{

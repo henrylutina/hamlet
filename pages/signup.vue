@@ -137,7 +137,7 @@ export default {
         }) 
          let user = response.data.user
          this.$auth.$storage.setLocalStorage('user', user);
-         this.$router.push("/managerAccount");
+         this.$router.push("/manager-account");
       }
      
       catch (e) {

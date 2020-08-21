@@ -14,9 +14,7 @@
       {{auth.user.email}}
       <span class="ml-3">Log out</span>
     </li> -->
-      <li class="nav-item active">
-        <nuxt-link to="/dashboard" class="nav-link" style="color: #0065FC" >Company Name</nuxt-link>
-      </li>
+    
       <li class="nav-item active">
         <button @click="logOut" class="btn1">Log Out</button>
       </li>

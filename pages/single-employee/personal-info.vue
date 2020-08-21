@@ -3,58 +3,62 @@
         <app-navbar/>
         <div class="row one5">
             <app-sidebar/>
+            
             <div  class="one2 ">
+                <div class="one6">
+                <div class="one7">
+                    <h2>Name</h2>
+                    <p>Job Title (employmenttype)  Started on (Date hired)</p>
+                </div>
+                <div class="one8">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Actions
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Edit profile</a>
+                            <a class="dropdown-item" href="#">Terminate</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
                  <div >
                 <div class="one3">
-                <h2>Employee Details</h2>
+                <h3>Personal Info</h3>
                 <hr>
-                <form @submit.prevent="addEmployeeInfo">
                 <div class="grid">
-
-                    <p>First Name</p>
-                    <input type="text" class="one6" v-model="employeeDetails.first_name" required>
+                    <p> Name</p>
+                    <p></p>
                 </div>
                 <div class="grid">
-                    <p>Other Names</p>
-                    <input type="text" class="one6" v-model="employeeDetails.other_names"  required>
-                </div>
-                <div class="grid">
-                    <p>Gender</p>
-                    <input type="text" class="one6" v-model="employeeDetails.gender"  required>
+                    <p> Gender</p>
+                    <p></p>
                 </div>
                 <div class="grid">
                     <p>Date of Birth</p>
-                    <input type="date" name="" id="" class="one6"  v-model="employeeDetails.dob" required>
+                    <p></p>
+                </div>
+                <div class="grid">
+                    <p>Phone</p>
+                    <p></p>
+                </div>
+                <div class="grid">
+                    <p>Email</p>
+                   <p></p>
                 </div>
                 <div class="grid">
                     <p>Address</p>
-                    <input type="text" class="one6" v-model="employeeDetails.address" required>
+                    <p></p>
                 </div>
                 <div class="grid">
-                    <p>City</p>
-                    <input type="text" class="one6"  v-model="employeeDetails.city" required>
-                </div>
-                <div class="grid">
-                    <p>Age</p>
-                    <input type="text" class="one6" v-model="employeeDetails.age" required >
-                </div>
-                <div class="grid">
-                    <p>Qualifications</p>
-                    <input type="text" class="one6"  v-model="employeeDetails.qualification" required>
-                </div>
-                <!-- <div class="grid">
-                    <p>Profile Picture</p>
-                    <input type="file" name="" class="file-border img-fluid"  id="" placeholder="">
-                </div> -->
-                
-                <hr>
-                <div class="one4">
-                    <button class="btn1" >Cancel</button> <button type="submit" class="btn2">Next</button>
+                    <p>Emergency Contact</p>
+                    <p></p>
                 </div>
                 
-                </form>
+                <hr>             
+
             </div>
-            </div>
+                </div>
            
         </div>
         </div>
@@ -66,36 +70,23 @@
 </template>
 
 <script>
-import sidebar from '~/components/sidebar.vue';
-import navbar from '~/components/navbar.vue';
+import sidebar from '~/components/sidebar2.vue';
+import navbar from '~/components/navbar4.vue';
 export default {
     components:{
         'app-sidebar':sidebar,
         'app-navbar':navbar,
-    }
-    ,
-    data(){
-        return{
-            employeeDetails:{
-                first_name: " ",
-                other_names: " ",
-                gender: " ",
-                dob: " ",
-                address: " ",
-                city: " ",
-                age: " ",
-                qualification: " "
-            }
-        }
     },
     methods:{
-        addEmployeeInfo(){
-            this.$axios.post("https://hamlet-hrm.herokuapp.com/api/employee", this.employeeDetails).then((res)=>{
-                console.log(res.data);
-                this.$router.push("/employmenttype")
-
-            });
+        getEmployee(){
+            this.$axios.get(`https://hamlet-hrm.herokuapp.com/api/employees/${this.$route.params.id}`).then(res => {
+          console.log(res.data);
+          
+        });
         }
+    },
+    created(){
+        this.getEmployee()
     }
     
 }
@@ -124,7 +115,7 @@ export default {
     .grid p{
         color: #081D29;
     }
-    .grid .one6{
+    .grid input{
         width:100%;
         border: 0.5px solid #081D29 !important;
         height: 30px;
@@ -141,7 +132,7 @@ export default {
     hr{
         margin-bottom: 30px;
     }
-    .one3 h2{
+    .one3 h3{
         margin-bottom: 30px;
         color: #0065FC;
     }
@@ -169,19 +160,25 @@ export default {
         margin-top: 3.5rem;
         height: 130vh;
     }
-    select{
-        width:100%;
-        border: 0.5px solid #081D29 !important;
-        height: 32px;
-        padding: 5px;
+    .one6{
+        padding-left: 4rem;
+        padding-right: 4rem;
+        padding-top: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 3rem;
     }
-    .file-border{
-    padding: 1rem 1rem 1rem 1rem !important; 
-    border: 0.5px solid #081D29 !important; 
-    outline: none !important; 
-    border-radius: 5px;
-
-}
+    .one8{
+        text-align: right;
+    }
+    .one8 button{
+        padding:5px 10px;
+    }
+    .one7 h2{
+        color: #0065FC;
+         margin-bottom: 10px;
+    }
+    
 
     @media (max-width: 567px) {
         .one2{
@@ -214,14 +211,23 @@ export default {
         .btn1{
         margin-bottom: 30px;
     }
+    .one6{
+        padding-left: 30px;
+        padding-right: 30px;
+    }
         
     }
+    
 
     @media(min-width: 568px) and (max-width:768px) {
         .one2{
         width: 75%;
     }
         .one3{
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .one6{
         padding-left: 30px;
         padding-right: 30px;
     }
