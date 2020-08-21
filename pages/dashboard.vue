@@ -9,7 +9,8 @@
                   <div class="box-logo">
                       <img :src="this.company.company_logo" alt="" class="w-100">
                   </div>
-                  <h4 class="text-center mt-2">{{this.company.company_name}}</h4>
+                  <span v-if="loader" class="text-center"><app-loader /></span>
+                  <h4 v-else class="text-center mt-2">{{this.company.company_name}}</h4>
                </div>
                <div class="col-sm-7">
                    <h2>Hello {{user}}</h2>
@@ -53,16 +54,19 @@
 
 <script>
 import axios from 'axios'
-import navbar from '~/components/navbar.vue';
+import navbar from '~/components/navbar.vue'
+import newLoader from "~/components/loader.vue"
 import { mapGetters } from 'vuex'
 export default {
     components:{
         'app-navbar':navbar,
+        'app-loader':newLoader,
         },
         data(){
             return{
                 user:{},
-                company : {}
+                company : {},
+                loader : true
             }
         },
           computed : {
@@ -104,7 +108,7 @@ export default {
 }
 .box-logo{
     /* padding: 4.5rem; */
-    
+
     border: 1px solid #64a2ff;
     color: #000000;
     background-color: rgb(255,255,255);

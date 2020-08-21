@@ -10,17 +10,23 @@
             <!-- {{user}}{{ loggedInUser}} -->
             <form @submit.prevent="loginUser">
               <input
-                type="text"
+                type="email"
                 placeholder="Email"
                 required
                 v-model="email"
               /><br />
               <input
-                type="text"
+                type="password"
                 placeholder="Password"
                 v-model="password"
+                required
               /><br />
-              <button type="submit" class="btn1">Login</button>
+              <button type="submit" class="btn1"> <span v-if="loader">Login </span> 
+                <div v-else>
+                 <app-loader />
+                </div>
+               
+                </button>
             </form>
             <hr />
             <br />
@@ -40,17 +46,20 @@
 
 <script>
 import Navbar from "~/components/navbar2.vue";
+import newLoader from "~/components/loader.vue";
+import swal from 'sweetalert';
 import { mapGetters } from 'vuex'
 export default {
   components: {
-    "app-navbar": Navbar
+    "app-navbar": Navbar,
+    "app-loader" : newLoader
   },
   data() {
     return {
       user:{},
       email: "",
       password: '',
-      error: null
+      loader : true
     };
   },
   computed : {
@@ -63,6 +72,7 @@ export default {
   // },
   methods: {
     async loginUser() {
+      this.loader = false
       try {
         let response = await this.$auth.loginWith("local", {
           data: {
@@ -73,6 +83,7 @@ export default {
         });
         let user = response.data.user
          this.$auth.$storage.setLocalStorage('user', user);
+         this.loader = false
         // localStorage.setItem("jwt", token);
         console.log(response)
           this.$router.push("/dashboard");
@@ -80,6 +91,13 @@ export default {
       } catch (e) {
         console.log(e);
         this.error = e.res;
+        swal({
+        title: "Something went wrong!",
+        text: "username or password error!",
+        icon: "error",
+        button: false,
+      });
+      this.loader = true
       }
     }
   }
@@ -91,6 +109,9 @@ export default {
       background:linear-gradient(to right, rgba(8, 29, 41, 0.3),
        rgba(8, 29, 41, 0.7)), url('/img/nesa.jpg') no-repeat center center/cover;
        
+    }
+    input{
+      outline: #0065FC;
     }
     .grid{
       display: grid;
@@ -128,6 +149,7 @@ export default {
       padding: 7px 20px;
       color: white;
       width: 100%;
+      outline : none;
       margin-bottom: 10px;
     }
     .btn2{

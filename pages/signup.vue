@@ -9,18 +9,22 @@
                     <form @submit.prevent="createAccount">
                             <div class="active first-form" id="hide-form">
                                 <h1>Set Up An Account</h1>
+                                <span class="mt-4 text-center" v-if="loader"><app-loader /></span>
                                 <div class="mt-4">
                                      <input type="text" name="" class="form-control" id="" required placeholder="Username" v-model="signUp.username">
+                                     
                                 </div>
                                 <div class="mt-4">
-                                     <input type="email" name="" class="form-control" id="" required placeholder="Email" v-model="signUp.email">
+                                     <input type="email" name="" v-validate="'required|email'" class="form-control" id="" required placeholder="Email" v-model="signUp.email">
+                                      
                                 </div>
                                 <div class="mt-4">
                                      <input type="password" name="" class="form-control" id="" required placeholder="Password" v-model="signUp.password">
-                                     <small id="emailHelp" class="form-text text-muted">Password must be atleast 8 characters long</small>
+                                     <small id="emailHelp" class="form-text text-muted" style="color : #0065FC">(Password must be atleast 8 characters long)</small>
                                 </div>
                                 <div class="mt-4">
                                      <input type="password" name="" class="form-control" id="" required placeholder="Password Confirmation" v-model="signUp.password_confirmation">
+                                       <small id="emailHelp" class="form-text text-muted" style="color : #0065FC">(Re-enter password)</small>
                                 </div>
                             </div>
                             <button type="submit" class="btn1">Create Account</button>
@@ -105,10 +109,13 @@
 
 <script>
 // import axios from 'axios'
+// import VeeValidate from 'vee-validate';
 import Navbar from "@/components/navbar2.vue"
+import newLoader from "~/components/loader-1.vue";
 export default {
   components : {
-        Navbar
+        Navbar,
+        'app-loader' : newLoader
     }, 
     data(){
         return{
@@ -117,11 +124,13 @@ export default {
                 email : '',
                 password: '',
                 password_confirmation: ''
-            }
+            },
+            loader : false
         }
     },
     methods : {
         async createAccount(){
+            this.loader = true
              try {
             let response = await this.$axios.post('https://hamlet-hrm.herokuapp.com/api/auth/signup',this.signUp)
             let token = response.data.token
@@ -143,6 +152,16 @@ export default {
       catch (e) {
         console.log(e);
         this.error = e.res;
+        // if(e.res === 422) {
+        //     console.log('check password')
+        // }
+        //  swal({
+        //     title: "Something went wrong!",
+        //     text: "username or password error!",
+        //     icon: "error",
+        //     button: false,
+        // });
+        this.loader = false
       }
         },
         // createAccount(){
@@ -186,7 +205,7 @@ export default {
     padding: 1rem;
 }
 .first-form{
-    margin-top: 10rem;
+    margin-top: 6rem;
 }
 .second-form{
     margin-top: 1rem;
