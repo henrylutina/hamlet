@@ -7,9 +7,9 @@
            <div class="row  bg-color">
                <div class="col-sm-3">
                   <div class="box-logo">
-                      HR Department
+                      <img :src="this.company.company_logo" alt="" class="w-100">
                   </div>
-                  <h4 class="text-center mt-2">Start Innovation Hub</h4>
+                  <h4 class="text-center mt-2">{{this.company.company_name}}</h4>
                </div>
                <div class="col-sm-7">
                    <h2>Hello {{user}}</h2>
@@ -61,7 +61,8 @@ export default {
         },
         data(){
             return{
-                user:{}
+                user:{},
+                company : {}
             }
         },
           computed : {
@@ -69,11 +70,22 @@ export default {
         },
         mounted(){
             this.user=this.$auth.$storage.getLocalStorage('user').username
-              
+        
         },
         methods:
         {
-             
+            getCompany() {
+            this.$axios
+            .get("https://hamlet-hrm.herokuapp.com/api/auth/admin")
+            .then(res => {
+            console.log(res.data.company);
+            this.company = res.data.company;
+            this.loader = false
+            });
+        } 
+        },
+        created(){
+            this.getCompany()
         }
 }
 </script>
@@ -91,7 +103,8 @@ export default {
     padding: 10rem 2rem 5rem 2rem;
 }
 .box-logo{
-    padding: 4.5rem;
+    /* padding: 4.5rem; */
+    
     border: 1px solid #64a2ff;
     color: #000000;
     background-color: rgb(255,255,255);

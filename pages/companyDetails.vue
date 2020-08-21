@@ -207,7 +207,7 @@ export default {
                 zip_code : '',
                 company_website: '',
                 services : '',
-                profile_pic: {}
+                profile_pic: ''
             },
             user : {}
 
@@ -266,9 +266,15 @@ export default {
             formData.append('state',this.companyInfo.state)
             formData.append('zip_code',this.companyInfo.zip_code)
             formData.append('services',this.companyInfo.services)
-            formData.append('profile_pic',this.companyInfo.profile_pic)
+            formData.append('company_logo',this.companyInfo.profile_pic)
             formData.append('company_phone',this.companyInfo.company_phone)
-            axios.post('https://hamlet-hrm.herokuapp.com/api/company', formData, { headers : {'Authorization' : `Bearer ${this.user}`}})
+            axios.post('https://hamlet-hrm.herokuapp.com/api/company', formData, { headers : 
+                  { 
+                     'Content-Type':'multipart/form-data',
+                     'Authorization' : `Bearer ${this.user}`
+                 
+                 } 
+                })
             .then((res) =>{
                  this.$router.push('/dashboard')
                 console.log(res.data)

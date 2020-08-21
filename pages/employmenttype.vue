@@ -22,7 +22,7 @@
                     <input type="text" v-model="contactInfo.employee_id" required>
                 </div>
                 <div class="grid">
-                    <p>Emergency Contacts</p>
+                    <p>Emergency Contact</p>
                     <input type="text" v-model="contactInfo.emergency_contact" required>
                 </div>
                
