@@ -14,11 +14,12 @@
       {{auth.user.email}}
       <span class="ml-3">Log out</span>
     </li> -->
-      <li class="nav-item active">
+      <!-- <li class="nav-item active">
         <nuxt-link to="/dashboard" class="nav-link" style="color: #0065FC" >Company Name</nuxt-link>
-      </li>
+      </li> -->
       <li class="nav-item active">
-        <button @click="logOut" class="btn1">Log Out</button>
+        <button v-if="loader" @click="logOut" class="btn1">Log Out</button>
+         <span v-else><app-loader /></span>
       </li>
       
     </ul>
@@ -69,12 +70,17 @@
 </template>
 <script>
 import axios from 'axios'
+import newLoader from "~/components/loader.vue";
 export default {
+  components : {
+    'app-loader' : newLoader,
+  },
   data(){
     return{
      styleObject : {
        width : '0px'
-     }
+     },
+     loader : true
     }
   },
   methods : {
@@ -86,9 +92,9 @@ export default {
       // console.log('clicked')
     },
     async logOut(){
+      this.loader = false
      await this.$auth.logout();
      localStorage.removeItem("jwt");
-    
     this.$router.push('/signin')
         },
   }
