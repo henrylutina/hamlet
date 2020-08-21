@@ -11,24 +11,20 @@
                 <form @submit.prevent="addContactInfo">
                 <div class="grid">
                     <p>Phone Number</p>
-                    <input type="text" v-model="contactInfo.phone" required>
+                    <input type="number" v-model="contactInfo.phone" required>
                 </div>
                 <div class="grid">
                     <p>Email</p>
                     <input type="text" v-model="contactInfo.email" required>
                 </div>
                 <div class="grid">
-                    <p>Employee id</p>
-                    <input type="text" v-model="contactInfo.employee_id" required>
-                </div>
-                <div class="grid">
                     <p>Emergency Contact</p>
-                    <input type="text" v-model="contactInfo.emergency_contact" required>
+                    <input type="number" v-model="contactInfo.emergency_contact" required>
                 </div>
                
                 <hr>
                 <div class="one4">
-                    <button class="btn1">Cancel</button><button type="submit" class="btn2">Next</button>
+                    <nuxt-link to="/employee-details"><button class="btn1">Back</button></nuxt-link><button type="submit" class="btn2">Next</button>
                 </div>
                 </form>
 
@@ -66,7 +62,7 @@ export default {
         addContactInfo(){
             this.$axios.post("https://hamlet-hrm.herokuapp.com/api/contactinfo", this.contactInfo).then((res)=>{
                 console.log(res.data);
-                this.$router.push("/jobdetails")
+                this.$router.push("/job-details")
 
             });
         }

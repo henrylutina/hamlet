@@ -48,22 +48,12 @@
                 </div>
               </div>
 
-              <h5 class="mt-5">Role</h5>
+              <h5 class="mt-5">Job Title</h5>
               <select class="custom-select increase_height" name>
                 <option value selected disabled>Select Role</option>
                 <option value="OND">Senior Back-end Dev</option>
                 <option value="HND">Front-end Inter</option>
               </select>
-
-              <h5 class="mt-3">Location</h5>
-              <div class="d-flex">
-                <div>
-                  <input type="checkbox" name="" class="" id="" />
-                </div>
-                <div class="l-left-1">
-                  <label class="check-1">Nigeria</label>
-                </div>
-              </div>
 
               <h5 class="mt-5">Department</h5>
               <select class="custom-select increase_height" name>
@@ -81,15 +71,16 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Full Name</th>
-                    <th scope="col">Job Type</th>
+                    <th scope="col">Employment Type</th>
                     <th scope="col">Job Title</th>
                     <th scope="col">Department</th>
                     <th scope="col">Location</th>
-                    <th scope="col">Start Date</th>
+                    <th scope="col">Date Hired</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr v-for="(employee, index) in employees" :key="index">
+                    <nuxt-link :to="`/single-employee/personal-info/${employee.user_id}`">
                     <th scope="row">{{ index + 1 }}</th>
                     <td>
                       {{ employee.first_name + " " + employee.other_names }}
@@ -101,7 +92,7 @@
                     <td>{{ employee.job_details.department }}</td>
                     <td>{{ employee.job_details.work_location }}</td>
                     <td>{{ employee.job_details.date_hired }}</td>
-                  </tr>
+                 </nuxt-link> </tr>
                 </tbody>
               </table>
               <div v-if="loader" class="text-center">
@@ -140,6 +131,9 @@ export default {
           this.employees = res.data.employees;
           this.loader = false
         });
+    },
+    viewEmployee(){
+      this.$router.push("/single-employee/personal-info")
     }
   },
   created() {

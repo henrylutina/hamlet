@@ -23,7 +23,7 @@
                    <!-- Add user / list of users -->
                    <div class="d-flex">
                        <div>
-                           <nuxt-link to="/contactinfo"><div class="circle-name-1"><i class="fa fa-plus"></i></div></nuxt-link> 
+                           <nuxt-link to="/employee-details"><div class="circle-name-1"><i class="fa fa-plus"></i></div></nuxt-link> 
                        </div>
                    </div>
 
@@ -31,11 +31,11 @@
                         <p class="mt-4">Apps</p>
                        <div class="row">
                            <div class="col-sm-4">
-                               <nuxt-link to="/company/companyoverview"><div class="box-icon"><i class="fa fa-folder"></i></div></nuxt-link> 
+                               <nuxt-link to="/company/company-overview"><div class="box-icon"><i class="fa fa-users"></i></div></nuxt-link> 
                                <p class="mt-2 text-center">Company Profile</p>
                            </div>
                            <div class="col-sm-4">
-                               <nuxt-link to="/allEmployees"><div class="box-icon"><i class="fa fa-address-card"></i></div></nuxt-link> 
+                               <nuxt-link to="/all-employees"><div class="box-icon"><i class="fa fa-times"></i></div></nuxt-link> 
                                 <p class="mt-2 text-center">Directory</p>
                            </div>
                            <!-- <div class="col-sm-4">
