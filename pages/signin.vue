@@ -48,8 +48,8 @@ export default {
   data() {
     return {
       user:{},
-      email: "tim1@gmail.com",
-      password: "12345678",
+      email: "",
+      password: '',
       error: null
     };
   },

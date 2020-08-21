@@ -49,10 +49,10 @@
                     <p>Job Category</p>
                     <input type="text" class="one6" v-model="jobDetails.job_category">
                 </div>
-                <div class="grid">
-                    <p>Employee Id</p>
-                    <input type="text" class="one6" v-model="jobDetails.employee_id">
-                </div>
+                <!-- <div class="grid"> -->
+                    <!-- <p>Employee Id</p>
+                    <input type="text" class="one6" v-model="jobDetails.employee_id"> -->
+                <!-- </div> -->
                 
                 <hr>
                 <div class="one4">
@@ -91,8 +91,7 @@ export default {
                 department: " ",
                 job_category: " ",
                 work_location: " ",
-                employment_classification: " ",
-                employee_id: ""
+                employment_classification: " "
 
             }
         }
