@@ -6,13 +6,13 @@
         <div class="col-sm-3 mt-3">
           <h1>Overview</h1>
         </div>
-        <!-- <div class="col-sm-9 pt-2">
+        <div class="col-sm-9 pt-2">
                     <div class="float-right">
-                         <div class="btn btn-secondary">Update employees</div>
-                        <div class="btn btn-secondary l-left">Hire</div>
+                         <!-- <div class="btn btn-secondary">Update employees</div> -->
+                        <nuxt-link to="/dashboard"><div class="btn1">Back</div></nuxt-link>
                     </div>
                   
-                </div> -->
+                </div>
       </div>
       <div class="card">
         <div class="card-body">
@@ -157,6 +157,7 @@ export default {
 }
 .borderShow {
   border: 0.1px thick #000000 !important;
+  margin-top: 2rem;
 }
 .l-left-1 {
   margin-left: 2rem !important;
@@ -172,4 +173,24 @@ input[type="checkbox"] {
   /* border: 1px solid #000000 !important; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
 }
+.btn1{
+        background: white;
+        color:#0065FC ;
+        border-radius: 5px;
+        padding: 5px 20px;
+        border: 1px solid #0065FC;
+        outline: none !important;
+        margin-top: 1rem;
+    }
+    .btn1:hover{
+        background: #0065FC;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 20px;
+        border: 1px solid #0065FC;
+        
+    }
+    .card{
+      background: #F9F9F9;
+    }
 </style>

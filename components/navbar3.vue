@@ -35,8 +35,8 @@
            <div class="one1">
             <img src="~/assets/Group 58.png" alt="" style="margin-bottom:2rem">
             <p><nuxt-link to="/company/companyoverview" style="text-decoration:none; color : #FFFFFF; margin-top:2rem !important"><h5 style="margin-bottom:1rem">Company Overview</h5> </nuxt-link></p>
-            <p><nuxt-link to="/company/taxinfo" style="text-decoration:none;  color : #FFFFFF"><h5 style="margin-bottom:1rem">Tax Info</h5></nuxt-link></p>
-            <p><nuxt-link to="/company/locations" style="text-decoration:none;  color : #FFFFFF"><h5 style="margin-bottom:1rem">Locations</h5></nuxt-link></p>
+            <!-- <p><nuxt-link to="/company/taxinfo" style="text-decoration:none;  color : #FFFFFF"><h5 style="margin-bottom:1rem">Tax Info</h5></nuxt-link></p>
+            <p><nuxt-link to="/company/locations" style="text-decoration:none;  color : #FFFFFF"><h5 style="margin-bottom:1rem">Locations</h5></nuxt-link></p> -->
         </div>
          
           </div>

@@ -7,43 +7,50 @@
             <div  class="one2 ">
                 <div class="one6">
                 <div class="one7">
-                    <h2>Company Name</h2>
-                    <p>Total Headcount |  Date Established</p>
+                    <h2>{{this.company.company_name}}</h2>
+                    <p>Total Headcount: {{this.company.no_of_employees}} |  Services: {{this.company.services}}</p>
                 </div>
-                
+                <div v-if="loader" class="text-center">
+                  <span disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading...
+                </span>
+              </div>
             </div>
                  <div >
                 <div class="one3">
                 <h3>General Information</h3>
                 <hr>
                 <div class="grid">
-                    <p> Legal Name</p>
-                    <p></p>
+                    <p> Company Name</p>
+                    <p>{{this.company.company_name}}</p>
                 </div>
                 <div class="grid">
                     <p> Company Website</p>
-                    <p></p>
-                </div>
-                <div class="grid">
-                    <p>Primary Admin</p>
-                    <p></p>
+                    <p>{{this.company.company_website}}</p>
                 </div>
                 <div class="grid">
                     <p>Email</p>
-                    <p></p>
+                    <p>{{this.company.company_email}}</p>
                 </div>
                 <div class="grid">
                     <p>Phone Number</p>
-                   <p></p>
+                   <p>{{this.company.company_phone}}</p>
                 </div>
                 <div class="grid">
                     <p>Address</p>
-                    <p></p>
+                    <p>{{this.company.company_address}}</p>
+                </div>
+                <div class="grid">
+                    <p>City</p>
+                    <p>{{this.company.city}}</p>
                 </div>
                
                 
                 <hr>             
-
+                <div class="one9">
+                   <nuxt-link to="/dashboard"><button class="btn1">Back</button></nuxt-link>
+               </div>
             </div>
                 </div>
            
@@ -63,6 +70,26 @@ export default {
     components:{
         'app-sidebar':sidebar,
         'app-navbar':navbar,
+    },
+    data() {
+    return {
+      company: {},
+      loader : true
+    };
+    },
+    methods: {
+        getCompany() {
+        this.$axios
+            .get("https://hamlet-hrm.herokuapp.com/api/auth/admin")
+            .then(res => {
+            console.log(res.data.company);
+            this.company = res.data.company;
+            this.loader = false
+            });
+        }
+    },
+    created() {
+        this.getCompany();
     }
     
 }
@@ -151,6 +178,22 @@ export default {
     .one7 h2{
         margin-bottom: 10px;
         color: #0065FC;
+    }
+    .btn1{
+        background: white;
+        color:#0065FC ;
+        border-radius: 5px;
+        padding: 5px 20px;
+        border: 1px solid #0065FC;
+        outline: none !important;
+    }
+    .btn1:hover{
+        background: #0065FC;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 20px;
+        border: 1px solid #0065FC;
+        
     }
     
 

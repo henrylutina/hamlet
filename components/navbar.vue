@@ -18,7 +18,7 @@
         <nuxt-link to="/dashboard" class="nav-link" style="color: #0065FC" >Company Name</nuxt-link>
       </li>
       <li class="nav-item active">
-        <button @click="logOut">Log Out</button>
+        <button @click="logOut" class="btn1">Log Out</button>
       </li>
       
     </ul>
