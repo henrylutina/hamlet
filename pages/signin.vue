@@ -9,9 +9,9 @@
             <!-- {{user}}{{ loggedInUser}} -->
 
             <form @submit.prevent="loginUser">
-              <input type="email" placeholder="Email" required />
+              <input type="email" placeholder="Email" required v-model="email" />
               <br />
-              <input type="password" placeholder="Password" required />
+              <input type="password" placeholder="Password" required  v-model="password"/>
 
               <br />
               <button type="submit" class="btn1">
@@ -39,7 +39,7 @@
 
 <script>
 import Navbar from "~/components/navbar2.vue";
-import { ValidationObserver, ValidationProvider } from "vee-validate";
+
 import newLoader from "~/components/loader.vue";
 import swal from "sweetalert";
 import { mapGetters } from "vuex";
@@ -47,8 +47,7 @@ export default {
   components: {
     "app-navbar": Navbar,
     "app-loader": newLoader,
-    ValidationObserver: ValidationObserver,
-    ValidationProvider: ValidationProvider
+    
   },
   data() {
     return {

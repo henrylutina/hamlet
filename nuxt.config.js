@@ -122,9 +122,7 @@ export default {
   auth: {
     redirect: {
       login: "/signin",
-      logout: "/",
-      callback: "signin",
-      home: false
+      logout: "/singin",
     },
     strategies: {
       local: {

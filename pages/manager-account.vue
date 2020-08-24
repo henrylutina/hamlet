@@ -19,12 +19,17 @@
                                 <div class="mt-4">
                                      <input type="text" name="" class="form-control" id="" required placeholder="Address" v-model="managerInfo.address">
                                 </div>
-                                 <!-- <div class="mt-4">
+                                 <div class="mt-4">
                                      <label for="">Upload Profile Picture</label> <br>
                                      <input type="file" name="" class="file-border" id="" required placeholder="" accept=".png,.jpeg,.svg,.jpg" @change="upload()">
-                                </div> -->
+                                </div>
                             </div>
-                            <button type="submit" class="btn1">Submit</button>
+                            <button type="submit" class="btn1">
+                                 <span v-if="loader">Submit</span>
+                                <div v-else>
+                                <app-loader />
+                                </div>
+                            </button>
                     </form>
 
                     </div>
@@ -102,11 +107,14 @@
 
 <script>
 import axios from 'axios'
+import swal from 'sweetalert'
+import newLoader from "~/components/loader.vue";
 import Navbar from "@/components/navbar2.vue"
 export default {
-     middleware : ['auth'],
+    //  middleware : ['auth'],
   components : {
-        Navbar
+        Navbar,
+         "app-loader": newLoader,
     },  
     data(){
         return{
@@ -116,7 +124,8 @@ export default {
                 address : '',
                 profile_pic : {}
             },
-             user : {}
+             user : {},
+             loader : true
         }
     },
     created(){
@@ -129,17 +138,32 @@ export default {
             console.log(this.managerInfo.profile_pic);
         },
         addManger(){
+            this.loader = false
              const formData = new FormData()
             formData.append('first_name', this.managerInfo.first_name)
             formData.append('last_name', this.managerInfo.last_name)
             formData.append('address', this.managerInfo.address)
             formData.append('profile_pic', this.managerInfo.profile_pic)
              axios.post('https://hamlet-hrm.herokuapp.com/api/profile', formData, {headers : {'Authorization' : `Bearer ${this.user}`}}).then((res)=> {
+                  swal({
+                        title: "Success",
+                        text: "Manager added Successfully!",
+                        icon: "success",
+                        button: false
+                        });
                 this.$router.push('/company-details')
+                 this.loader = false
                 console.log(res.data)
             })
             .catch((error) =>{
                 console.log(error)
+                 swal({
+                    title: "Something went wrong!",
+                    text: "Unautorized User, Please register and Try again!",
+                    icon: "error",
+                    button: false
+                    });
+                this.loader = true
             })
         },
         

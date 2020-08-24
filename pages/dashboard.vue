@@ -11,10 +11,12 @@
             <span v-if="loader" class="text-center">
               <app-loader />
             </span>
-            <h4 v-else class="text-center mt-2">{{this.company.company_name}}</h4>
+            <h4 v-else class="text-center mt-2">
+              {{ this.company.company_name }}
+            </h4>
           </div>
           <div class="col-sm-7">
-            <h2>Hello {{user}}</h2>
+            <h2>Hello {{ user }}</h2>
             <!-- <h2 v-else>Hello Welcome</h2> -->
             <h6 class="mt-4">Welcome, Thanks for choosing us</h6>
             <p class="mt-4">Task!</p>
@@ -71,13 +73,13 @@ export default {
   //   middleware: ["authenticated"],
   components: {
     "app-navbar": navbar,
-    "app-loader": newLoader,
+    "app-loader": newLoader
   },
   data() {
     return {
       user: {},
       company: {},
-      loader: true,
+      loader: true
     };
   },
   //   computed: {
@@ -91,16 +93,16 @@ export default {
     getCompany() {
       this.$axios
         .get("https://hamlet-hrm.herokuapp.com/api/auth/admin")
-        .then((res) => {
+        .then(res => {
           console.log(res.data.company);
           this.company = res.data.company;
           this.loader = false;
         });
-    },
+    }
   },
   created() {
     // this.getCompany();
-  },
+  }
 };
 </script>
 
