@@ -113,6 +113,7 @@
 <script>
 import navbar from "~/components/navbar.vue";
 export default {
+  //  middleware : ['auth'],
   components: {
     navbar
   },

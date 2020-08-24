@@ -104,6 +104,7 @@
 import axios from 'axios'
 import Navbar from "@/components/navbar2.vue"
 export default {
+     middleware : ['auth'],
   components : {
         Navbar
     },  

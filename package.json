@@ -26,5 +26,8 @@
     "vue-jwt-decode": "^0.1.0",
     "vue-store": "^0.3.1-moved"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@mdi/font": "^5.5.55",
+    "@nuxtjs/vuetify": "^1.11.2"
+  }
 }

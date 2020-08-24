@@ -74,6 +74,7 @@
 import sidebar from '~/components/sidebar.vue';
 import navbar from '~/components/navbar.vue';
 export default {
+    //  middleware : ['auth'],
     components:{
         'app-sidebar':sidebar,
         'app-navbar':navbar,

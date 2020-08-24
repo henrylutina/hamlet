@@ -15,7 +15,7 @@
                                      
                                 </div>
                                 <div class="mt-4">
-                                     <input type="email" name="" v-validate="'required|email'" class="form-control" id="" required placeholder="Email" v-model="signUp.email">
+                                     <input type="email" name="" class="form-control" id="" required placeholder="Email" v-model="signUp.email">
                                       
                                 </div>
                                 <div class="mt-4">

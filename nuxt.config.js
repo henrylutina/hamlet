@@ -63,7 +63,13 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ["~/plugins/axios.js"],
+  plugins: [
+    {
+      src: "./plugins/vee-validate.js",
+      ssr : false
+    }
+
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -72,7 +78,9 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: [],
+  buildModules: [
+    '@nuxtjs/vuetify',
+  ],
   /*
    ** Nuxt.js modules
    */
@@ -108,12 +116,15 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {},
+  build: {
+    
+  },
   auth: {
     redirect: {
       login: "/signin",
-      home: "/dashboard",
-      logout: "/signin"
+      logout: "/",
+      callback: "signin",
+      home: false
     },
     strategies: {
       local: {
@@ -124,7 +135,7 @@ export default {
           logout: { url: "/auth/logout", method: "post" }
         },
         // tokenRequired: true,
-        tokenType: "bearer",
+        tokenType: "bearer"
         // autoFetchUser : false,
         // globalToken: true,
       }
