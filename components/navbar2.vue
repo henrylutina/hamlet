@@ -4,20 +4,29 @@
   <!-- desktop view -->
    <div class="one desktopView">
         <nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand" href="#" style="color: #0065FC">Hamlet</a>
+  <nuxt-link to="/" class="navbar-brand" href="#" style="color: #0065FC">Hamlet</nuxt-link>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <!-- <span v-if="$auth.loggedIn">
+         <li class="nav-item active">
+            <nuxt-link to="/signin" class="nav-link" ><button class="btn1">Sign In</button></nuxt-link>
+          </li>
+          <li class="nav-item">
+            <nuxt-link to="/signup" class="nav-link" href="#"><button class="btn2">Get Started</button></nuxt-link>
+          </li>
+      </span> -->
+     
       <li class="nav-item active">
-        <nuxt-link to="signin" class="nav-link" ><button class="btn1">Sign In</button></nuxt-link>
+        <nuxt-link to="/signin" class="nav-link" ><button class="btn1">Sign In</button></nuxt-link>
       </li>
       <li class="nav-item">
         <nuxt-link to="/signup" class="nav-link" href="#"><button class="btn2">Get Started</button></nuxt-link>
       </li>
-      
+    
     </ul>
     
   </div>

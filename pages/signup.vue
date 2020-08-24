@@ -15,7 +15,7 @@
                                      
                                 </div>
                                 <div class="mt-4">
-                                     <input type="email" name="" v-validate="'required|email'" class="form-control" id="" required placeholder="Email" v-model="signUp.email">
+                                     <input type="email" name="" class="form-control" id="" required placeholder="Email" v-model="signUp.email">
                                       
                                 </div>
                                 <div class="mt-4">
@@ -138,7 +138,7 @@ export default {
         // localStorage.setItem("jwt", token);
             console.log(response)
         //   this.$router.push("/managerAccount");
-         await this.$auth.loginWith('local', {
+             await this.$auth.loginWith('local', {
           data: {
                 email : this.signUp.email,
                 password : this.signUp.password
@@ -146,6 +146,12 @@ export default {
         }) 
          let user = response.data.user
          this.$auth.$storage.setLocalStorage('user', user);
+          swal({
+                        title: "Success",
+                        text: "Account setup successfully!",
+                        icon: "success",
+                        button: false
+                        });
          this.$router.push("/manager-account");
       }
      

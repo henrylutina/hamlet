@@ -69,7 +69,12 @@
                     <div class="mt-5">
                         <button class="btn1 btn"  @click="prevBtn" :disabled="prevDisabled" style="outline: none !important"> <font-awesome-icon :icon="['fa', 'arrow-left']"/></button>
                         <button class="btn2 btn" @click="nextBtn" :disabled="isDisabled" style="outline: none !important"><font-awesome-icon :icon="['fa', 'arrow-right']"/></button>
-                        <button type="submit" class="btn3 btn btn-success" @click="submitBtn" v-if="showS"  style="outline: none !important">Submit</button>
+                        <button type="submit" class="btn3 btn btn-success" @click="submitBtn" v-if="showS"  style="outline: none !important">
+                             <span v-if="loader">Submit</span>
+                            <div v-else>
+                            <app-loader />
+                            </div>
+                        </button>
                     </div>
                     </div>
                 </div>
@@ -181,10 +186,14 @@
 
 <script>
 import axios from 'axios'
+import swal from 'sweetalert'
+import newLoader from "~/components/loader.vue";
 import Navbar from "@/components/navbar2.vue"
 export default {
+    //  middleware : ['auth'],
     components : {
-        Navbar
+        Navbar,
+        "app-loader": newLoader,
     },
     data(){
         return{
@@ -209,7 +218,8 @@ export default {
                 services : '',
                 profile_pic: ''
             },
-            user : {}
+            user : {},
+            loader : true
 
         }
     },
@@ -223,10 +233,23 @@ export default {
             console.log(this.companyInfo.profile_pic)
         },
          nextBtn(){
-            this.prevDisabled = false
-            this.$refs.formShow.children[this.counter].classList.remove("active");
-            this.counter++;
-            this.$refs.formShow.children[this.counter].classList.add("active")
+             if(this.companyInfo.company_name === '' || this.companyInfo.company_address === '' || this.companyInfo.company_email ==='' || this.companyInfo.city === '' || 
+                 this.companyInfo.state === '' || this.companyInfo.zip_code === '') {
+                swal({
+                        title: "Oops!",
+                        text: "feilds cannot be empty!",
+                        icon: "error",
+                        button: false
+                        });
+                 
+                }
+                 else{
+                    this.prevDisabled = false
+                    this.$refs.formShow.children[this.counter].classList.remove("active");
+                    this.counter++;
+                    this.$refs.formShow.children[this.counter].classList.add("active")
+                 }
+           
             if(this.counter + 1 === this.$refs.formShow.children.length){
                 this.isDisabled = true
                 this.showS = true
@@ -256,6 +279,7 @@ export default {
            }
         },
         submitBtn(){
+            this.loader = false
             const formData = new FormData
             formData.append('company_name',this.companyInfo.company_name)
             formData.append('company_address',this.companyInfo.company_address)
@@ -276,11 +300,38 @@ export default {
                  } 
                 })
             .then((res) =>{
+                swal({
+                        title: "Congratulations",
+                        text: "Registration Completed Successfully!",
+                        icon: "success",
+                        button: false
+                        });
                  this.$router.push('/dashboard')
+                 this.loader = false
                 console.log(res.data)
             })
             .catch((error)=>{
                 console.log(error)
+                 this.loader = true
+                 if(this.companyInfo.company_name === '' || this.companyInfo.company_address === '' || this.companyInfo.company_email ==='' ||
+                 this.companyInfo.company_website === '' || this.companyInfo.no_of_employees === '' || this.companyInfo.city === '' || 
+                 this.companyInfo.state === '' || this.companyInfo.zip_code === '' || this.companyInfo.services === '' || this.companyInfo.company_phone === '' ||
+                 this.companyInfo.profile_pic === '') {
+                     swal({
+                        title: "Oops!",
+                        text: "feilds cannot be empty!",
+                        icon: "error",
+                        button: false
+                        });
+                 }
+                 else{
+                     swal({
+                    title: "Oops!",
+                    text: "Unauthorized user, Please register!",
+                    icon: "error",
+                    button: false
+                    });
+                 }
             })
             console.log(this.companyInfo)
         },

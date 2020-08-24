@@ -14,13 +14,6 @@
       {{auth.user.email}}
       <span class="ml-3">Log out</span>
     </li> -->
-<<<<<<< HEAD
-      <!-- <li class="nav-item active">
-        <nuxt-link to="/dashboard" class="nav-link" style="color: #0065FC" >Company Name</nuxt-link>
-      </li> -->
-=======
-    
->>>>>>> 063e0b6b417c35553fb4d9991a9aaaeb566d1420
       <li class="nav-item active">
         <button v-if="loader" @click="logOut" class="btn1">Log Out</button>
          <span v-else><app-loader /></span>
