@@ -95,6 +95,8 @@
           });
           this.isLoading = false;
           this.$router.push("/job-details");
+        }).catch(e => {
+          this.isLoading = false;
         });
       },
     }

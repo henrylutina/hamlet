@@ -165,6 +165,8 @@
           });
           this.isLoading = false;
           this.$router.push("/dashboard")
+        }).catch(e => {
+          this.isLoading = false;
         });
       }
     }

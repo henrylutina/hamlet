@@ -22,7 +22,8 @@
                 <p>Gender</p>
                 <div class="input-group">
                   <select class="custom-select one6" id="inputGroupSelect04" aria-label="Example select with button addon" v-model="employeeDetails.gender" required>
-                    <option value="Male" >Male</option>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
                     <option value="Female">Female</option>
                   </select>
                 </div>
@@ -54,12 +55,16 @@
 
               <hr>
               <div class="one4">
-                <nuxt-link to="/dashboard"><button class="btn1" >Back</button></nuxt-link> <button type="submit" class="btn2"><span v-if="loader">Next</span>
-                <div v-else>
-                  <app-loader />
-                </div></button>
+                <nuxt-link to="/dashboard">
+                  <button class="btn1" >Back</button>
+                </nuxt-link>
+                <button type="submit" class="btn2" :disabled="isLoading">
+                  <span v-if="!isLoading">Next</span>
+                  <div v-else>
+                    <app-loader />
+                  </div>
+                </button>
               </div>
-
             </form>
           </div>
         </div>
@@ -94,7 +99,7 @@
           qualification: "",
           profile_pic: null,
         },
-        loader : true
+        isLoading : false
       }
     },
     methods:{
@@ -103,7 +108,7 @@
         console.log(this.employeeDetails.profile_pic);
       },
       addEmployeeInfo(){
-        this.loader = false;
+        this.isLoading = true;
         const formData = new FormData()
         formData.append('first_name', this.employeeDetails.first_name)
         formData.append('other_names', this.employeeDetails.other_names)
@@ -123,7 +128,9 @@
             button: false
           });
           this.$router.push("/contact-info");
-          this.loader = true;
+          this.isLoading = false;
+        }).catch(e => {
+          this.isLoading = false;
         });
       }
     }
