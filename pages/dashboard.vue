@@ -46,7 +46,7 @@
                 <div class="col-sm-4">
                   <nuxt-link to="/all-employees">
                     <div class="box-icon">
-                      <i class="fa fa-times"></i>
+                      <i class="fa fa-file"></i>
                     </div>
                   </nuxt-link>
                   <p class="mt-2 text-center">Directory</p>
