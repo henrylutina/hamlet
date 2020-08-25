@@ -6,7 +6,7 @@
       <div class="grid desktopShow">
         <div class="margin-form">
           <div class="form-edit">
-            <div class="stepwizard mt-5">
+            <div class="stepwizard">
               <div class="stepwizard-row" ref="edu">
                 <div class="stepwizard-step col-lg-4">
                   <a href type="button" class="btn btn-success btn-circle">1</a>
@@ -15,14 +15,9 @@
                   </p>
                 </div>
                 <div class="stepwizard-step col-lg-4">
-                  <a
-                    href
-                    type="button"
-                    class="btn btn-default btn-circle header1"
-                    disabled="disabled"
-                  >2</a>
+                  <a href type="button" class="btn btn-success btn-circle">2</a>
                   <p>
-                    <small>Company's Details Cont.</small>
+                    <small>Company's Details cont.</small>
                   </p>
                 </div>
               </div>
@@ -254,7 +249,7 @@
           </div>
         </div>
         <div class="wrapper mt-3">
-          <div class="box-down">
+          <!-- <div class="box-down">
             <div class="d-flex">
               <div>
                 <img src="/img/Rectangle 21.png" class="img-fluid" alt srcset />
@@ -279,7 +274,7 @@
               </div>
               <div class="text-box">Best Pricing Plans</div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -585,44 +580,61 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
-  background: linear-gradient(
-      to right,
-      rgba(8, 29, 41, 0.7),
-      rgba(8, 29, 41, 0.7)
-    ),
-    url("/img/nesa.jpg") no-repeat center center/cover;
-  /* background-position: right; */
-  /* background-size: center center/cover; */
-  /* background-repeat: no-repeat; */
-  height: 100vh;
+.wrapper{
+    background: linear-gradient(to right, rgba(8, 29, 41, 0.7),
+       rgba(8, 29, 41, 0.7)), url("/img/nesa.jpg") no-repeat center center/cover;
+    /* background-position: right; */
+    /* background-size: center center/cover; */
+    /* background-repeat: no-repeat; */
+    height: 100vh;
+    margin-top: 1.5px !important;
 }
-.bg-big {
-  /* background-color:#F9F9F9; */
-  background-color: rgb(192, 192, 192, 0.1);
-  margin-top: 4.3rem;
+.bg-big{
+    /* background-color:#F9F9F9; */
+    background-color: rgb(192, 192, 192, 0.1);
+    margin-top: 4.0rem;
 }
-.margin-form {
-  margin-left: 8rem;
-  margin-top: 3rem;
+.margin-form{
+    margin-left: 8rem;
+    /* margin-top: 1rem; */
 }
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
-.form-edit {
-  padding: 1rem;
+.form-edit{
+    padding: 1rem;
 }
-.first-form {
-  margin-top: 1rem;
+.first-form{
+    margin-top: 1rem;
 }
-.second-form {
-  margin-top: 1rem;
+.second-form{
+    margin-top: 1rem;
 }
-input {
-  width: 70%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
-  background-color: rgba(255, 255, 255, 1) !important;
+input{
+    width : 70%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    background-color: rgba(255,255,255,1) !important;
+}
+.file-border{
+    padding: 1rem 5rem 1rem 1rem; 
+    border: 1px solid rgb(192, 192, 192);  
+    outline: none; 
+}
+textarea{
+    width: 70%;
+    height: 10vh;
+    border: 1px solid rgb(192, 192, 192);  
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    background-color: rgba(255,255,255,1) !important;
+}
+.btn1{
+    /* padding: .5rem 1.5rem; */
+    color: #0065FC;
+    background-color: #FFFFFF;
+    border: 1px solid #0065FC;
+    outline: none !important;
+    border-radius: 50%;
 }
 .file-border {
   padding: 1rem 5rem 1rem 1rem;

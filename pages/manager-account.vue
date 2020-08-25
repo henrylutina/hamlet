@@ -63,9 +63,9 @@
 
                     </div>
                 </div>
-                <div class="wrapper mt-3">
+                <div class="wrapper">
                     <div class="box-down">
-                        <div class="d-flex">
+                        <!-- <div class="d-flex">
                             <div>
                                  <img src="/img/Rectangle 21.png" class="img-fluid" alt="" srcset="">
                             </div>
@@ -96,7 +96,7 @@
                             <div class="text-box">
                                 Best Pricing Plans
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                    
                 </div>
@@ -281,7 +281,7 @@ export default {
     padding: 1rem;
 }
 .first-form{
-    margin-top: 7rem;
+    margin-top: 2rem;
 }
 .second-form{
     margin-top: 1rem;

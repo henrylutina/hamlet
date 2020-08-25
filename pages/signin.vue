@@ -126,18 +126,26 @@ export default {
         // localStorage.setItem("jwt", token);
         console.log(response);
         this.loader = false;
+         swal({
+                        title: "Success",
+                        text: "Welcome Back!!",
+                        icon: "success",
+                        button: false
+                        });
         this.$router.push("/dashboard");
 
         // this.$router.push(this.localePath({ path: "dashboard" }));
       } catch (e) {
-        console.log(e);
-        this.error = e.res;
-        // swal({
-        //   title: "Something went wrong!",
-        //   text: "username or password error!",
-        //   icon: "error",
-        //   button: false
-        // });
+        console.log(e.response.status);
+        // this.error = e.res;
+        if(e.response.status === 401){
+            swal({
+                title: "Sorry!",
+                text: "Unauthorized User, please register or check username and password!",
+                icon: "error",
+                button: false
+              });
+        }
         this.loader = true;
       }
     }
