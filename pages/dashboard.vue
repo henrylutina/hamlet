@@ -5,9 +5,8 @@
       <div class="container">
         <div class="row bg-color">
           <div class="col-sm-3">
-            <div class="box-logo">
+            
               <img :src="this.company.company_logo" alt class="w-100" />
-            </div>
             <span v-if="loader" class="text-center">
               <app-loader />
             </span>

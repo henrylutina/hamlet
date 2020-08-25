@@ -80,7 +80,7 @@ export default {
     },
     methods:{
         getEmployee(){
-            this.$axios.get(`https://hamlet-hrm.herokuapp.com/api/employees/${this.$route.params.id}`).then(res => {
+            this.$axios.get(`https://hamlet-hrm.herokuapp.com/api/employees/${this.$route.params}`).then(res => {
           console.log(res.data);
           
         });

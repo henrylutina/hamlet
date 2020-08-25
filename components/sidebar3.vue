@@ -1,7 +1,7 @@
 <template>
     <div class="one">
         <div class="one1">
-            <img src="~/assets/Group 58.png" alt="">
+            <img :src="this.company.company_logo" alt class="w-99" />
             <p :class="currentPage.includes('/company/companyoverview') ? activeClass : ''"><nuxt-link to="/company/companyoverview" style="text-decoration:none">Company Overview</nuxt-link></p>
             <!-- <p :class="currentPage.includes('/company/taxinfo') ? activeClass : ''"><nuxt-link to="/company/taxinfo" style="text-decoration:none">Tax Info</nuxt-link></p>
             <p :class="currentPage.includes('/company/locations') ? activeClass : ''"><nuxt-link to="/company/locations" style="text-decoration:none">Locations</nuxt-link></p> -->
@@ -13,16 +13,30 @@
 export default {
     data(){
     return{
-      activeClass : 'active'
+      activeClass : 'active',
+      company: {},
     }
 },
+    methods: {
+        getCompany() {
+        this.$axios
+            .get("https://hamlet-hrm.herokuapp.com/api/auth/admin")
+            .then(res => {
+            console.log(res.data.company);
+            this.company = res.data.company;
+            });
+        }
+    },
+    created() {
+        this.getCompany();
+    },
  computed : {
     currentPage(){
       return this.$route.path
     }
   }
 }
-</script>>
+</script>
 <style scoped>
     *{
         box-sizing: border-box;

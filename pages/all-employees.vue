@@ -20,7 +20,7 @@
             <div class="col-sm-2 pt-4 pb-4 add-border">
               <h5>Fliters</h5>
               <label class="mt-3">Name</label>
-              <input type="search" class="form-control" name="" id="" />
+              <input type="search" v-model="filterbyName" class="form-control" name="" id="" />
 
               <h5 class="mt-5">Type</h5>
               <div class="d-flex mt-4">
@@ -67,33 +67,105 @@
               <table
                 class="table table-responsive table-bordered table-hover border-0"
               >
-                <thead>
-                  <tr>
+                
+                  <tr> 
                     <th scope="col">#</th>
                     <th scope="col">Full Name</th>
                     <th scope="col">Employment Type</th>
                     <th scope="col">Job Title</th>
                     <th scope="col">Department</th>
                     <th scope="col">Location</th>
-                    <th scope="col">Date Hired</th>
+                    <th scope="col">Date Hired</th> 
+                    <th scope="col">Action</th> 
                   </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="(employee, index) in employees" :key="index">
-                    <nuxt-link :to="`/single-employee/personal-info/${employee.user_id}`">
-                    <th scope="row">{{ index + 1 }}</th>
+               
+                <tr v-for="(employee, index) in employees" :key="index"> 
+                     <th scope="row">{{ index + 1 }}</th>
                     <td>
                       {{ employee.first_name + " " + employee.other_names }}
                     </td>
                     <td>
-                      {{ employee.job_details.employment_classification }}
+                      <!-- {{ employee.job_details.employment_classification }} -->
                     </td>
                     <td>{{ employee.job_details.job_title }}</td>
                     <td>{{ employee.job_details.department }}</td>
                     <td>{{ employee.job_details.work_location }}</td>
-                    <td>{{ employee.job_details.date_hired }}</td>
-                 </nuxt-link> </tr>
-                </tbody>
+                    <td>{{ employee.job_details.date_hired }}</td> 
+                    <td>
+                      <button :title="`View ${singleEmployee.first_name} ${singleEmployee.other_names}`" class="btn text-primary fa fa-eye" data-toggle="modal" data-target="#view" @click="view(employee)" ></button> 
+                      <button :title="`Edit ${singleEmployee.first_name} ${singleEmployee.other_names}`" class="btn text-success fa fa-pencil" data-toggle="modal" data-target="#update" @click="view(employee)" ></button> 
+
+<!-- open modal for view employee-->
+<div class="modal fade" id="view" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{singleEmployee.first_name + " " + singleEmployee.other_names}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- {{singleEmployee.job_details.employment_classification }} -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal for view employee -->
+
+
+<!-- open modal for view employee-->
+<div class="modal fade" id="update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Employee</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div>
+        <div>
+          
+        </div>
+      </div>
+      <!-- <div class="modal-body">
+        <label for="">First Name</label><br>
+         <input type="text" v-model="singleEmployee.first_name">
+      </div>
+      <div class="modal-body">
+        <label for="">Other Names</label><br>
+         <input type="text" v-model="singleEmployee.other_names">
+      </div>
+      <div class="modal-body">
+        <label for="">Job Title</label><br>
+         <input type="text" v-model="singleEmployee.job_details.job_title">
+      </div>
+      <div class="modal-body">
+        <label for="">Department</label><br>
+         <input type="text" v-model="singleEmployee.job_details.department">
+      </div>
+      <div class="modal-body">
+        <label for="">Location</label><br>
+         <input type="text" v-model="singleEmployee.job_details.work_location">
+      </div>
+      <div class="modal-body">
+        <label for="">Date Hired</label><br>
+         <input type="text" v-model="singleEmployee.job_details.date_hired ">
+      </div> -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal for view employee -->
+                      </td> 
+                </tr> 
               </table>
               <div v-if="loader" class="text-center">
                   <span disabled>
@@ -120,10 +192,32 @@ export default {
   data() {
     return {
       employees: {},
-      loader : true
+      loader : true,
+      singleEmployee:{},
+      filterbyName:''
     };
   },
+  // computed:
+  // {
+  //    filterAll()
+  //    {
+  //      return this.employees
+      //  .filter(post => {
+      //  console.log(post.title.toLowerCase().includes(this.filterbyName.toLowerCase()))
+      // //  .filter
+      // //  (post => {
+      // //   return post.first_name.match(this.filterbyName)
+      // })
+        
+       
+    //  }
+  
+  // },
   methods: {
+    view(data)
+    {
+      this.singleEmployee=data;
+    },
     getEmployees() {
       this.$axios
         .get("https://hamlet-hrm.herokuapp.com/api/auth/admin")

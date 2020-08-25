@@ -54,7 +54,7 @@
                 
                 <hr>
                 <div class="one4">
-                    <nuxt-link to="/dashboard"><button class="btn1" >Cancel</button></nuxt-link> <button type="submit" class="btn2"><span v-if="loader">Next</span>
+                    <nuxt-link to="/dashboard"><button class="btn1" >Back</button></nuxt-link> <button type="submit" class="btn2"><span v-if="loader">Next</span>
                             <div v-else>
                             <app-loader />
                             </div></button>
