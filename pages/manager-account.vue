@@ -36,7 +36,7 @@
                 </div>
                 <div class="wrapper mt-3">
                     <div class="box-down">
-                        <div class="d-flex">
+                        <!-- <div class="d-flex">
                             <div>
                                  <img src="/img/Rectangle 21.png" class="img-fluid" alt="" srcset="">
                             </div>
@@ -67,7 +67,7 @@
                             <div class="text-box">
                                 Best Pricing Plans
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                    
                 </div>

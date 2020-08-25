@@ -54,7 +54,10 @@
                 
                 <hr>
                 <div class="one4">
-                    <nuxt-link to="/dashboard"><button class="btn1" >Cancel</button></nuxt-link> <button type="submit" class="btn2">Next</button>
+                    <nuxt-link to="/dashboard"><button class="btn1" >Cancel</button></nuxt-link> <button type="submit" class="btn2"><span v-if="loader">Next</span>
+                            <div v-else>
+                            <app-loader />
+                            </div></button>
                 </div>
                 
                 </form>
@@ -73,11 +76,14 @@
 <script>
 import sidebar from '~/components/sidebar.vue';
 import navbar from '~/components/navbar.vue';
+import swal from "sweetalert";
+import newLoader from "~/components/loader.vue";
 export default {
     //  middleware : ['auth'],
     components:{
         'app-sidebar':sidebar,
         'app-navbar':navbar,
+        'app-loader' : newLoader,
     }
     ,
     data(){
@@ -92,7 +98,8 @@ export default {
                 age: " ",
                 qualification: " ",
                 profile_pic: {}
-            }
+            },
+            loader : true
         }
     },
     methods:{
@@ -102,6 +109,7 @@ export default {
             console.log(this.employeeDetails.profile_pic);
         },
         addEmployeeInfo(){
+            this.loader = false;
             const formData = new FormData()
             formData.append('first_name', this.employeeDetails.first_name)
             formData.append('other_names', this.employeeDetails.other_names)
@@ -114,7 +122,14 @@ export default {
             formData.append('profile_pic', this.employeeDetails.profile_pic)
             this.$axios.post("https://hamlet-hrm.herokuapp.com/api/employee", formData).then((res)=>{
                 console.log(res.data);
-                this.$router.push("/contact-info")
+                 swal({
+                        title: "Success",
+                        text: "You have added your employee's details successfully",
+                        icon: "success",
+                        button: false
+                        });
+                this.$router.push("/contact-info");
+                this.loader = true;
 
             });
         }

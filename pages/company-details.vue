@@ -80,7 +80,15 @@
                 </div>
                 <div class="wrapper mt-3">
                     <div class="box-down">
-                        <div class="d-flex">
+                        <!-- <div class="d-flex">
+                            <div>
+                                 <img src="/img/Rectangle 21.png" class="img-fluid" alt="" srcset="">
+                            </div>
+                            <div class="text-box">
+                                Best Pricing Plans
+                            </div>
+                        </div> -->
+                        <!-- <div class="d-flex mt-3">
                             <div>
                                  <img src="/img/Rectangle 21.png" class="img-fluid" alt="" srcset="">
                             </div>
@@ -103,15 +111,7 @@
                             <div class="text-box">
                                 Best Pricing Plans
                             </div>
-                        </div>
-                        <div class="d-flex mt-3">
-                            <div>
-                                 <img src="/img/Rectangle 21.png" class="img-fluid" alt="" srcset="">
-                            </div>
-                            <div class="text-box">
-                                Best Pricing Plans
-                            </div>
-                        </div>
+                        </div> -->
                     </div>
                    
                 </div>
@@ -237,7 +237,7 @@ export default {
                  this.companyInfo.state === '' || this.companyInfo.zip_code === '') {
                 swal({
                         title: "Oops!",
-                        text: "feilds cannot be empty!",
+                        text: "fields cannot be empty!",
                         icon: "error",
                         button: false
                         });
@@ -372,11 +372,12 @@ export default {
     /* background-size: center center/cover; */
     /* background-repeat: no-repeat; */
     height: 100vh;
+    margin-top: 1.5px !important;
 }
 .bg-big{
     /* background-color:#F9F9F9; */
     background-color: rgb(192, 192, 192, 0.1);
-    margin-top: 4.3rem;
+    margin-top: 4.0rem;
 }
 .margin-form{
     margin-left: 8rem;

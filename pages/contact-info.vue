@@ -24,7 +24,10 @@
                
                 <hr>
                 <div class="one4">
-                    <nuxt-link to="/employee-details"><button class="btn1">Back</button></nuxt-link><button type="submit" class="btn2">Next</button>
+                    <nuxt-link to="/employee-details"><button class="btn1">Back</button></nuxt-link><button type="submit" class="btn2"><span v-if="loader">Next</span>
+                            <div v-else>
+                            <app-loader />
+                            </div></button>
                 </div>
                 </form>
 
@@ -43,11 +46,14 @@
 <script>
 import sidebar from '~/components/sidebar.vue';
 import navbar from '~/components/navbar.vue';
+import swal from "sweetalert";
+import newLoader from "~/components/loader.vue";
 export default {
     // middleware : ['auth'],
     components:{
         'app-sidebar':sidebar,
         'app-navbar':navbar,
+        "app-loader": newLoader,
     },
     data(){
         return{
@@ -56,14 +62,24 @@ export default {
                 email: " ",
                 emergency_contact: " ",
                 employee_id: " ",
-            }
+            },
+            loader : true
         }
     },
     methods:{
         addContactInfo(){
+            this.loader = false;
             this.$axios.post("https://hamlet-hrm.herokuapp.com/api/contactinfo", this.contactInfo).then((res)=>{
                 console.log(res.data);
-                this.$router.push("/job-details")
+                swal({
+                        title: "Success",
+                        text: "You have added your employee's contact information successfully!",
+                        icon: "success",
+                        button: false
+                        });
+                this.loader = true;
+                this.$router.push("/job-details");
+
 
             });
         }

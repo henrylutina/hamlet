@@ -95,7 +95,10 @@
                 
                 <hr>
                 <div class="one4">
-                    <nuxt-link to="/contact-info"><button class="btn1">Back</button></nuxt-link><button type="submit" class="btn2">Submit</button>
+                    <nuxt-link to="/contact-info"><button class="btn1">Back</button></nuxt-link><button type="submit" class="btn2"><span v-if="loader">Submit</span>
+                            <div v-else>
+                            <app-loader />
+                            </div></button>
                 </div>
                 </form>
 
@@ -112,11 +115,14 @@
 <script>
 import sidebar from '~/components/sidebar.vue';
 import navbar from '~/components/navbar.vue';
+import swal from "sweetalert";
+import newLoader from "~/components/loader.vue";
 export default {
-     middleware : ['auth'],
+    //  middleware : ['auth'],
     components:{
         'app-sidebar':sidebar,
         'app-navbar':navbar,
+        "app-loader": newLoader,
     },
     data(){
         return{
@@ -133,7 +139,7 @@ export default {
                 work_location: " ",
                 employment_classification: " "
 
-            }
+            },loader : true
         }
     },
     methods:{
@@ -146,8 +152,16 @@ export default {
             this.radio2 = true;
         },
         addJobDetails(){
+            this.loader = false;
             this.$axios.post("https://hamlet-hrm.herokuapp.com/api/jobdetails", this.jobDetails).then((res)=>{
                 console.log(res.data);
+                swal({
+                        title: "Success",
+                        text: "You have added your employee's job details successfully!",
+                        icon: "success",
+                        button: false
+                        });
+                this.loader = true;
                 this.$router.push("/dashboard")
 
             });
