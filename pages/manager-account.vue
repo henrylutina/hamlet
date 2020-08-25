@@ -8,22 +8,51 @@
                 <div class="form-edit mt-5">
                     <form @submit.prevent="addManger">
                             <div class="first-form">
-                                <!-- {{user}} -->
-                                <h1>Manager's Information</h1>
+                                <h1>Manager Information</h1>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="First Name" v-model="managerInfo.first_name">
+                                     <input type="text" name="firstName" class="form-control" id="" placeholder="First Name" v-model="managerInfo.first_name" v-validate="'required'"
+                                     :class="{ 'is-invalid': submitted && errors.has('firstName') }">
+                                     <small
+                                        v-if="submitted && errors.has('firstName')"
+                                        class="invalid-feedback"
+                                    >
+                                    {{ errors.first("firstName")}}
+                                    </small>  
                                 </div>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="Last Name" v-model="managerInfo.last_name">
+                                     <input type="text" name="lastName" class="form-control" id="" placeholder="Last Name" v-model="managerInfo.last_name" v-validate="'required'"
+                                     :class="{ 'is-invalid': submitted && errors.has('lastName') }">
+                                     <small
+                                        v-if="submitted && errors.has('lastName')"
+                                        class="invalid-feedback"
+                                    >
+                                    {{ errors.first("lastName")}}
+                                    </small>  
                                 </div>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="Address" v-model="managerInfo.address">
+                                     <input type="text" name="address" class="form-control" id=""  placeholder="Address" v-model="managerInfo.address" v-validate="'required'"
+                                     :class="{ 'is-invalid': submitted && errors.has('address') }">
+                                     <small
+                                        v-if="submitted && errors.has('address')"
+                                        class="invalid-feedback"
+                                    >
+                                    {{ errors.first("address")}}
+                                    </small>  
                                 </div>
                                  <div class="mt-4">
                                      <label for="">Upload Profile Picture</label> <br>
-                                     <input type="file" name="" class="file-border" id="" required placeholder="" accept=".png,.jpeg,.svg,.jpg" @change="upload()">
+                                     <input type="file" name="profile-picture" class="file-border" id="" placeholder="" @change="upload()" v-validate="'required|ext:jpeg,jpg,svg,png'"
+                                     :class="{ 'is-invalid': submitted && errors.has('profile-picture') }">
+                                     <small id="emailHelp" class="form-text text-muted">(Picture must be of .jpeg, .png, .svg, .jpg format)</small>
+                                     <small
+                                        v-if="submitted && errors.has('profile-picture')"
+                                        class="invalid-feedback"
+                                    >
+                                    {{ errors.first("profile-picture")}}
+                                    </small>  
                                 </div>
                             </div>
+                        
                             <button type="submit" class="btn1">
                                  <span v-if="loader">Submit</span>
                                 <div v-else>
@@ -84,17 +113,45 @@
                              <div class="first-form">
                                 <h1>Manager's Information</h1>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="First Name" v-model="managerInfo.first_name">
+                                     <input type="text" name="firstName" class="form-control" id="" placeholder="First Name" v-model="managerInfo.first_name" v-validate="'required'"
+                                     :class="{ 'is-invalid': submitted && errors.has('firstName') }">
+                                     <small
+                                        v-if="submitted && errors.has('firstName')"
+                                        class="invalid-feedback"
+                                    >
+                                    {{ errors.first("firstName")}}
+                                    </small>  
                                 </div>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="Last Name" v-model="managerInfo.last_name">
+                                     <input type="text" name="lastName" class="form-control" id="" required placeholder="Last Name" v-model="managerInfo.last_name" v-validate="'required'"
+                                     :class="{ 'is-invalid': submitted && errors.has('lastName') }">
+                                     <small
+                                        v-if="submitted && errors.has('lastName')"
+                                        class="invalid-feedback"
+                                    >
+                                    {{ errors.first("lastName")}}
+                                    </small>  
                                 </div>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="Address" v-model="managerInfo.address">
+                                     <input type="text" name="address" class="form-control" id=""  placeholder="Address" v-model="managerInfo.address" v-validate="'required'"
+                                     :class="{ 'is-invalid': submitted && errors.has('address') }">
+                                     <small
+                                        v-if="submitted && errors.has('address')"
+                                        class="invalid-feedback"
+                                    >
+                                    {{ errors.first("address")}}
+                                    </small>  
                                 </div>
                                  <div class="mt-4">
                                      <label for="">Upload Profile Picture</label> <br>
-                                     <input type="file" name="" class="file-border" id="" required placeholder="" accept=".png,.jpeg,.svg,.jpg" @change="upload()">
+                                     <input type="file" name="profile picutre" class="file-border" id="" placeholder="" accept=".png,.jpeg,.svg,.jpg" @change="upload()" v-validate="'required'"
+                                     :class="{ 'is-invalid': submitted && errors.has('profile picture') }">
+                                     <small
+                                        v-if="submitted && errors.has('profile picture')"
+                                        class="invalid-feedback"
+                                    >
+                                    {{ errors.first("profile picture")}}
+                                    </small>  
                                 </div>
                             </div>
                              <button type="submit" class="btn1">Submit</button>
@@ -125,7 +182,8 @@ export default {
                 profile_pic : {}
             },
              user : {},
-             loader : true
+             loader : true,
+             submitted : false
         }
     },
     created(){
@@ -138,8 +196,20 @@ export default {
             console.log(this.managerInfo.profile_pic);
         },
         addManger(){
-            this.loader = false
-             const formData = new FormData()
+            if(this.managerInfo.first_name === "" || this.managerInfo.last_name === "" || this.managerInfo.address === "" || this.managerInfo.profile_pic === ""){
+                this.loader = true
+            }
+            else{
+                 this.loader = false
+            }
+            this.submitted = true;
+            this.$validator.validateAll().then(valid => {
+                if (valid) {
+                console.log("Login")
+                // this.login = false
+                }
+            });
+            const formData = new FormData()
             formData.append('first_name', this.managerInfo.first_name)
             formData.append('last_name', this.managerInfo.last_name)
             formData.append('address', this.managerInfo.address)
@@ -157,12 +227,12 @@ export default {
             })
             .catch((error) =>{
                 console.log(error)
-                 swal({
-                    title: "Something went wrong!",
-                    text: "Unautorized User, Please register and Try again!",
-                    icon: "error",
-                    button: false
-                    });
+                //  swal({
+                //     title: "Something went wrong!",
+                //     text: "Unautorized User, Please register and Try again!",
+                //     icon: "error",
+                //     button: false
+                //     });
                 this.loader = true
             })
         },

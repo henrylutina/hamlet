@@ -11,20 +11,46 @@
                                 <h1>Set Up An Account</h1>
                                 <span class="mt-4 text-center" v-if="loader"><app-loader /></span>
                                 <div class="mt-4">
-                                     <input type="text" name="" class="form-control" id="" required placeholder="Username" v-model="signUp.username">
-                                     
+                                     <input type="text" class="form-control" id="" name="username" placeholder="Username" v-model="signUp.username"  v-validate="'required'"
+                                     :class="{ 'is-invalid': submitted && errors.has('username') }">
+                                     <small
+                                        v-if="submitted && errors.has('username')"
+                                        class="invalid-feedback"
+                                    >
+                                    {{ errors.first("username")}}
+                                    </small>  
                                 </div>
                                 <div class="mt-4">
-                                     <input type="email" name="" class="form-control" id="" required placeholder="Email" v-model="signUp.email">
-                                      
+                                     <input type="email" name="email" class="form-control" id="" placeholder="Email" v-model="signUp.email" v-validate="'required|email'"
+                                     :class="{ 'is-invalid': submitted && errors.has('email') }">
+                                       <small
+                                        v-if="submitted && errors.has('email')"
+                                        class="invalid-feedback"
+                                         >
+                                    {{ errors.first("email")}}
+                                    </small>  
                                 </div>
                                 <div class="mt-4">
-                                     <input type="password" name="" class="form-control" id="" required placeholder="Password" v-model="signUp.password">
+                                     <input type="password" name="password" class="form-control" id="" placeholder="Password" v-model="signUp.password"  v-validate="{ required: true, min: 8 }"
+                                     :class="{ 'is-invalid': submitted && errors.has('password') }">
                                      <small id="emailHelp" class="form-text text-muted" style="color : #0065FC">(Password must be atleast 8 characters long)</small>
+                                      <small
+                                        v-if="submitted && errors.has('password')"
+                                        class="invalid-feedback"
+                                         >
+                                    {{ errors.first("password")}}
+                                    </small>  
                                 </div>
                                 <div class="mt-4">
-                                     <input type="password" name="" class="form-control" id="" required placeholder="Password Confirmation" v-model="signUp.password_confirmation">
+                                     <input type="password" name="password" class="form-control" id="" placeholder="Password Confirmation" v-model="signUp.password_confirmation"
+                                     :class="{ 'is-invalid': submitted && errors.has('password') }">
                                        <small id="emailHelp" class="form-text text-muted" style="color : #0065FC">(Re-enter password)</small>
+                                        <small
+                                        v-if="submitted && errors.has('password')"
+                                        class="invalid-feedback"
+                                         >
+                                    {{ errors.first("password")}}
+                                    </small>  
                                 </div>
                             </div>
                             <button type="submit" class="btn1">Create Account</button>
@@ -125,12 +151,26 @@ export default {
                 password: '',
                 password_confirmation: ''
             },
-            loader : false
+            loader : false,
+            submitted : false
         }
     },
     methods : {
         async createAccount(){
+            if(this.signUp.username === "" || this.signUp.email === "" || this.signUp.password === "" || this.signUp.password_confirmation === ""){
+                this.loader = false
+            }
+            else{
             this.loader = true
+            }
+            
+            this.submitted = true;
+            this.$validator.validateAll().then(valid => {
+                if (valid) {
+                console.log("Login")
+                // this.login = false
+                }
+            });
              try {
             let response = await this.$axios.post('https://hamlet-hrm.herokuapp.com/api/auth/signup',this.signUp)
             let token = response.data.token

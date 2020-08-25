@@ -9,12 +9,42 @@
             <!-- {{user}}{{ loggedInUser}} -->
 
             <form @submit.prevent="loginUser">
-              <input type="email" placeholder="Email" required v-model="email" />
+              <div>
+                 <input
+                type="email"
+                placeholder="Email"
+                name="email"
+                v-model="email"
+                v-validate="'required|email'"
+                :class="{ 'is-invalid': submitted && errors.has('email') }"
+              />
+              <small
+                v-if="submitted && errors.has('email')"
+                class="invalid-feedback"
+              >
+              {{ errors.first("email") }}
+              </small>
               <br />
-              <input type="password" placeholder="Password" required  v-model="password"/>
-
+              </div>
+             <div>
+               <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                v-model="password"
+                v-validate="{ required: true, min: 8 }"
+                :class="{ 'is-invalid': submitted && errors.has('password') }"
+              />
+              <small id="emailHelp"
+                v-if="submitted && errors.has('password')"
+                class="invalid-feedback"
+              >
+              {{ errors.first("password")}}
+              </small>
+             </div>
+              
               <br />
-              <button type="submit" class="btn1">
+              <button type="submit" :disabled="login" class="btn1">
                 <span v-if="loader">Login</span>
                 <div v-else>
                   <app-loader />
@@ -46,15 +76,16 @@ import { mapGetters } from "vuex";
 export default {
   components: {
     "app-navbar": Navbar,
-    "app-loader": newLoader,
-    
+    "app-loader": newLoader
   },
   data() {
     return {
       user: {},
       email: "",
       password: "",
-      loader: true
+      loader: true,
+      submitted: false,
+      login : false
     };
   },
   computed: {
@@ -66,8 +97,22 @@ export default {
   //       console.log(this.user)
   // },
   methods: {
-    async loginUser() {
-      this.loader = false;
+    async loginUser(e) {
+      if(this.email === "" || this.password === ""){
+        this.loader = true;
+      }
+      else{
+         this.loader = false;
+         this.login = false
+      }
+      // this.login = true
+      this.submitted = true;
+      this.$validator.validateAll().then(valid => {
+        if (valid) {
+          console.log("Login")
+          // this.login = false
+        }
+      });
       try {
         let response = await this.$auth.loginWith("local", {
           data: {
@@ -87,12 +132,12 @@ export default {
       } catch (e) {
         console.log(e);
         this.error = e.res;
-        swal({
-          title: "Something went wrong!",
-          text: "username or password error!",
-          icon: "error",
-          button: false
-        });
+        // swal({
+        //   title: "Something went wrong!",
+        //   text: "username or password error!",
+        //   icon: "error",
+        //   button: false
+        // });
         this.loader = true;
       }
     }
@@ -155,6 +200,7 @@ input {
   background: white;
   border-radius: 5px;
   border: none;
+  padding: 0.5rem;
   color: #0065fc;
   border: 1px solid #0065fc;
 }
