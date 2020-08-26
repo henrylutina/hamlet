@@ -3,7 +3,7 @@
         <div class="one1">
             <img :src="this.company.company_logo" alt class="w-99" />
             <p :class="currentPage.includes('/department/add-department') ? activeClass : ''"><nuxt-link to="/department/add-department" style="text-decoration:none">Add Departments</nuxt-link></p>
-            <p :class="currentPage.includes('/department/view-departments') ? activeClass : ''"><nuxt-link to="/department/view-departments" style="text-decoration:none">View Departments</nuxt-link></p>
+            
         </div>
     </div>
 </template>
@@ -14,6 +14,7 @@ export default {
     return{
       activeClass : 'active',
       company: {},
+     
     }
 },
     methods: {
@@ -64,7 +65,6 @@ export default {
     .one1 img{
         width: 60%;
         vertical-align: middle;
-        border-radius: 50%;
         margin-bottom: 20px;
     }
     .one1 h5{

@@ -65,7 +65,6 @@ export default {
     .one1 img{
         width: 60%;
         vertical-align: middle;
-        border-radius: 50%;
         margin-bottom: 20px;
     }
     .one1 h5{
