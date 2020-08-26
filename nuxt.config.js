@@ -28,15 +28,18 @@ export default {
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
         rel: "stylesheet",
-        href:
-          "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        href: "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       },
       {
         rel: "stylesheet",
         type: "font",
-        href:
-          'href="https://fonts.googleapis.com/css2?family=Overpass&display=swap" rel="stylesheet"'
-      }
+        href: "https://fonts.googleapis.com/css2?family=Overpass&display=swap",
+        rel : "stylesheet"
+      },
+      // {
+      //   rel: "stylesheet",
+      //   href: "toastr.css"
+      // }
     ],
     script: [
       {
@@ -52,7 +55,11 @@ export default {
         src:
           "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js",
         type: "text/javascript"
-      }
+      },
+      // {
+      //   src: "toastr.js",
+      //   type: "text/javascript"
+      // },
     ]
   },
   /*
@@ -66,9 +73,16 @@ export default {
   plugins: [
     {
       src: "./plugins/vee-validate.js",
-      ssr : false
-    }
-
+      ssr: false
+    },
+    {
+      src: "./plugins/toastr.js",
+      ssr: false
+    },
+    // {
+    //   src: "./plugins/vuetify.js",
+    //   ssr: false
+    // }
   ],
   /*
    ** Auto import components
@@ -79,7 +93,7 @@ export default {
    ** Nuxt.js dev-modules
    */
   buildModules: [
-    '@nuxtjs/vuetify',
+    // '@nuxtjs/vuetify',
   ],
   /*
    ** Nuxt.js modules
@@ -116,13 +130,11 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {
-    
-  },
+  build: {},
   auth: {
     redirect: {
       login: "/signin",
-      logout: "/singin",
+      logout: "/singin"
     },
     strategies: {
       local: {

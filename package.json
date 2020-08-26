@@ -24,7 +24,8 @@
     "toastr": "^2.1.4",
     "vee-validate": "^2.2.15",
     "vue-jwt-decode": "^0.1.0",
-    "vue-store": "^0.3.1-moved"
+    "vue-store": "^0.3.1-moved",
+    "vuetify": "^2.0.0"
   },
   "devDependencies": {
     "@mdi/font": "^5.5.55",
