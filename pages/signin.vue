@@ -10,39 +10,41 @@
 
             <form @submit.prevent="loginUser">
               <div>
-                 <input
-                type="email"
-                placeholder="Email"
-                name="email"
-                v-model="email"
-                v-validate="'required|email'"
-                :class="{ 'is-invalid': submitted && errors.has('email') }"
-              />
-              <small
-                v-if="submitted && errors.has('email')"
-                class="invalid-feedback"
-              >
-              {{ errors.first("email") }}
-              </small>
-              <br />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  v-model="email"
+                  v-validate="'required|email'"
+                  :class="{ 'is-invalid': submitted && errors.has('email') }"
+                />
+                <small
+                  v-if="submitted && errors.has('email')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("email") }}
+                </small>
+                <br />
               </div>
-             <div>
-               <input
-                type="password"
-                placeholder="Password"
-                name="password"
-                v-model="password"
-                v-validate="{ required: true, min: 8 }"
-                :class="{ 'is-invalid': submitted && errors.has('password') }"
-              />
-              <small id="emailHelp"
-                v-if="submitted && errors.has('password')"
-                class="invalid-feedback"
-              >
-              {{ errors.first("password")}}
-              </small>
-             </div>
-              
+              <div>
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  v-model="password"
+                  append-icon="mdi-eye"
+                  v-validate="{ required: true, min: 8 }"
+                  :class="{ 'is-invalid': submitted && errors.has('password') }"
+                />
+                <small
+                  id="emailHelp"
+                  v-if="submitted && errors.has('password')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("password") }}
+                </small>
+              </div>
+
               <br />
               <button type="submit" :disabled="login" class="btn1">
                 <span v-if="loader">Login</span>
@@ -56,7 +58,7 @@
             <p>
               Not a customer yet?
               <nuxt-link to="/signup">
-                <button class="btn2">Sign up</button>
+                <button class="btn2" :disabled="isValid">Sign up</button>
               </nuxt-link>
             </p>
           </div>
@@ -69,7 +71,6 @@
 
 <script>
 import Navbar from "~/components/navbar2.vue";
-
 import newLoader from "~/components/loader.vue";
 import swal from "sweetalert";
 import { mapGetters } from "vuex";
@@ -85,7 +86,8 @@ export default {
       password: "",
       loader: true,
       submitted: false,
-      login : false
+      login: false,
+      isValid: false
     };
   },
   computed: {
@@ -98,19 +100,18 @@ export default {
   // },
   methods: {
     async loginUser(e) {
-      if(this.email === "" || this.password === ""){
+      if (this.email === "" || this.password === "") {
         this.loader = true;
-      }
-      else{
-         this.loader = false;
-         this.login = false
+      } else {
+        this.loader = false;
+        this.login = false;
       }
       // this.login = true
       this.submitted = true;
       this.$validator.validateAll().then(valid => {
         if (valid) {
-          console.log("Login")
-          // this.login = false
+          console.log("Login");
+          this.isValid = true;
         }
       });
       try {
@@ -126,25 +127,26 @@ export default {
         // localStorage.setItem("jwt", token);
         console.log(response);
         this.loader = false;
-         swal({
-                        title: "Success",
-                        text: "Welcome Back!!",
-                        icon: "success",
-                        button: false
-                        });
+        this.$message({
+          message: `Welcome ${user.username}`,
+          type: "success"
+        });
         this.$router.push("/dashboard");
-
-        // this.$router.push(this.localePath({ path: "dashboard" }));
       } catch (e) {
-        console.log(e.response.status);
+        // console.log(e.response.status);
         // this.error = e.res;
-        if(e.response.status === 401){
-            swal({
-                title: "Sorry!",
-                text: "Unauthorized User, please register or check username and password!",
-                icon: "error",
-                button: false
-              });
+        if (e.response.status === 401) {
+          this.$message({
+            message:
+              "Unauthorized User, please register or check username and password!",
+            type: "error"
+          });
+        }
+        if (e.response.status === 422) {
+          this.$message({
+            message: "Error, check username or password!",
+            type: "error"
+          });
         }
         this.loader = true;
       }

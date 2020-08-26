@@ -102,7 +102,7 @@ export default {
   mounted() {
     this.user = this.$auth.$storage.getLocalStorage("user").username;
     this.getCompany();
-
+    // this.getEmployees()
    
   },
   methods: {
@@ -112,22 +112,23 @@ export default {
         .then(res => {
           console.log(res.data.company);
           this.company = res.data.company;
+          this.employees = res.data.employees;
           this.loader = false;
         });
     },
-    getEmployees() {
-      this.$axios
-        .get("https://hamlet-hrm.herokuapp.com/api/auth/admin")
-        .then(res => {
-          console.log(res.data.employees);
-          this.employees = res.data.employees;
-          this.loader = false
-        });
-    },
+    // getEmployees() {
+    //   this.$axios
+    //     .get("https://hamlet-hrm.herokuapp.com/api/auth/admin")
+    //     .then(res => {
+    //       console.log(res.data.employees);
+    //       // this.employees = res.data.employees;
+    //       this.loader = false
+    //     });
+    // },
   },
   created() {
     // this.getCompany();
-     this.getEmployees()
+    
     
   }
 };

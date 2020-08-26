@@ -215,24 +215,16 @@ export default {
             formData.append('address', this.managerInfo.address)
             formData.append('profile_pic', this.managerInfo.profile_pic)
              axios.post('https://hamlet-hrm.herokuapp.com/api/profile', formData, {headers : {'Authorization' : `Bearer ${this.user}`}}).then((res)=> {
-                  swal({
-                        title: "Success",
-                        text: "Manager added Successfully!",
-                        icon: "success",
-                        button: false
-                        });
+                this.$message({
+                message: "Manager Successfully Added!",
+                type: 'success'
+                })
                 this.$router.push('/company-details')
                  this.loader = false
                 console.log(res.data)
             })
             .catch((error) =>{
                 console.log(error)
-                //  swal({
-                //     title: "Something went wrong!",
-                //     text: "Unautorized User, Please register and Try again!",
-                //     icon: "error",
-                //     button: false
-                //     });
                 this.loader = true
             })
         },
