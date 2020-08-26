@@ -16,7 +16,7 @@
               <p>Department</p>
               <div class="input-group">
                 <select class="custom-select one6" id="inputGroupSelect04" aria-label="Example select with button addon" v-model="jobDetails.department" required>
-                  <option value="" >Select Department</option>
+                  <option value selected disabled>Select Department</option>
                   <option value="Male" >Male</option>
                   <option value="Female">Female</option>
                 </select>

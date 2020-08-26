@@ -25,7 +25,7 @@
               <hr>
               <div class="one4">
                 <nuxt-link to="/employee-details" class="btn1">Back</nuxt-link>
-                <button type="submit" :disabled="!dataIsValid || isLoading" class="btn2">
+                <button type="submit"  class="btn2">
                   <span v-if="!isLoading">Next</span>
                   <app-loader v-else />
                 </button>
@@ -75,11 +75,11 @@
     },
     methods:{
       addContactInfo() {
-        if (!this.dataIsValid) {
-          return;
-        }
-
-        this.isLoading = true;
+        // if (!this.dataIsValid) {
+        //   return;
+        // }
+          
+        this.isLoading = true
         this.$axios.post("https://hamlet-hrm.herokuapp.com/api/contactinfo", this.contactInfo).then((res) => {
           console.log(res.data);
           swal({
@@ -92,7 +92,8 @@
           this.$router.push("/job-details");
         }).catch(e => {
           this.isLoading = false;
-        });
+        })
+      
       },
     }
 

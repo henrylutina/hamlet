@@ -85,7 +85,7 @@
                       {{ employee.first_name + " " + employee.other_names }}
                     </td>
                     <td>
-                      <!-- {{ employee.job_details.employment_classification }} -->
+                      {{ employee.job_details.employment_classification }}
                     </td>
                     <td>{{ employee.job_details.job_title }}</td>
                     <td>{{ employee.job_details.department }}</td>
@@ -232,7 +232,7 @@ export default {
     }
   },
   created() {
-    this.getEmployees();
+    this.getEmployees()
   }
 };
 </script>

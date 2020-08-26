@@ -97,14 +97,15 @@
           city: "",
           age: "",
           qualification: "",
-          profile_pic: null,
+          profile_pic: {},
         },
         isLoading : false
       }
     },
     methods:{
-      upload(event) {
-        this.employeeDetails.profile_pic = event.target.files[0];
+      upload() {
+        var input = event.target;
+        this.employeeDetails.profile_pic = input.files[0];
         console.log(this.employeeDetails.profile_pic);
       },
       addEmployeeInfo(){
