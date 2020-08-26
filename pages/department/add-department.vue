@@ -21,7 +21,8 @@
                     </span>
                     </div>
                     </div>
-                    <form @submit="addDepartment">
+                    <div v-if="show">
+                        <form @submit="addDepartment">
                         <div >
                     <div class="one3" >
                     <h3>Add Department</h3>
@@ -40,13 +41,15 @@
                 <div v-else>
                   <app-loader/>
                 </div>
-              </button>
+              </button><button type="button" class="btn1" @click="showDepartment">View</button>
                     </span>
                 
                     </div>
                     </div>
                     </form>
-                    <div class="one3" >
+                    </div>
+                    
+                    <div class="one3" v-else>
                     <h3>Departments</h3>
                     <div >
                     <div class="table-responsive">
@@ -71,12 +74,14 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            
                     </div>
+                    <button type="button" class="btn1" @click="hideDepartment">Back</button>
                     </div>
                     
                 
                     
-                    <hr>             
+                              
                 
                     
                     </div>
@@ -115,6 +120,7 @@ export default {
       loader: true,
       loader2: true,
       isLoading:true,
+      show:true,
       departments:{},
       departmentInfo:{
             name: " "
@@ -148,6 +154,12 @@ export default {
 
         });
     },
+        showDepartment(){
+            this.show = false;
+        },
+        hideDepartment(){
+            this.show = true;
+        }
     },
     created() {
         this.getCompany();
@@ -214,6 +226,7 @@ export default {
         background: #FFFFFF;
         border: 1px solid #0065FC;
         border-radius: 5px;
+        margin-right: 1rem;
     }
     .btn2{
         color: #FFFFFF;

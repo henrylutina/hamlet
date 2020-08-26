@@ -22,7 +22,6 @@
                 <p>Gender</p>
                 <div class="input-group">
                   <select class="custom-select one6" id="inputGroupSelect04" aria-label="Example select with button addon" v-model="employeeDetails.gender" required>
-                    <option value="">Select Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                   </select>
@@ -46,7 +45,14 @@
               </div>
               <div class="grid">
                 <p>Qualifications</p>
-                <input type="text" class="one6"  v-model="employeeDetails.qualification" required>
+                <select class="custom-select one6" id="inputGroupSelect04" aria-label="Example select with button addon" v-model="employeeDetails.qualification" required>
+                    <option value="OND">OND</option>
+                    <option value="HND">HND</option>
+                    <option value="Bsc">Bsc</option>
+                    <option value="Masters">Masters</option>
+                    <option value="Phd">Phd</option>
+                  </select>
+                
               </div>
               <div class="grid">
                 <p>Profile Picture</p>

@@ -19,7 +19,7 @@
             <!-- <h2 v-else>Hello Welcome</h2> -->
             <h6 class="mt-4">Welcome, Thanks for choosing us</h6>
             <p class="mt-4">Task!</p>
-            <div class="border-admin">Design a new landing page for elaxx</div>
+            <div class="border-admin">Please add departments first o...E get why</div>
             <!-- Add user / list of users -->
             <div class="d-flex">
               <div>
