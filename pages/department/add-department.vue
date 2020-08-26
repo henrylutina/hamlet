@@ -148,7 +148,7 @@
 </template>
 
 <script>
-import sidebar from '~/components/sidebar3.vue';
+import sidebar from '~/components/sidebar4.vue';
 import navbar from '~/components/navbar.vue';
 import swal from 'sweetalert'
 import newLoader from "~/components/loader.vue";

@@ -2,9 +2,8 @@
     <div class="one">
         <div class="one1">
             <img :src="this.company.company_logo" alt class="w-99" />
-            <p :class="currentPage.includes('/company/companyoverview') ? activeClass : ''"><nuxt-link to="/company/companyoverview" style="text-decoration:none">Company Overview</nuxt-link></p>
-            <!-- <p :class="currentPage.includes('/company/taxinfo') ? activeClass : ''"><nuxt-link to="/company/taxinfo" style="text-decoration:none">Tax Info</nuxt-link></p>
-            <p :class="currentPage.includes('/company/locations') ? activeClass : ''"><nuxt-link to="/company/locations" style="text-decoration:none">Locations</nuxt-link></p> -->
+            <p :class="currentPage.includes('/department/add-department') ? activeClass : ''"><nuxt-link to="/department/add-department" style="text-decoration:none">Add Departments</nuxt-link></p>
+            <p :class="currentPage.includes('/department/view-departments') ? activeClass : ''"><nuxt-link to="/department/view-departments" style="text-decoration:none">View Departments</nuxt-link></p>
         </div>
     </div>
 </template>

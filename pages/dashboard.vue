@@ -5,9 +5,8 @@
       <div class="container">
         <div class="row bg-color">
           <div class="col-sm-3">
-            <div class="box-logo">
+            
               <img :src="this.company.company_logo" alt class="w-100" />
-            </div>
             <span v-if="loader" class="text-center">
               <app-loader />
             </span>
@@ -30,6 +29,12 @@
                   </div>
                 </nuxt-link>
               </div>
+              <div v-for="(employee, id) in employees" :key="id">
+                <div> <img :src="employee.profile_pic" alt class="rounded-circle" width="100px" height="100px" style="margin-top:3rem; margin-left:1rem" />
+                <div class="text-center mt-2" style="font-weight : bold">{{employee.first_name}}</div>
+                </div>
+                  
+              </div>
             </div>
 
             <div class="boxes">
@@ -45,6 +50,14 @@
                 </div>
                 <div class="col-sm-4">
                   <nuxt-link to="/all-employees">
+                    <div class="box-icon">
+                      <i class="fa fa-file"></i>
+                    </div>
+                  </nuxt-link>
+                  <p class="mt-2 text-center">Directory</p>
+                </div>
+                <div class="col-sm-4">
+                  <nuxt-link to="/department/add-department">
                     <div class="box-icon">
                       <i class="fa fa-file"></i>
                     </div>
@@ -79,7 +92,8 @@ export default {
     return {
       user: {},
       company: {},
-      loader: true
+      loader: true,
+       employees: [],
     };
   },
   //   computed: {
@@ -88,6 +102,8 @@ export default {
   mounted() {
     this.user = this.$auth.$storage.getLocalStorage("user").username;
     this.getCompany();
+
+   
   },
   methods: {
     getCompany() {
@@ -98,10 +114,21 @@ export default {
           this.company = res.data.company;
           this.loader = false;
         });
-    }
+    },
+    getEmployees() {
+      this.$axios
+        .get("https://hamlet-hrm.herokuapp.com/api/auth/admin")
+        .then(res => {
+          console.log(res.data.employees);
+          this.employees = res.data.employees;
+          this.loader = false
+        });
+    },
   },
   created() {
     // this.getCompany();
+     this.getEmployees()
+    
   }
 };
 </script>

@@ -7,53 +7,40 @@
             <div  class="one2 ">
                 <div class="one6">
                 <div class="one7">
-                    <h2>Name</h2>
-                    <p>Job Title (employmenttype)  Started on (Date hired)</p>
+                    <h2>Company Name</h2>
+                    <p>Total Headcount |  Date Established</p>
                 </div>
-                <div class="one8">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Actions
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Edit profile</a>
-                            <a class="dropdown-item" href="#">Terminate</a>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
                  <div >
                 <div class="one3">
-                <h3>Personal Info</h3>
+                <h3>Tax Information</h3>
                 <hr>
                 <div class="grid">
-                    <p> Name</p>
+                    <p> Date Established</p>
                     <p></p>
                 </div>
                 <div class="grid">
-                    <p> Gender</p>
+                    <p> Office Address</p>
                     <p></p>
                 </div>
                 <div class="grid">
-                    <p>Date of Birth</p>
+                    <p>Business Description</p>
                     <p></p>
                 </div>
                 <div class="grid">
-                    <p>Phone</p>
+                    <p>Business Entity Type</p>
                     <p></p>
                 </div>
                 <div class="grid">
-                    <p>Email</p>
+                    <p>Company Officers</p>
                    <p></p>
                 </div>
                 <div class="grid">
-                    <p>Address</p>
+                    <p>Accountant's Email</p>
                     <p></p>
                 </div>
-                <div class="grid">
-                    <p>Emergency Contact</p>
-                    <p></p>
-                </div>
+               
                 
                 <hr>             
 
@@ -70,24 +57,12 @@
 </template>
 
 <script>
-import sidebar from '~/components/sidebar2.vue';
-import navbar from '~/components/navbar4.vue';
+import sidebar from '~/components/sidebar3.vue';
+import navbar from '~/components/navbar3.vue';
 export default {
-    //  middleware : ['auth'],
     components:{
         'app-sidebar':sidebar,
         'app-navbar':navbar,
-    },
-    methods:{
-        getEmployee(){
-            this.$axios.get(`https://hamlet-hrm.herokuapp.com/api/employees/${this.$route.params}`).then(res => {
-          console.log(res.data);
-          
-        });
-        }
-    },
-    created(){
-        this.getEmployee()
     }
     
 }
@@ -134,7 +109,7 @@ export default {
         margin-bottom: 30px;
     }
     .one3 h3{
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         color: #0065FC;
     }
     .one4{
@@ -165,9 +140,7 @@ export default {
         padding-left: 4rem;
         padding-right: 4rem;
         padding-top: 2rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 3rem;
+        
     }
     .one8{
         text-align: right;
@@ -176,8 +149,8 @@ export default {
         padding:5px 10px;
     }
     .one7 h2{
+        margin-bottom: 10px;
         color: #0065FC;
-         margin-bottom: 10px;
     }
     
 
@@ -218,11 +191,13 @@ export default {
     }
         
     }
-    
 
     @media(min-width: 568px) and (max-width:768px) {
         .one2{
         width: 75%;
+        
+        margin-top: 2rem;
+        
     }
         .one3{
         padding-left: 30px;
