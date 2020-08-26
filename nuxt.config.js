@@ -36,6 +36,10 @@ export default {
         href: "https://fonts.googleapis.com/css2?family=Overpass&display=swap",
         rel : "stylesheet"
       },
+      {
+        href : "https://unpkg.com/element-ui/lib/theme-chalk/index.css",
+        rel : "stylesheet"
+      }
       // {
       //   rel: "stylesheet",
       //   href: "toastr.css"
@@ -56,6 +60,10 @@ export default {
           "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js",
         type: "text/javascript"
       },
+      {
+        scr : "https://unpkg.com/element-ui/lib/index.js",
+        type: "text/javascript"
+      }
       // {
       //   src: "toastr.js",
       //   type: "text/javascript"
@@ -76,7 +84,11 @@ export default {
       ssr: false
     },
     {
-      src: "./plugins/toastr.js",
+      src: "./plugins/toast.js",
+      ssr: false
+    },
+    {
+      src: "./plugins/element-ui.js",
       ssr: false
     },
     // {

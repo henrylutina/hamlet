@@ -93,7 +93,11 @@ export default {
      await this.$auth.logout();
      localStorage.removeItem("jwt");
     this.$router.push('/signin')
-        },
+     this.$message({
+          message:  "User Logged out successfully!",
+          type: 'success'
+        })
+    },
   }
 }
 </script>>

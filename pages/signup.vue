@@ -186,27 +186,22 @@ export default {
         }) 
          let user = response.data.user
          this.$auth.$storage.setLocalStorage('user', user);
-          swal({
-                        title: "Success",
-                        text: "Account setup successfully!",
-                        icon: "success",
-                        button: false
-                        });
+          this.$message({
+          message: "Account created successfully!",
+          type: 'success'
+        })
          this.$router.push("/manager-account");
       }
      
       catch (e) {
         console.log(e);
         this.error = e.res;
-        // if(e.res === 422) {
-        //     console.log('check password')
-        // }
-        //  swal({
-        //     title: "Something went wrong!",
-        //     text: "username or password error!",
-        //     icon: "error",
-        //     button: false,
-        // });
+         if (e.response.status === 422) {
+          this.$message({
+            message: "Sorry, Email as been taken",
+            type: "error"
+          });
+        }
         this.loader = false
       }
         },

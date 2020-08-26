@@ -450,7 +450,8 @@ export default {
                   title: "Oops!",
                   text: "feilds cannot be empty!",
                   icon: "error",
-                  button: false
+                  button: false,
+                  timer : 1000
                   });
 
           }
@@ -509,12 +510,10 @@ export default {
           },
         })
         .then((res) => {
-          swal({
-            title: "Congratulations",
-            text: "Registration Completed Successfully!",
-            icon: "success",
-            button: false,
-          });
+          this.$message({
+          message: "Company Details added successfully, Registration Completed!",
+          type: 'success'
+        })
           this.$router.push("/dashboard");
           this.loader = false;
           console.log(res.data);
@@ -535,19 +534,15 @@ export default {
             this.companyInfo.company_phone === "" ||
             this.companyInfo.profile_pic === ""
           ) {
-            swal({
-              title: "Oops!",
-              text: "feilds cannot be empty!",
-              icon: "error",
-              button: false,
-            });
+            this.$message({
+            message: "fields cannot be empty!",
+            type: 'error'
+        })
           } else {
-            swal({
-              title: "Oops!",
-              text: "Unauthorized user, Please register!",
-              icon: "error",
-              button: false,
-            });
+            this.$message({
+            message: "Unauthorized User, Please Register!",
+            type: 'error'
+        })
           }
         });
       console.log(this.companyInfo);
