@@ -3,7 +3,7 @@
     <app-navbar/>
     <div class="row one5">
       <app-sidebar/>
-      <div class="one2 ">
+      <div class="one2 " >
         <div class="one3">
           <h2>Job Details</h2>
           <hr>
@@ -12,16 +12,7 @@
               <p>Job Title</p>
               <input type="text" class="one6"  v-model="jobDetails.job_title" required>
             </div>
-            <div class="grid">
-              <p>Department</p>
-              <div class="input-group">
-                <select class="custom-select one6" id="inputGroupSelect04" aria-label="Example select with button addon" v-model="jobDetails.department" required>
-                  <option value selected disabled>Select Department</option>
-                  <option value="Male" >Male</option>
-                  <option value="Female">Female</option>
-                </select>
-              </div>
-            </div>
+            
             <div class="grid">
               <p>Employment Type</p>
               <div class="one7">
@@ -89,10 +80,14 @@
               <p>Job Category</p>
               <input type="text" class="one6" v-model="jobDetails.job_category">
             </div>
-            <!-- <div class="grid"> -->
-            <!-- <p>Employee Id</p>
-            <input type="text" class="one6" v-model="jobDetails.employee_id"> -->
-            <!-- </div> -->
+            <div class="grid" v-if="show">
+              <p>Department</p>
+              <div class="input-group">
+                <select class="custom-select one6" id="inputGroupSelect04" aria-label="Example select with button addon" v-model="jobDetails.department" required>
+                  <option  v-for="(department, index) in departments" :key="index">{{department.name}}</option>
+                </select>
+              </div>
+            </div>
 
             <hr>
             <div class="one4">
@@ -130,6 +125,7 @@
       return{
         radio1: true,
         radio2: false,
+        show:false,
         jobDetails:{
           employment_type:"",
           job_title: "",
@@ -141,7 +137,8 @@
           work_location: "",
           employment_classification: ""
         },
-        isLoading : false
+        isLoading : false,
+        departments:{},
       }
     },
     methods:{
@@ -168,7 +165,18 @@
         }).catch(e => {
           this.isLoading = false;
         });
-      }
+      },
+      getDepartment() {
+      this.$axios
+        .get("https://hamlet-hrm.herokuapp.com/api/departments")
+        .then(res => {
+          console.log(res.data);
+          this.departments = res.data;this.show = true;
+        });
+    },
+    },
+    created(){
+      this.getDepartment()
     }
 
   }

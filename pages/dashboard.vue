@@ -59,10 +59,10 @@
                 <div class="col-sm-4">
                   <nuxt-link to="/department/add-department">
                     <div class="box-icon">
-                      <i class="fa fa-file"></i>
+                      <i class="fa fa-building"></i>
                     </div>
                   </nuxt-link>
-                  <p class="mt-2 text-center">Directory</p>
+                  <p class="mt-2 text-center">Department</p>
                 </div>
                 <!-- <div class="col-sm-4">
                                <nuxt-link to=""><div class="box-icon"><i class="fa fa-times"></i></div></nuxt-link> 
