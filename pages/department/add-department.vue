@@ -83,7 +83,6 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Edit</th>
-                                    <th scope="col">Delete</th>
                                     </tr>
                                     <div v-if="loader2" style="text-align:center !important">
                                     <span disabled>
@@ -95,7 +94,6 @@
                                     <th scope="row">{{index + 1}}</th>
                                     <td>{{department.name}}</td>
                                     <td><button class="btn text-primary fa fa-pencil" @click="edit(department)" ></button></td>
-                                    <td><button class="btn text-primary fa fa-trash" ></button></td>
                                     </tr>
                                 </tbody>
                             </table>
