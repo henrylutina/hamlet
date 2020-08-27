@@ -17,9 +17,9 @@
           <div class="col-sm-7">
             <h2>Hello {{ user }}</h2>
             <!-- <h2 v-else>Hello Welcome</h2> -->
-            <h6 class="mt-4">Welcome, Thanks for choosing us</h6>
-            <p class="mt-4">Task!</p>
-            <div class="border-admin">Design a new landing page for elaxx</div>
+            <h6 class="mt-4">Welcome to Hamlet!</h6>
+            <!-- <p class="mt-4">Task!</p>
+            <div class="border-admin">Design a new landing page for elaxx</div> -->
             <!-- Add user / list of users -->
             <div class="d-flex">
               <div>
@@ -103,7 +103,6 @@ export default {
     this.user = this.$auth.$storage.getLocalStorage("user").username;
     this.getCompany();
     // this.getEmployees()
-   
   },
   methods: {
     getCompany() {
@@ -128,8 +127,6 @@ export default {
   },
   created() {
     // this.getCompany();
-    
-    
   }
 };
 </script>

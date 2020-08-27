@@ -5,7 +5,7 @@
       <div class="grid">
         <div class="two1">
           <div class="two2">
-            <h2>Welcome Back!</h2>
+            <h2 class="text-center">Welcome Back!</h2>
             <!-- {{user}}{{ loggedInUser}} -->
 
             <form @submit.prevent="loginUser">
@@ -26,7 +26,7 @@
                 </small>
                 <br />
               </div>
-              <div>
+              <div class="mt-4">
                 <input
                   type="password"
                   placeholder="Password"
@@ -55,7 +55,7 @@
             </form>
             <hr />
             <br />
-            <p>
+            <p class="text-center">
               Not a customer yet?
               <nuxt-link to="/signup">
                 <button class="btn2" :disabled="isValid">Sign up</button>
@@ -87,7 +87,8 @@ export default {
       loader: true,
       submitted: false,
       login: false,
-      isValid: false
+      isValid: false,
+      // tokenUser : {}
     };
   },
   computed: {
@@ -122,9 +123,13 @@ export default {
           }
         });
         let user = response.data.user;
-        this.$auth.$storage.setLocalStorage("user", user);
-        this.loader = false;
+         this.$auth.$storage.setLocalStorage("user", user);
+        let token = response.data.token
+        this.$auth.$storage.setLocalStorage("jwt", token);
         // localStorage.setItem("jwt", token);
+        console.log(token)
+        this.loader = false;
+        
         console.log(response);
         this.loader = false;
         this.$message({
@@ -138,7 +143,7 @@ export default {
         if (e.response.status === 401) {
           this.$message({
             message:
-              "Unauthorized User, please register or check username and password!",
+              "Error, please sign up or check username and password!",
             type: "error"
           });
         }
@@ -186,12 +191,10 @@ input {
 .two2 {
   padding: 17% 25%;
   background: #f9f9f9;
-  text-align: center;
 }
 .two2 input {
   width: 100%;
-  padding: 5px 5px;
-  margin-bottom: 30px;
+  padding: 10px 5px;
   border-radius: 5px;
   border: none;
   box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.15);

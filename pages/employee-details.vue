@@ -12,11 +12,11 @@
               <div class="grid">
 
                 <p>First Name</p>
-                <input type="text" class="one6" v-model="employeeDetails.first_name" required>
+                <input type="text" name="first-name" class="one6" v-model="employeeDetails.first_name" required>
               </div>
               <div class="grid">
                 <p>Other Names</p>
-                <input type="text" class="one6" v-model="employeeDetails.other_names"  required>
+                <input type="text" class="one6" name="other-names" v-model="employeeDetails.other_names"  required>
               </div>
               <div class="grid">
                 <p>Gender</p>
@@ -30,7 +30,7 @@
               </div>
               <div class="grid">
                 <p>Date of Birth</p>
-                <input type="date" name="" id="" class="one6"  v-model="employeeDetails.dob" required>
+                <input type="date" name="dob" id="" class="one6"  v-model="employeeDetails.dob" required>
               </div>
               <div class="grid">
                 <p>Address</p>
@@ -38,11 +38,11 @@
               </div>
               <div class="grid">
                 <p>City</p>
-                <input type="text" class="one6"  v-model="employeeDetails.city" required>
+                <input type="text" name="city" class="one6"  v-model="employeeDetails.city" required>
               </div>
               <div class="grid">
                 <p>Age</p>
-                <input type="number" class="one6" v-model="employeeDetails.age" required >
+                <input type="number" name="age" class="one6" v-model="employeeDetails.age" required >
               </div>
               <div class="grid">
                 <p>Qualifications</p>
@@ -50,7 +50,7 @@
               </div>
               <div class="grid">
                 <p>Profile Picture</p>
-                <input type="file" name="" class="file-border"  id="" required placeholder="" accept=".png,.jpeg,.svg,.jpg" @change="upload()">
+                <input type="file" name="profile-picture" class="file-border"  id="" required placeholder="" accept=".png,.jpeg,.svg,.jpg" @change="upload()">
               </div>
 
               <hr>
