@@ -5,7 +5,7 @@
             
             <h5>Name: </h5>
             <p :class="currentPage.includes('/singleemployee/paymentinfo') ? activeClass : ''"><nuxt-link to="/singleemployee/paymentinfo" style="text-decoration:none">Personal Info</nuxt-link></p>
-            <p :class="currentPage.includes('/singleemployee/employmentdetails') ? activeClass : ''"><nuxt-link to="/singleemployee/employmentdetails" style="text-decoration:none">Employment Details and Compensation</nuxt-link></p>
+            <p :class="currentPage.includes('/single-employee/employmentdetails') ? activeClass : ''"><nuxt-link to="/singleemployee/employmentdetails" style="text-decoration:none">Employment Details and Compensation</nuxt-link></p>
         </div>
     </div>
 </template>

@@ -9,6 +9,7 @@
                     <div class="one6" >
                           <div class="one7">
                      <span class="one9 float-right"  >
+                         <!-- {{user}} -->
                     <nuxt-link to="/dashboard"><button class="btn1">Back</button></nuxt-link>
                     </span>
                     <h2>{{this.company.company_name}}</h2>
@@ -17,36 +18,61 @@
                     <div v-if="loader" class="text-center">
                     <span disabled>
                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                    Loading...
                     </span>
                     </div>
                     </div>
-                    <form @submit="addDepartment">
+                     <div v-if="editDepartment">
+                        <form class="form-inline" @submit="updateDepartment(departmentInfo.id)">
                         <div >
                     <div class="one3" >
-                    <h3>Add Department</h3>
-                    <hr>
-                    <div class="grid">
-                    <p> Department Name</p>
-                    <input type="text" v-model="departmentInfo.name">
+                    <div >
+                    <p>Update Department</p>
+                        <input type="text" class="form-control mt-3 mr-3 mb-3 pl-1" v-model="departmentInfo.name"><span class="one9 ">
+                            <span>
+                                 <button type="submit" class="btn1" ><span v-if="isLoading">Update</span>
+                                    <div v-else>
+                                    <app-loader/>
+                                    </div>
+                                </button>
+                                
+                            </span>
+                              
+                              
+                            </span>                 
                     </div>
-                    
-                
-                    
                     <hr>             
-                
-                    <span class="one9">
-                    <button type="submit" class="btn1"><span v-if="isLoading">Add</span>
-                <div v-else>
-                  <app-loader/>
-                </div>
-              </button>
-                    </span>
-                
                     </div>
                     </div>
                     </form>
+                    </div>
+                    <div v-else>
+                        <form class="form-inline" @submit.prevent="addDepartment">
+                        <div >
                     <div class="one3" >
+                    <div>
+                    <p>Add New Department</p>
+                        <label class="sr-only" for="inlineFormInputName2">Add New Department</label>
+                        <input type="text" class="form-control mt-3 mr-3 mb-3 pl-1" v-model="departmentInfo.name"><span class="one9 ">
+                            <span>
+                               
+                                <button type="submit" class="btn1">
+                                    <span v-if="isLoading">Add</span>
+                                    <div v-else>
+                                    <app-loader/>
+                                    </div>
+                                </button> 
+                            </span> 
+                            </span>                 
+                    </div>
+                    <hr>             
+                    </div>
+                    </div>
+                    </form>
+                    </div>
+                    
+                    
+                    
+                    <div class="one3">
                     <h3>Departments</h3>
                     <div >
                     <div class="table-responsive">
@@ -56,27 +82,30 @@
                                     <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
-                                    
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
                                     </tr>
-                                    <div v-if="loader2" class="text-center">
+                                    <div v-if="loader2" style="text-align:center !important">
                                     <span disabled>
                                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                    Loading...
                                     </span></div>
                                 </thead>
                                 <tbody v-for="(department, index) in departments" :key="index">
                                     <tr>
                                     <th scope="row">{{index + 1}}</th>
                                     <td>{{department.name}}</td>
+                                    <td><button class="btn text-primary fa fa-pencil" @click="edit(department)" ></button></td>
+                                    <td><button class="btn text-primary fa fa-trash" ></button></td>
                                     </tr>
                                 </tbody>
                             </table>
+                            
                     </div>
                     </div>
                     
                 
                     
-                    <hr>             
+                              
                 
                     
                     </div>
@@ -112,14 +141,20 @@ export default {
     data() {
     return {
       company: {},
+      user : {},
       loader: true,
       loader2: true,
-      isLoading:true,
+      isLoading: true,
+      show:true,
+      editDepartment:false,
       departments:{},
       departmentInfo:{
             name: " "
         }
     };
+    },
+    mounted(){
+        this.user = this.$auth.$storage.getLocalStorage('jwt')
     },
     methods: {
         getCompany() {
@@ -132,10 +167,28 @@ export default {
             });
         },
     addDepartment(){
-        this.isLoading = false;
-        this.$axios.post("https://hamlet-hrm.herokuapp.com/api/department", this.departmentInfo).then((res)=>{
-            console.log(res.data);this.isLoading = true;
+        // this.isLoading = false;
+        if(this.departmentInfo.name === ""){
+            this.isLoading = false
+        }
+        else{
+            this.isLoading = false
+             this.$axios.post("https://hamlet-hrm.herokuapp.com/api/department", this.departmentInfo).then((res)=>{
+            console.log(res.data)
+            this.isLoading = true
+            this.$message({
+                message: "Department Successfully Added!",
+                type: 'success'
+                })
+            this.isLoading = true
         })
+        .catch((error) =>{
+            console.log(error)
+            this.isLoading = true
+        })
+        }
+       
+        
     },
         
         getDepartment() {
@@ -147,6 +200,27 @@ export default {
           this.departments = res.data;
 
         });
+    },
+        edit(id){
+            this.departmentInfo = id;
+            this.editDepartment = true;
+        },
+        updateDepartment(i){
+        this.isLoading = false;
+        this.$axios.put(`https://hamlet-hrm.herokuapp.com/api/updatedepartment/${i}`, this.departmentInfo, 
+        {header : {'Authorization' : `Bearer ${this.user}`}})
+        .then((res)=>{
+            console.log(res.data.company)
+            this.isLoading = true
+            this.editDepartment = false
+            this.$message({
+                message: "Department successfully updated!",
+                type: 'success'
+                })
+        })
+        .catch((error) =>{
+            console.log(error)
+        })
     },
     },
     created() {
@@ -175,6 +249,9 @@ export default {
         height:100vh;
         margin-left: 25%;
     }
+    hr{
+        width: 100% !important;
+    }
     .grid{
         display: grid;
         grid-template-columns: 1fr 2fr;
@@ -193,13 +270,11 @@ export default {
     .one3{
         padding-left: 70px;
         padding-right: 70px;
-        padding-top: 50px;
         padding-bottom: 20px;
+        padding-top: 20px;
 
     }
-    hr{
-        margin-bottom: 30px;
-    }
+    
     .one3 h3{
         margin-bottom: 10px;
         color: #0065FC;
@@ -214,6 +289,7 @@ export default {
         background: #FFFFFF;
         border: 1px solid #0065FC;
         border-radius: 5px;
+        margin-right: 1rem;
     }
     .btn2{
         color: #FFFFFF;

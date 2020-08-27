@@ -1,7 +1,7 @@
 <template>
     <div class="one">
         <div class="one1">
-            <img src="~/assets/Group 58.png" alt="">
+            <img :src="this.company.company_logo" alt class="w-99" />
             
             <h5>HIRING CHECKLIST</h5>
             <p :class="currentPage.includes('/employee-details') ? activeClass : ''"><nuxt-link to="/employee-details" style="text-decoration:none">Employee Details</nuxt-link></p>
@@ -15,14 +15,28 @@
 export default {
     data(){
     return{
-      activeClass : 'active'
+      activeClass : 'active',
+      company: {},
     }
 },
  computed : {
     currentPage(){
       return this.$route.path
     }
-  }
+  },
+  methods: {
+        getCompany() {
+        this.$axios
+            .get("https://hamlet-hrm.herokuapp.com/api/auth/admin")
+            .then(res => {
+            console.log(res.data.company);
+            this.company = res.data.company;
+            });
+        }
+    },
+    created() {
+        this.getCompany();
+    },
 }
 </script>>
 <style scoped>
@@ -53,7 +67,6 @@ export default {
     .one1 img{
         width: 60%;
         vertical-align: middle;
-        border-radius: 50%;
         margin-bottom: 20px;
     }
     .one1 h5{

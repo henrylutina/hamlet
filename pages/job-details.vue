@@ -69,7 +69,7 @@
               <input type="text" class="one6" v-model="jobDetails.work_location">
             </div>
             <div class="grid">
-              <p>Salary</p>
+              <p>Salary (In Naira)</p>
               <input  class="one6" type="number" v-model="jobDetails.salary">
             </div>
             <div class="grid">
