@@ -123,6 +123,8 @@ export default {
         });
         let user = response.data.user;
         this.$auth.$storage.setLocalStorage("user", user);
+        let token = response.data.token
+        this.$auth.$storage.setLocalStorage("jwt", token);
         this.loader = false;
         // localStorage.setItem("jwt", token);
         console.log(response);
