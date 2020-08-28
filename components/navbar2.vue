@@ -1,8 +1,8 @@
 <template>
 <div>
-<div class="boxShadow shadow fixed-top">
+<div class="boxShadowV shadow fixed-top">
   <!-- desktop view -->
-   <div class="one desktopView">
+   <div class="oneV desktopViewV">
         <nav class="navbar navbar-expand-lg navbar-light">
   <nuxt-link to="/" class="navbar-brand" href="#" style="color: #0065FC">Hamlet</nuxt-link>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,58 +11,50 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-      <!-- <span v-if="$auth.loggedIn">
-         <li class="nav-item active">
-            <nuxt-link to="/signin" class="nav-link" ><button class="btn1">Sign In</button></nuxt-link>
-          </li>
-          <li class="nav-item">
-            <nuxt-link to="/signup" class="nav-link" href="#"><button class="btn2">Get Started</button></nuxt-link>
-          </li>
-      </span> -->
-     
+
       <li class="nav-item active">
-        <nuxt-link to="/signin" class="nav-link" ><button class="btn1">Sign In</button></nuxt-link>
+        <nuxt-link to="/signin" class="nav-link" ><button class="btn1V">Sign In</button></nuxt-link>
       </li>
       <li class="nav-item">
-        <nuxt-link to="/signup" class="nav-link" href="#"><button class="btn2">Get Started</button></nuxt-link>
+        <nuxt-link to="/signup" class="nav-link" href="#"><button class="btn2V">Get Started</button></nuxt-link>
       </li>
-    
+
     </ul>
-    
+
   </div>
 </nav>
     </div>
 </div>
     <!-- desktop view end -->
 
-    <!-- mobile-view -->  
-    <div class="boxShadow">
-    <div class="container mobileView">
-      <div class="mobileView">
-          <div id="mySidenav" :style="styleObject" class="sidenav">
+    <!-- mobile-view -->
+    <div class="boxShadowV">
+    <div class="container mobileViewV">
+      <div class="mobileViewV">
+          <div id="mySidenavV" :style="styleObject" class="sidenavV">
             <div class="float-right pb-5">
                <span to="" class="closebtn" style="color : #FFFFFF" @click="closeNav">
                <font-awesome-icon style="height:100px" :icon="['fa', 'times']"/>
                </span>
             </div>
-        
+
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <nuxt-link to="signin" class="nav-link" ><button class="btn1">Sign In</button></nuxt-link>
+              <nuxt-link to="signin" class="nav-link" ><button class="btn1V">Sign In</button></nuxt-link>
             </li>
             <li class="nav-item">
-              <nuxt-link to="/signup" class="nav-link" href="#"><button class="btn2">Get Started</button></nuxt-link>
+              <nuxt-link to="/signup" class="nav-link" href="#"><button class="btn2V">Get Started</button></nuxt-link>
             </li>
-            
+
            </ul>
-         
+
           </div>
-        <div class="wrapper2">
-          <div class="logo2">
+        <div class="wrapper2V">
+          <div class="logo2V">
             Hamlet
           </div>
           <div>
-              <span style="font-size:30px;cursor:pointer" class="openNav" @click="openNav">
+              <span style="font-size:30px;cursor:pointer;" class="openNaV" @click="openNav">
                 <font-awesome-icon :icon="['fa', 'bars']"/>
                 </span>
           </div>
@@ -92,22 +84,22 @@ export default {
     }
   }
 }
-</script>>
+</script>
 <style scoped>
     *{
         font-family: 'Overpass', sans-serif;
-        
+
     }
-    
-    .one{
+
+    .oneV{
         margin-left: 100px;
         margin-right: 100px;
-       
+
     }
     a{
         color: #0065FC !important;
     }
-    .btn1{
+    .btn1V{
         background: white;
         color:#0065FC ;
         border-radius: 5px;
@@ -115,15 +107,15 @@ export default {
         border: 1px solid #0065FC;
         outline: none !important;
     }
-    .btn1:hover{
+    .btn1V:hover{
         background: #0065FC;
         color: white;
         border-radius: 5px;
         padding: 5px 20px;
         border: 1px solid #0065FC;
-        
+
     }
-    .btn2{
+  .btn2V{
         background: #0065FC;
         color: white;
         border-radius: 5px;
@@ -131,25 +123,25 @@ export default {
         border: 1px solid #0065FC;
         outline: none !important;
     }
-    .btn2:hover{
+.btn2V:hover{
         background: white;
         color:#0065FC ;
         border-radius: 5px;
         padding: 5px 20px;
         border: 1px solid #0065FC;
     }
-.mobileView{
+.mobileViewV{
     display: none;
   }
-  .logo2{
+.logo2v{
     font-size: 1.5rem;
     color: #0065FC;
 }
-#maintwo {
+#maintwoV {
  transition: margin-left .5s;
  /* padding: 16px; */
 }
-.sidenav {
+.sidenavV {
  text-align: center;
  height: 100%;
  /* width: 0; */
@@ -164,10 +156,10 @@ export default {
  transition: 0.5s;
  padding-top: 60px;
 }
-.sidenav ul{
+.sidenavV ul{
     margin-top: 2rem;
 }
-.sidenav ul li a {
+.sidenavV ul li a {
  padding: 8px 8px 8px 32px;
  text-decoration: none;
  font-size: 25px;
@@ -177,74 +169,74 @@ export default {
  /* margin-top: 3rem; */
  padding: 20px;
 }
-.sidenav ul li a:hover
+.sidenavV ul li a:hover
 {
  color: hotpink;
 }
-.closebtn {
+.closebtnV {
  position: absolute;
  top: 0;
  right: 40px;
- font-size: 2rem !important; 
+ font-size: 2rem !important;
  margin-left: 50px;
 }
-.openNav{
+.openNavV{
     font-size: 1.8rem !important;
 }
-.logo3{
+.logo3V{
 position: absolute;
  top: 0;
  left: 0;
- font-size: 2rem !important; 
+ font-size: 2rem !important;
  /* margin-left: 50px; */
 }
-.wrapper2{
+.wrapper2V{
     display: flex;
     justify-content: space-between;
     padding: 1rem;
 }
 @media only screen and (min-width: 300px) and (max-width: 350px) {
-  .closebtn {
+  .closebtnV {
  position: absolute;
  top: -0.7rem;
  right: 2rem;
- font-size: 2rem !important; 
+ font-size: 2rem !important;
  margin-left: 50px;
 }
-.desktopView{
+.desktopViewV{
     display: none;
   }
-  .mobileView{
+  .mobileViewV{
     display:block;
-    
+
   }
-  
+
 }
 
 @media only screen and (min-width: 360px) and (max-width: 578px) {
-  .desktopView{
+  .desktopViewV{
     display: none;
   }
-  .mobileView{
+  .mobileViewV{
     display: block;
   }
-  .closebtn {
+  .closebtnV {
  top: -0.7rem;
  right: 2rem;
 }
 }
 @media only screen and (min-width: 710px) and (max-width: 768px){
-    .one{
+    .oneV{
         margin-left: 20px;
         margin-right: 20px;
     }
-    .desktopView{
+    .desktopViewV{
       display: none;
     }
-    .mobileView{
+    .mobileViewV{
       display: block;
     }
-    .closebtn {
+    .closebtnV {
  top: -0.7rem;
  right: 3.5rem;
 }

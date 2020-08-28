@@ -11,7 +11,7 @@
                          <!-- <div class="btn btn-secondary">Update employees</div> -->
                         <nuxt-link to="/dashboard"><div class="btn1">Back</div></nuxt-link>
                     </div>
-                  
+
                 </div>
       </div>
       <div class="card">
@@ -67,105 +67,36 @@
               <table
                 class="table table-responsive table-bordered table-hover border-0"
               >
-                
-                  <tr> 
+
+                  <tr>
                     <th scope="col">#</th>
                     <th scope="col">Full Name</th>
                     <th scope="col">Employment Type</th>
                     <th scope="col">Job Title</th>
                     <th scope="col">Department</th>
                     <th scope="col">Location</th>
-                    <th scope="col">Date Hired</th> 
-                    <th scope="col">Action</th> 
+                    <th scope="col">Date Hired</th>
+                    <th scope="col">Action</th>
                   </tr>
-               
-                <tr v-for="(employee, index) in employees" :key="index"> 
+
+                <tr v-for="(employee, index) in employees" :key="index">
                      <th scope="row">{{ index + 1 }}</th>
                     <td>
                       {{ employee.first_name + " " + employee.other_names }}
                     </td>
                     <td>
-                      {{ employee.job_details.employment_classification }}
+                      <span v-if="employee.job_details">{{ (employee.job_details) ? employee.job_details.employment_classification : '...' }}</span>
                     </td>
-                    <td>{{ employee.job_details.job_title }}</td>
-                    <td>{{ employee.job_details.department }}</td>
-                    <td>{{ employee.job_details.work_location }}</td>
-                    <td>{{ employee.job_details.date_hired }}</td> 
+                  <td>  <span v-if="employee.job_details">{{(employee.job_details) ? employee.job_details.job_title : '...'}}</span></td>
+                     <td>  <span v-if="employee.job_details">{{(employee.job_details) ? employee.job_details.department : "..."}}</span></td>
+                   <td>  <span v-if="employee.job_details">{{ (employee.job_details) ? employee.job_details.work_location : '...' }}</span></td>
+                    <td>  <span v-if="employee.job_details">{{ (employee.job_details) ? employee.job_details.date_hired : '...'}}</span></td>
                     <td>
-                      <button :title="`View ${singleEmployee.first_name} ${singleEmployee.other_names}`" class="btn text-primary fa fa-eye" data-toggle="modal" data-target="#view" @click="view(employee)" ></button> 
-                      <button :title="`Edit ${singleEmployee.first_name} ${singleEmployee.other_names}`" class="btn text-success fa fa-pencil" data-toggle="modal" data-target="#update" @click="view(employee)" ></button> 
-
-<!-- open modal for view employee-->
-<div class="modal fade" id="view" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{singleEmployee.first_name + " " + singleEmployee.other_names}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- {{singleEmployee.job_details.employment_classification }} -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end modal for view employee -->
+                        <nuxt-link :to="`/employee/personal-info/${employee.id}`" :title="`View ${employee.first_name} ${employee.other_names}`" class="btn text-primary fa fa-eye"></nuxt-link>
 
 
-<!-- open modal for view employee-->
-<div class="modal fade" id="update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Employee</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div>
-        <div>
-          
-        </div>
-      </div>
-      <!-- <div class="modal-body">
-        <label for="">First Name</label><br>
-         <input type="text" v-model="singleEmployee.first_name">
-      </div>
-      <div class="modal-body">
-        <label for="">Other Names</label><br>
-         <input type="text" v-model="singleEmployee.other_names">
-      </div>
-      <div class="modal-body">
-        <label for="">Job Title</label><br>
-         <input type="text" v-model="singleEmployee.job_details.job_title">
-      </div>
-      <div class="modal-body">
-        <label for="">Department</label><br>
-         <input type="text" v-model="singleEmployee.job_details.department">
-      </div>
-      <div class="modal-body">
-        <label for="">Location</label><br>
-         <input type="text" v-model="singleEmployee.job_details.work_location">
-      </div>
-      <div class="modal-body">
-        <label for="">Date Hired</label><br>
-         <input type="text" v-model="singleEmployee.job_details.date_hired ">
-      </div> -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end modal for view employee -->
-                      </td> 
-                </tr> 
+                      </td>
+                </tr>
               </table>
               <div v-if="loader" class="text-center">
                   <span disabled>
@@ -173,7 +104,7 @@
                 Loading...
                 </span>
               </div>
-              
+
             </div>
           </div>
         </div>
@@ -208,10 +139,10 @@ export default {
       // //  (post => {
       // //   return post.first_name.match(this.filterbyName)
       // })
-        
-       
+
+
     //  }
-  
+
   // },
   methods: {
     view(data)
@@ -277,7 +208,7 @@ input[type="checkbox"] {
         border-radius: 5px;
         padding: 5px 20px;
         border: 1px solid #0065FC;
-        
+
     }
     .card{
       background: #F9F9F9;
