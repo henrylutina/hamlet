@@ -1,71 +1,73 @@
 <template>
     <div>
         <app-navbar/>
-        <div class="row one5">
-            <app-sidebar/>
-            
-            <div  class="one2 ">
-                <div class="one6">
-                <div class="one7">
-                    <h2>Name</h2>
-                    <p>Job Title (employmenttype)  Started on (Date hired)</p>
-                </div>
-                <div class="one8">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Actions
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Edit profile</a>
-                            <a class="dropdown-item" href="#">Terminate</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                 <div >
-                <div class="one3">
-                <h3>Personal Info</h3>
-                <hr>
-                <div class="grid">
-                    <p> Name</p>
-                    <p></p>
-                </div>
-                <div class="grid">
-                    <p> Gender</p>
-                    <p></p>
-                </div>
-                <div class="grid">
-                    <p>Date of Birth</p>
-                    <p></p>
-                </div>
-                <div class="grid">
-                    <p>Phone</p>
-                    <p></p>
-                </div>
-                <div class="grid">
-                    <p>Email</p>
-                   <p></p>
-                </div>
-                <div class="grid">
-                    <p>Address</p>
-                    <p></p>
-                </div>
-                <div class="grid">
-                    <p>Emergency Contact</p>
-                    <p></p>
-                </div>
-                
-                <hr>             
 
-            </div>
-                </div>
-           
+        <div class="row one5">
+<!-- siddebar -->
+            <div class="one">
+        <div class="one1">
+            <img src="~/assets/Group 58.png" alt="">
+            <p ><span style="cursor:pointer" class="text-primary">Personal Info</span></p>
+            <p ><nuxt-link to="/singleemployee/employmentdetails" style="text-decoration:none">Contact info</nuxt-link></p>
+            <p ><nuxt-link to="/singleemployee/employmentdetails" style="text-decoration:none">Job Details</nuxt-link></p>
         </div>
-        </div>
-        
-        
     </div>
-    
+
+    <div  class="one2 ">
+      <div class="one6">
+      <div class="one7">
+          <h2><div v-for="item in employee" :key="item.id">
+             {{ item.first_name + " " + item.other_names }}
+          </div></h2>
+          <p>Job Title (employmenttype)  Started on (Date hired)</p>
+      </div>
+      <div class="one8">
+          <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Actions
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Edit profile</a>
+                  <a class="dropdown-item" href="#">Terminate</a>
+              </div>
+          </div>
+      </div>
+  </div>
+       <div >
+      <div class="one3" v-for="(data, index) in employee" :key="index">
+      <h3>Personal Info</h3>
+      <hr>
+      <div class="grid">
+          <p> Gender</p>
+          <p>{{data.gender}}</p>
+      </div>
+      <div class="grid">
+          <p>Date of Birth</p>
+          <p>{{data.dob}}</p>
+      </div>
+      <div class="grid">
+          <p>Address</p>
+          <p>{{data.address}}</p>
+      </div>
+      <div class="grid">
+          <p>Qualification</p>
+          <p>{{data.qualification}}</p>
+      </div>
+      <div class="grid">
+          <p>City/Town</p>
+          <p>{{data.city}}</p>
+      </div>
+
+      <hr>
+  </div>
+      </div>
+
+</div>
+        </div>
+
+
+    </div>
+
 
 </template>
 
@@ -78,27 +80,92 @@ export default {
         'app-sidebar':sidebar,
         'app-navbar':navbar,
     },
+
+    data() {
+      return {
+        employee:[],
+        styleObject : {
+       width : '0px'
+     }
+      }
+    },
     methods:{
         getEmployee(){
-            this.$axios.get(`https://hamlet-hrm.herokuapp.com/api/employees/${this.$route.params}`).then(res => {
-          console.log(res.data);
-          
+            this.$axios.get(`https://hamlet-hrm.herokuapp.com/api/employees/${this.$route.params.name}`).then(res => {
+              this.employee=res.data
         });
-        }
+        },
+        openNav(){
+      this.styleObject.width = '100%'
+    },
+    closeNav(){
+      this.styleObject.width = '0px'
+      // console.log('clicked')
+    }
     },
     created(){
         this.getEmployee()
     }
-    
+
 }
 </script>
 
 <style scoped>
+ .nuxt-link-active{
+        border-left: 3px solid #64a2ff !important ;
+        padding-left: .5rem;
+    }
+    .one{
+        top: 0;
+        left: 0;
+        width: 25%;
+        height: 100vh;
+        background: #F9F9F9;
+        position: fixed;
+    }
+    .one1{
+        padding-left: 100px;
+        margin-top: 10rem;
+        padding-right: 10px;
+    }
+    .one1 img{
+        width: 60%;
+        vertical-align: middle;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+    .one1 h5{
+        margin-bottom: 20px;
+        color: #081D29;
+    }
+    .one1 p{
+        margin-bottom: 10px;
+        color: #081D29;
+    }
+
+    @media (max-width:567px) {
+        .one{
+            display: none;
+        }
+    }
+
+
+    @media(min-width: 568px) and (max-width:768px) {
+        .one1{
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    }
+
+    @media(min-width: 769px) and (max-width:1200px) {
+        .one1{
+        padding-left: 40px;}
+    }
     *{
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        
+
     }
     .one2{
         width: 50%;
@@ -179,13 +246,13 @@ export default {
         color: #0065FC;
          margin-bottom: 10px;
     }
-    
+
 
     @media (max-width: 567px) {
         .one2{
         width: 100%;
         margin-left: 0px;
-       
+
     }
         .grid{
         display: grid;
@@ -206,7 +273,7 @@ export default {
             width: 100%;
     }
         .btn2{
-        
+
         margin-left: 0px;
     }
         .btn1{
@@ -216,9 +283,9 @@ export default {
         padding-left: 30px;
         padding-right: 30px;
     }
-        
+
     }
-    
+
 
     @media(min-width: 568px) and (max-width:768px) {
         .one2{
@@ -252,5 +319,171 @@ export default {
         margin-left: 0px;
     }
      }
-    
+
+
+     *{
+        font-family: 'Overpass', sans-serif;
+
+    }
+
+    .oneV{
+        margin-left: 100px;
+        margin-right: 100px;
+
+    }
+    a{
+        color: #0065FC !important;
+    }
+    .btn1V{
+        background: white;
+        color:#0065FC ;
+        border-radius: 5px;
+        padding: 5px 20px;
+        border: 1px solid #0065FC;
+        outline: none !important;
+    }
+    .btn1V:hover{
+        background: #0065FC;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 20px;
+        border: 1px solid #0065FC;
+
+    }
+  .btn2V{
+        background: #0065FC;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 20px;
+        border: 1px solid #0065FC;
+        outline: none !important;
+    }
+.btn2V:hover{
+        background: white;
+        color:#0065FC ;
+        border-radius: 5px;
+        padding: 5px 20px;
+        border: 1px solid #0065FC;
+    }
+.mobileViewV{
+    display: none;
+  }
+.logo2v{
+    font-size: 1.5rem;
+    color: #0065FC;
+}
+#maintwoV {
+ transition: margin-left .5s;
+ /* padding: 16px; */
+}
+.sidenavV {
+ text-align: center;
+ height: 100%;
+ /* width: 0; */
+ position: fixed;
+ z-index: 1;
+ top: 0;
+ left: 0;
+ background-color: rgb(0,101,252, 0.7);
+ /* background-image: linear-gradient(to right, #0288d1, #0288d1 ); */
+/* opacity: 0.7; */
+ overflow-x: hidden;
+ transition: 0.5s;
+ padding-top: 60px;
+}
+.sidenavV ul{
+    margin-top: 2rem;
+}
+.sidenavV ul li a {
+ padding: 8px 8px 8px 32px;
+ text-decoration: none;
+ font-size: 25px;
+ color: #E54332;
+ display: block;
+ transition: 0.3s;
+ /* margin-top: 3rem; */
+ padding: 20px;
+}
+.sidenavV ul li a:hover
+{
+ color: hotpink;
+}
+.closebtnV {
+ position: absolute;
+ top: 0;
+ right: 40px;
+ font-size: 2rem !important;
+ margin-left: 50px;
+}
+.openNavV{
+    font-size: 1.8rem !important;
+}
+.logo3V{
+position: absolute;
+ top: 0;
+ left: 0;
+ font-size: 2rem !important;
+ /* margin-left: 50px; */
+}
+.wrapper2V{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+@media only screen and (min-width: 300px) and (max-width: 350px) {
+  .closebtnV {
+ position: absolute;
+ top: -0.7rem;
+ right: 2rem;
+ font-size: 2rem !important;
+ margin-left: 50px;
+}
+.desktopViewV{
+    display: none;
+  }
+  .mobileViewV{
+    display:block;
+
+  }
+
+}
+
+@media only screen and (min-width: 360px) and (max-width: 578px) {
+  .desktopViewV{
+    display: none;
+  }
+  .mobileViewV{
+    display: block;
+  }
+  .closebtnV {
+ top: -0.7rem;
+ right: 2rem;
+}
+}
+@media only screen and (min-width: 710px) and (max-width: 768px){
+    .oneV{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .desktopViewV{
+      display: none;
+    }
+    .mobileViewV{
+      display: block;
+    }
+    .closebtnV {
+ top: -0.7rem;
+ right: 3.5rem;
+}
+}
+/* @media only screen and (min-width: 1024px) and (max-width: 2445px){
+   .mobileView{
+      display: none;
+    }
+    .desktopView{
+      display: block;
+    }
+} */
+
+
 </style>
