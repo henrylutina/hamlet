@@ -11,22 +11,48 @@
             <form @submit.prevent="addContactInfo">
               <div class="grid">
                 <p>Phone Number</p>
-                <input type="text" v-model="contactInfo.phone" required>
+                <input  name="phone-number" v-model="contactInfo.phone" 
+                v-validate="'numeric|length:11'"
+                  :class="{ 'is-invalid': submitted && errors.has('phone-number') }"
+                /><div></div>
+                <small
+                  v-if="submitted && errors.has('phone-number')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("phone-number") }}
+                </small>
               </div>
               <div class="grid">
                 <p>Email</p>
-                <input type="email" v-model="contactInfo.email" required>
+                <input type="email" name="contact-email" v-model="contactInfo.email" 
+                v-validate="'required|email'"
+                :class="{ 'is-invalid': submitted && errors.has('contact-email') }"><div></div>
+                <small
+                v-if="submitted && errors.has('contact-email')"
+                class="invalid-feedback"
+                >
+                {{ errors.first("contact-email")}}
+                </small>  
               </div>
               <div class="grid">
                 <p>Emergency Contact</p>
-                <input type="text" v-model="contactInfo.emergency_contact" required>
+                <input name="emergency-contact" v-model="contactInfo.emergency_contact" 
+                v-validate="'numeric|length:11'"
+                  :class="{ 'is-invalid': submitted && errors.has('emergency-contact') }"
+                /><div></div>
+                <small
+                  v-if="submitted && errors.has('emergency-contact')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("emergency-contact") }}
+                </small>
               </div>
 
               <hr>
               <div class="one4">
                 <nuxt-link to="/employee-details" class="btn1">Back</nuxt-link>
                 <button type="submit"  class="btn2">
-                  <span v-if="!isLoading">Next</span>
+                  <span v-if="isLoading">Next</span>
                   <app-loader v-else />
                 </button>
               </div>
@@ -59,43 +85,50 @@
           emergency_contact: "",
           employee_id: "",
         },
-        isLoading : false
+        isLoading : true,
+        submitted : false
       }
     },
-    computed: {
-      dataIsValid() {
-        let hasInvalidData = false;
-        Object.keys(this.contactInfo).forEach(key => {
-          if (!this.contactInfo[key]) hasInvalidData = true;
-          return false;
-        });
+    // computed: {
+    //   dataIsValid() {
+    //     let hasInvalidData = false;
+    //     Object.keys(this.contactInfo).forEach(key => {
+    //       if (!this.contactInfo[key]) hasInvalidData = true;
+    //       return false;
+    //     });
 
-        return !hasInvalidData;
-      }
-    },
+    //     return !hasInvalidData;
+    //   }
+    // },
     methods:{
-      addContactInfo() {
-        // if (!this.dataIsValid) {
-        //   return;
-        // }
-          
-        this.isLoading = true
-        this.$axios.post("https://hamlet-hrm.herokuapp.com/api/contactinfo", this.contactInfo).then((res) => {
+      addContactInfo(){
+        console.log("clicked")
+      this.submitted = true;
+      this.$validator.validateAll().then((valid) => {
+        if (valid) {
+          console.log("Login");
+         this.isLoading = false;
+         this.$axios.post("https://hamlet-hrm.herokuapp.com/api/contactinfo", this.contactInfo).then((res) => {
           console.log(res.data);
-          swal({
-            title: "Success",
-            text: "You have added your employee's contact information successfully!",
-            icon: "success",
-            button: false
-          });
-          this.isLoading = false;
+          this.$message({
+          message: "You've added your employee's contact info!",
+          type: "success"
+        });
+          this.isLoading = true;
           this.$router.push("/job-details");
         }).catch(e => {
-          this.isLoading = false;
-        })
-      
-      },
+          this.isLoading = true;
+        });   
+        } else {
+        this.isLoading = true; 
+        }
+      })},
     }
+          
+        
+      
+      
+    
 
   }
 </script>
@@ -222,15 +255,8 @@
     .one4{
       text-align: center;
     }
-    .one4 button{
-      width: 100%;
-    }
-    .btn1{
-      margin-bottom: 30px;
-    }
-    .btn2{
-      margin-left: 0px;
-    }
+    
+ 
   }
 
 </style>

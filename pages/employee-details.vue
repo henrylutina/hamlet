@@ -12,60 +12,144 @@
               <div class="grid">
 
                 <p>First Name</p>
-                <input type="text" name="first-name" class="one6" v-model="employeeDetails.first_name" required>
+                <input type="text" name="first-name" class="one6" v-model="employeeDetails.first_name" 
+                v-validate="'required'"
+                  :class="{ 'is-invalid': submitted && errors.has('first-name') }"
+                /><div></div>
+                <small
+                  v-if="submitted && errors.has('first-name')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("first-name") }}
+                </small>
               </div>
               <div class="grid">
                 <p>Other Names</p>
-                <input type="text" class="one6" name="other-names" v-model="employeeDetails.other_names"  required>
+                <input type="text" class="one6" name="other-names" v-model="employeeDetails.other_names" 
+                v-validate="'required'"
+                  :class="{ 'is-invalid': submitted && errors.has('other-names') }"
+                /><div></div>
+                <small
+                  v-if="submitted && errors.has('other-names')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("other-names") }}
+                </small>
               </div>
               <div class="grid">
                 <p>Gender</p>
                 <div class="input-group">
-                  <select class="custom-select one6" id="inputGroupSelect04" aria-label="Example select with button addon" v-model="employeeDetails.gender" required>
+                  <select class="custom-select one6" name="gender" id="inputGroupSelect04" aria-label="Example select with button addon"
+                   v-model="employeeDetails.gender"
+                  v-validate="'required'"
+                  :class="{ 'is-invalid': submitted && errors.has('gender') }"
+                >
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
-                  </select>
+                  </select><div></div>
+                  <small
+                  v-if="submitted && errors.has('gender')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("gender") }}
+                </small>
                 </div>
               </div>
               <div class="grid">
                 <p>Date of Birth</p>
-                <input type="date" name="dob" id="" class="one6"  v-model="employeeDetails.dob" required>
+                <input type="date" name="date_of_birth" id="" class="one6"  v-model="employeeDetails.dob" 
+                v-validate="'required'"
+                  :class="{ 'is-invalid': submitted && errors.has('date_of_birth') }"
+                /><div></div>
+                <small
+                  v-if="submitted && errors.has('date_of_birth')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("date_of_birth") }}
+                </small>
               </div>
               <div class="grid">
                 <p>Address</p>
-                <input type="text" class="one6" v-model="employeeDetails.address" required>
+                <input type="text" class="one6" name="address" v-model="employeeDetails.address"
+                v-validate="'required'"
+                  :class="{ 'is-invalid': submitted && errors.has('address') }"
+                /><div></div>
+                <small
+                  v-if="submitted && errors.has('address')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("address") }}
+                </small>
               </div>
               <div class="grid">
                 <p>City</p>
-                <input type="text" name="city" class="one6"  v-model="employeeDetails.city" required>
+                <input type="text" name="city" class="one6"  v-model="employeeDetails.city" 
+                v-validate="'required'"
+                  :class="{ 'is-invalid': submitted && errors.has('city') }"
+                /><div></div>
+                <small
+                  v-if="submitted && errors.has('city')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("city") }}
+                </small>
               </div>
               <div class="grid">
                 <p>Age</p>
-                <input type="number" name="age" class="one6" v-model="employeeDetails.age" required >
+                <input type="" name="age" class="one6" v-model="employeeDetails.age" 
+                v-validate="'numeric'"
+                  :class="{ 'is-invalid': submitted && errors.has('age') }"
+                /><div></div>
+                <small
+                  v-if="submitted && errors.has('age')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("age") }}
+                </small>
               </div>
               <div class="grid">
                 <p>Qualifications</p>
-                <select class="custom-select one6" id="inputGroupSelect04" aria-label="Example select with button addon" v-model="employeeDetails.qualification" required>
+                <select class="custom-select one6" name="qualifications" id="inputGroupSelect04" aria-label="Example select with button addon" v-model="employeeDetails.qualification" 
+                v-validate="'required'"
+                  :class="{ 'is-invalid': submitted && errors.has('qualifications') }"
+                >
+                
                     <option value="OND">OND</option>
                     <option value="HND">HND</option>
                     <option value="Bsc">Bsc</option>
                     <option value="Masters">Masters</option>
                     <option value="Phd">Phd</option>
-                  </select>
+                  </select><div></div>
+                  <small
+                  v-if="submitted && errors.has('qualifications')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("qualifications") }}
+                </small>
                 
               </div>
               <div class="grid">
                 <p>Profile Picture</p>
-                <input type="file" name="profile-picture" class="file-border"  id="" required placeholder="" accept=".png,.jpeg,.svg,.jpg" @change="upload()">
-              </div>
-
+                <input type="file" name="profile-picture" class="file-border"  id="" placeholder="" @change="upload()"
+                    v-validate="'required|ext:jpeg,jpg,svg,png'"
+                      :class="{ 'is-invalid': submitted && errors.has('profile-picture') }"
+                    /><div></div>
+                    <small
+                      id=""
+                      class="form-text text-muted"
+                    >(Picture must be of .jpeg, .png, .svg, .jpg format)</small><div></div>
+                    <small
+                      v-if="submitted && errors.has('profile-picture')"
+                      class="invalid-feedback"
+                    >{{ errors.first("profile-picture")}}</small>
+                </div>
               <hr>
               <div class="one4">
                 <nuxt-link to="/dashboard">
                   <button class="btn1" >Back</button>
                 </nuxt-link>
-                <button type="submit" class="btn2" :disabled="isLoading">
-                  <span v-if="!isLoading">Next</span>
+                <button type="submit" class="btn2">
+                  <span v-if="isLoading">Next</span>
                   <div v-else>
                     <app-loader />
                   </div>
@@ -105,7 +189,8 @@
           qualification: "",
           profile_pic: {},
         },
-        isLoading : false
+        isLoading : true,
+        submitted: false,
       }
     },
     methods:{
@@ -115,8 +200,13 @@
         console.log(this.employeeDetails.profile_pic);
       },
       addEmployeeInfo(){
-        this.isLoading = true;
-        const formData = new FormData()
+        console.log("clicked")
+      this.submitted = true;
+      this.$validator.validateAll().then((valid) => {
+        if (valid) {
+          console.log("Login");
+         this.isLoading = false;
+         const formData = new FormData()
         formData.append('first_name', this.employeeDetails.first_name)
         formData.append('other_names', this.employeeDetails.other_names)
         formData.append('gender', this.employeeDetails.gender)
@@ -128,17 +218,20 @@
         formData.append('profile_pic', this.employeeDetails.profile_pic)
         this.$axios.post("https://hamlet-hrm.herokuapp.com/api/employee", formData).then((res)=>{
           console.log(res.data);
-          swal({
-            title: "Success",
-            text: "You have added your employee's details successfully",
-            icon: "success",
-            button: false
-          });
-          this.$router.push("/contact-info");
-          this.isLoading = false;
-        }).catch(e => {
-          this.isLoading = false;
+         this.$message({
+          message: "You've added your employee's personal details!",
+          type: "success"
         });
+          this.$router.push("/contact-info");
+          this.isLoading = true;
+        }).catch(e => {
+          this.isLoading = true;
+        });   
+        } else {
+        this.isLoading = true; 
+        }
+      });
+        
       }
     }
 
@@ -157,7 +250,7 @@
     border-radius: 5px;
     background: #FFFFFF;
     margin-top: 5rem;
-    height:100vh;
+    height:auto;
     margin-left: 25%;
   }
   .grid{
@@ -211,7 +304,7 @@
   .one5{
     background: #F9F9F9;
     margin-top: 3.5rem;
-    height: 130vh;
+    height: auto;
   }
   select{
     width:100%;

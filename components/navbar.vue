@@ -94,7 +94,7 @@ export default {
      localStorage.removeItem("jwt");
     this.$router.push('/signin')
      this.$message({
-          message:  "User Logged out successfully!",
+          message:  "You Logged out successfully!",
           type: 'success'
         })
     },
