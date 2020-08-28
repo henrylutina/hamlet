@@ -15,7 +15,7 @@
             </h4>
           </div>
           <div class="col-sm-7">
-            <h2>Hello {{ user }}</h2>
+            <h2>Hello  {{ this.profile.first_name }}</h2>
             <!-- <h2 v-else>Hello Welcome</h2> -->
             <h6 class="mt-4">Welcome to Hamlet!</h6>
             <!-- <p class="mt-4">Task!</p>
@@ -25,13 +25,13 @@
               <div>
                 <nuxt-link to="/employee-details">
                   <div class="circle-name-1">
-                    <i class="fa fa-plus"></i>
+                    <i class="fa fa-plus" style="font-weight : 300"></i>
                   </div>
                 </nuxt-link>
               </div>
               <div v-for="(employee, id) in employees" :key="id">
-                <div> <img :src="employee.profile_pic" alt class="rounded-circle" width="100px" height="100px" style="margin-top:3rem; margin-left:1rem" />
-                <div class="text-center mt-2" style="font-weight : bold">{{employee.first_name}}</div>
+                <div> <img :src="employee.profile_pic" alt class="rounded-circle" width="80px" height="80px" style="margin-top:3rem; margin-left:1rem" />
+                <div class="text-center mt-2" style="font-weight : ">{{employee.first_name}}</div>
                 </div>
                   
               </div>
@@ -92,6 +92,7 @@ export default {
     return {
       user: {},
       company: {},
+      profile : {},
       loader: true,
        employees: [],
     };
@@ -112,6 +113,7 @@ export default {
           console.log(res.data.company);
           this.company = res.data.company;
           this.employees = res.data.employees;
+          this.profile = res.data.profile;
           this.loader = false;
         });
     },
@@ -185,13 +187,13 @@ export default {
   padding: 1rem;
   /* border: 1px solid red; */
   background-color: #64a2ff;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   text-align: center;
   border-radius: 50%;
   color: #ffffff;
-  font-size: 1.5rem;
-  line-height: 4rem;
+  font-size: 1.2rem;
+  line-height: 3rem;
 }
 a {
   color: #ffffff !important;
