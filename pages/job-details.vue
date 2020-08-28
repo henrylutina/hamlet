@@ -4,13 +4,29 @@
     <div class="row one5">
       <app-sidebar/>
       <div class="one2 " >
-        <div class="one3">
+        <div v-if="!show" id="style-loader">
+              <span disabled>
+                <span class="spinner-border text-primary spinner-border-sm" role="status" aria-hidden="true"></span>
+                
+              </span>
+            </div>
+        <div class="one3" v-if="show">
+          
           <h2>Job Details</h2>
           <hr>
           <form @submit.prevent="addJobDetails">
             <div class="grid">
               <p>Job Title</p>
-              <input type="text" class="one6"  v-model="jobDetails.job_title" required>
+              <input type="text" name="job-title" class="one6"  v-model="jobDetails.job_title"
+              v-validate="'required'"
+                  :class="{ 'is-invalid': submitted && errors.has('job-title') }"
+                /><div></div>
+                <small
+                  v-if="submitted && errors.has('job-title')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("job-title") }}
+                </small>
             </div>
             
             <div class="grid">
@@ -62,38 +78,105 @@
             </div>
             <div class="grid">
               <p>Date Hired</p>
-              <input type="date" name="" id="" class="one6" v-model="jobDetails.date_hired">
+              <input type="date" name="date-hired" id="" class="one6" v-model="jobDetails.date_hired"
+              v-validate="'required'"
+                  :class="{ 'is-invalid': submitted && errors.has('date-hired') }"
+                /><div></div>
+                <small
+                  v-if="submitted && errors.has('date-hired')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("date-hired") }}
+                </small>
             </div>
             <div class="grid">
               <p>Work Location</p>
-              <input type="text" class="one6" v-model="jobDetails.work_location">
+              <input type="text" name="work-location" class="one6" v-model="jobDetails.work_location" 
+              v-validate="'required'"
+                  :class="{ 'is-invalid': submitted && errors.has('work-location') }"
+                /><div></div>
+                <small
+                  v-if="submitted && errors.has('work-location')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("work-location") }}
+                </small>
             </div>
             <div class="grid">
               <p>Salary (In Naira)</p>
-              <input  class="one6" type="number" v-model="jobDetails.salary">
+              <input  class="one6" name="salary" v-model="jobDetails.salary"
+              v-validate="'required|numeric'"
+                  :class="{ 'is-invalid': submitted && errors.has('salary') }"
+                /><div></div>
+                <small
+                  v-if="submitted && errors.has('salary')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("salary") }}
+                </small>
             </div>
             <div class="grid">
-              <p>Description</p>
-              <input type="text" class="one6" v-model="jobDetails.description">
+              <p>Job Description</p>
+              <textarea name="description" id=""   cols="10" rows="5" v-model="jobDetails.description"
+              v-validate="'required'"
+                  :class="{ 'is-invalid': submitted && errors.has('description') }"
+                >
+              </textarea>
+              <div></div>
+                <small
+                  v-if="submitted && errors.has('description')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("description") }}
+                </small>
             </div>
             <div class="grid">
               <p>Job Category</p>
-              <input type="text" class="one6" v-model="jobDetails.job_category">
+              <div class="input-group">
+                <select class="custom-select one6" id="inputGroupSelect04" name="job-category" aria-label="Example select with button addon" v-model="jobDetails.job_category"
+                 v-validate="'required'"
+                  :class="{ 'is-invalid': submitted && errors.has('job-category') }"
+                >
+                  <option value="Male">Executive Officer</option>
+                  <option value="Female">Sales Manager</option>
+                  <option value="Male">Human Resource</option>
+                    <option value="Female">Engineering</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <div></div>
+                <small
+                  v-if="submitted && errors.has('job-category')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("job-category") }}
+                </small>
+              </div>
             </div>
-            <div class="grid" v-if="show">
+            <div class="grid">
               <p>Department</p>
               <div class="input-group">
-                <select class="custom-select one6" id="inputGroupSelect04" aria-label="Example select with button addon" v-model="jobDetails.department" required>
+                <select class="custom-select one6" name="department" id="inputGroupSelect04" aria-label="Example select with button addon" v-model="jobDetails.department"
+                v-validate="'required'"
+                  :class="{ 'is-invalid': submitted && errors.has('department') }"
+                >
                   <option  v-for="(department, index) in departments" :key="index">{{department.name}}</option>
                 </select>
+                <div></div>
+                <small
+                  v-if="submitted && errors.has('department')"
+                  class="invalid-feedback"
+                >
+                  {{ errors.first("department") }}
+                </small>
               </div>
             </div>
 
             <hr>
             <div class="one4">
               <nuxt-link to="/contact-info"><button class="btn1">Back</button></nuxt-link>
-              <button type="submit" class="btn2" :disabled="isLoading">
-                <span v-if="!isLoading">Submit</span>
+              <button type="submit" class="btn2">
+                <span v-if="isLoading">Submit</span>
                 <app-loader v-else />
               </button>
             </div>
@@ -121,6 +204,9 @@
       'app-navbar':navbar,
       "app-loader": newLoader,
     },
+    mounted(){
+      this.getDepartment()
+    },
     data(){
       return{
         radio1: true,
@@ -137,7 +223,8 @@
           work_location: "",
           employment_classification: ""
         },
-        isLoading : false,
+        isLoading : true,
+        submitted: false,
         departments:{},
       }
     },
@@ -151,21 +238,27 @@
         this.radio2 = true;
       },
       addJobDetails(){
-        this.isLoading = true;
-        this.$axios.post("https://hamlet-hrm.herokuapp.com/api/jobdetails", this.jobDetails).then((res)=>{
+        console.log("clicked")
+      this.submitted = true;
+      this.$validator.validateAll().then((valid) => {
+        if (valid) {
+          console.log("Login");
+         this.isLoading = false;
+         this.$axios.post("https://hamlet-hrm.herokuapp.com/api/jobdetails", this.jobDetails).then((res) => {
           console.log(res.data);
-          swal({
-            title: "Success",
-            text: "You have added your employee's job details successfully!",
-            icon: "success",
-            button: false
-          });
-          this.isLoading = false;
-          this.$router.push("/dashboard")
-        }).catch(e => {
-          this.isLoading = false;
+          this.$message({
+          message: "You've added your employee's job details!",
+          type: "success"
         });
-      },
+          this.isLoading = true;
+          this.$router.push("/dashboard");
+        }).catch(e => {
+          this.isLoading = true;
+        });   
+        } else {
+        this.isLoading = true; 
+        }
+      })},
       getDepartment() {
       this.$axios
         .get("https://hamlet-hrm.herokuapp.com/api/departments")
@@ -176,7 +269,7 @@
     },
     },
     created(){
-      this.getDepartment()
+      // this.getDepartment()
     }
 
   }
@@ -195,7 +288,7 @@
     border-radius: 5px;
     background: #FFFFFF;
     margin-top: 5rem;
-    height: 130vh;
+    height: auto;
     margin-left: 25%;
   }
   .grid{
@@ -248,7 +341,7 @@
   .one5{
     background: #F9F9F9;
     margin-top: 3.5rem;
-    height: 160vh;
+    height: auto;
   }
   select{
     width:100%;
@@ -322,7 +415,11 @@
   .one7{
     margin-left: 1.5rem;
   }
+  #style-loader{
+  margin-top: 30vh;
+  text-align: center;
 
+}
 
 
 

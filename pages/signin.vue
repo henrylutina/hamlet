@@ -191,6 +191,7 @@ input {
 .two2 {
   padding: 17% 25%;
   background: #f9f9f9;
+  height:100vh;
 }
 .two2 input {
   width: 100%;

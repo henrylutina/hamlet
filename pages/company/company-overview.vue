@@ -5,6 +5,13 @@
       <app-sidebar />
 
       <div class="one2">
+        <div v-if="loader" id="style-loader">
+              <span disabled>
+                <span class="spinner-border text-primary spinner-border-sm" role="status" aria-hidden="true"></span>
+                
+              </span>
+            </div>
+            <div v-else>
         <div v-if="edit">
           <div class="one6">
             <div class="one7">
@@ -17,12 +24,7 @@
               <h2>{{this.company.company_name}}</h2>
               <p>Total Headcount: {{this.company.no_of_employees}} | Services: {{this.company.services}}</p>
             </div>
-            <div v-if="loader" class="text-center">
-              <span disabled>
-                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                Loading...
-              </span>
-            </div>
+            
           </div>
           <div>
             <div class="one3">
@@ -145,6 +147,7 @@
           </form>
         </div>
       </div>
+      </div>
     </div>
   </div>
 </template>
@@ -189,14 +192,15 @@ export default {
     this.user = this.$auth.$storage.getLocalStorage("jwt");
     //  this.user = localStorage.getItem("jwt");
     console.log(this.user);
+    this.getCompany();
     // this.getToken()
   },
   methods: {
     reload() {
-      var timeout = setTimeout("location.reload(true);", 6000);
+      var timeout = setTimeout("location.reload(true);", 3000);
       function resetTimeout() {
         clearTimeout(timeout);
-        timeout = setTimeout("location.reload(true", 6000);
+        timeout = setTimeout("location.reload(true", 3000);
       }
     },
     updateCompany(i) {
@@ -210,22 +214,22 @@ export default {
       })
         .then((willDelete) => {
           if (willDelete) {
-            // const formData = new FormData();
-            // formData.append("company_name", this.companyInfo.company_name);
-            // formData.append("company_address", this.companyInfo.company_address);
-            // formData.append("company_email", this.companyInfo.company_email);
-            // formData.append("company_website", this.companyInfo.company_website);
-            // formData.append("no_of_employees", this.companyInfo.no_of_employees);
-            // formData.append("city", this.companyInfo.city);
-            // formData.append("state", this.companyInfo.state);
-            // formData.append("zip_code", this.companyInfo.zip_code);
-            // formData.append("services", this.companyInfo.services);
-            // formData.append("company_logo", this.companyInfo.company_logo);
-            // formData.append("company_phone", this.companyInfo.company_phone);
+            const formData = new FormData();
+            formData.append("company_name", this.companyInfo.company_name);
+            formData.append("company_address", this.companyInfo.company_address);
+            formData.append("company_email", this.companyInfo.company_email);
+            formData.append("company_website", this.companyInfo.company_website);
+            formData.append("no_of_employees", this.companyInfo.no_of_employees);
+            formData.append("city", this.companyInfo.city);
+            formData.append("state", this.companyInfo.state);
+            formData.append("zip_code", this.companyInfo.zip_code);
+            formData.append("services", this.companyInfo.services);
+            formData.append("company_logo", this.companyInfo.company_logo);
+            formData.append("company_phone", this.companyInfo.company_phone);
             this.$axios
-              .put(
+              .post(
                 `https://hamlet-hrm.herokuapp.com/api/updatecompany/${i}`,
-                this.companyInfo,
+                formData,
                 { headers: { Authorization: `Bearer ${this.user}` } }
               )
               .then(
@@ -241,7 +245,7 @@ export default {
                   console.log(error);
                 }
               );
-            // this.reload()
+            this.reload()
           } else {
             this.$message({
               message: "Company Details remains the same !",
@@ -350,7 +354,7 @@ export default {
     // },
   },
   created() {
-    this.getCompany();
+    // this.getCompany();
   },
 };
 </script>
@@ -462,6 +466,11 @@ textarea {
   border-radius: 5px;
   padding: 5px 20px;
   border: 1px solid #0065fc;
+}
+#style-loader{
+  margin-top: 30vh;
+  text-align: center;
+
 }
 
 @media (max-width: 567px) {

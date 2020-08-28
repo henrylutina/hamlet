@@ -142,6 +142,7 @@ export default {
 .bg-color {
   /* margin: 0 5rem 0 0 !important; */
   padding: 10rem 2rem 5rem 2rem;
+  height: 150vh;
 }
 .box-logo {
   /* padding: 4.5rem; */
