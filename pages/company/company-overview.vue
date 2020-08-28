@@ -153,7 +153,7 @@
 </template>
 
 <script>
-import sidebar from "~/components/sidebar3.vue";
+import sidebar from "~/components/sidebar.vue";
 import VueJwtDecode from "vue-jwt-decode";
 import navbar from "~/components/navbar.vue";
 import swal from "sweetalert";

@@ -137,12 +137,13 @@
                  v-validate="'required'"
                   :class="{ 'is-invalid': submitted && errors.has('job-category') }"
                 >
-                  <option value="Male">Executive Officer</option>
-                  <option value="Female">Sales Manager</option>
-                  <option value="Male">Human Resource</option>
-                    <option value="Female">Engineering</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                  <option value="Male">Executive Officers and Managers</option>
+                  <option value="Female">Mid-Level Officers and Managers</option>
+                  <option value="Male">Professionals</option>
+                    <option value="Female">Technicians</option>
+                    <option value="Male">Sales Workers</option>
+                    <option value="Female">Craft Workers</option>
+                    <option value="Female">Service Workers</option>
                 </select>
                 <div></div>
                 <small
