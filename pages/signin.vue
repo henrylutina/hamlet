@@ -21,9 +21,7 @@
                 <small
                   v-if="submitted && errors.has('email')"
                   class="invalid-feedback"
-                >
-                  {{ errors.first("email") }}
-                </small>
+                >{{ errors.first("email") }}</small>
                 <br />
               </div>
               <div class="mt-4">
@@ -40,9 +38,7 @@
                   id="emailHelp"
                   v-if="submitted && errors.has('password')"
                   class="invalid-feedback"
-                >
-                  {{ errors.first("password") }}
-                </small>
+                >{{ errors.first("password") }}</small>
               </div>
 
               <br />
@@ -77,7 +73,7 @@ import { mapGetters } from "vuex";
 export default {
   components: {
     "app-navbar": Navbar,
-    "app-loader": newLoader
+    "app-loader": newLoader,
   },
   data() {
     return {
@@ -92,7 +88,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["isAuthenticated", "loggedInUser"])
+    ...mapGetters(["isAuthenticated", "loggedInUser"]),
   },
   // created()
   // {
@@ -109,7 +105,7 @@ export default {
       }
       // this.login = true
       this.submitted = true;
-      this.$validator.validateAll().then(valid => {
+      this.$validator.validateAll().then((valid) => {
         if (valid) {
           console.log("Login");
           this.isValid = true;
@@ -119,22 +115,22 @@ export default {
         let response = await this.$auth.loginWith("local", {
           data: {
             email: this.email,
-            password: this.password
-          }
+            password: this.password,
+          },
         });
         let user = response.data.user;
-         this.$auth.$storage.setLocalStorage("user", user);
-        let token = response.data.token
+        this.$auth.$storage.setLocalStorage("user", user);
+        let token = response.data.token;
         this.$auth.$storage.setLocalStorage("jwt", token);
         // localStorage.setItem("jwt", token);
-        console.log(token)
+        console.log(token);
         this.loader = false;
-        
+
         console.log(response);
         this.loader = false;
         this.$message({
           message: `Welcome ${user.username}`,
-          type: "success"
+          type: "success",
         });
         this.$router.push("/dashboard");
       } catch (e) {
@@ -142,21 +138,26 @@ export default {
         // this.error = e.res;
         if (e.response.status === 401) {
           this.$message({
-            message:
-              "Error, please sign up or check username and password!",
-            type: "error"
+            message: "Error, please sign up or check username and password!",
+            type: "error",
           });
         }
         if (e.response.status === 422) {
           this.$message({
             message: "Error, check username or password!",
-            type: "error"
+            type: "error",
           });
         }
+        //  if (!e.response.status) {
+        //   this.$message({
+        //     message: "Error, please check your internet connection",
+        //     type: "error",
+        //   });
+        // }
         this.loader = true;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
